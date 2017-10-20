@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=e:\razvoj\cru\database\cru.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aplikacija">
+          <Key>
+            <PropertyRef Name="AplikacijaKLJ" />
+          </Key>
+          <Property Name="AplikacijaKLJ" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="255" />
+          <Property Name="Naziv" Type="varchar" MaxLength="8" />
+          <Property Name="Http" Type="varchar" MaxLength="50" />
+          <Property Name="Opis" Type="varchar" MaxLength="255" />
+          <Property Name="Database" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lokacija">
+          <Key>
+            <PropertyRef Name="LokacijaKLJ" />
+          </Key>
+          <Property Name="LokacijaKLJ" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pravice">
+          <Key>
+            <PropertyRef Name="PravicaKLJ" />
+          </Key>
+          <Property Name="PravicaKLJ" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AplikacijaKLJ" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="50" />
+          <Property Name="Opis" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Uporabniki">
+          <Key>
+            <PropertyRef Name="UporabnikKLJ" />
+          </Key>
+          <Property Name="UporabnikKLJ" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UporabnikID" Type="varchar" MaxLength="50" />
+          <Property Name="Ime" Type="varchar" MaxLength="50" />
+          <Property Name="Priimek" Type="varchar" MaxLength="50" />
+          <Property Name="WinUsername" Type="varchar" MaxLength="50" />
+          <Property Name="RFID" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Vloge">
+          <Key>
+            <PropertyRef Name="VlogaKLJ" />
+          </Key>
+          <Property Name="VlogaKLJ" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AplikacijaKLJ" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="8" />
+          <Property Name="Opis" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="VlogeUporabnikov">
+          <Key>
+            <PropertyRef Name="VlogaKLJ" />
+            <PropertyRef Name="LokacijaKLJ" />
+            <PropertyRef Name="UporabnikKLJ" />
+          </Key>
+          <Property Name="VlogaKLJ" Type="integer" Nullable="false" />
+          <Property Name="LokacijaKLJ" Type="integer" Nullable="false" />
+          <Property Name="UporabnikKLJ" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="mainModelStoreContainer">
+          <EntitySet Name="Aplikacija" EntityType="Self.Aplikacija" store:Type="Tables" />
+          <EntitySet Name="Lokacija" EntityType="Self.Lokacija" store:Type="Tables" />
+          <EntitySet Name="Pravice" EntityType="Self.Pravice" store:Type="Tables" />
+          <EntitySet Name="Uporabniki" EntityType="Self.Uporabniki" store:Type="Tables" />
+          <EntitySet Name="Vloge" EntityType="Self.Vloge" store:Type="Tables" />
+          <EntitySet Name="VlogeUporabnikov" EntityType="Self.VlogeUporabnikov" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aplikacija">
+          <Key>
+            <PropertyRef Name="AplikacijaKLJ" />
+          </Key>
+          <Property Name="AplikacijaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Naziv" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Http" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Database" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Lokacija">
+          <Key>
+            <PropertyRef Name="LokacijaKLJ" />
+          </Key>
+          <Property Name="LokacijaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Pravice">
+          <Key>
+            <PropertyRef Name="PravicaKLJ" />
+          </Key>
+          <Property Name="PravicaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="AplikacijaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Uporabniki">
+          <Key>
+            <PropertyRef Name="UporabnikKLJ" />
+          </Key>
+          <Property Name="UporabnikKLJ" Type="Int64" Nullable="false" />
+          <Property Name="UporabnikID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Priimek" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WinUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RFID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Vloge">
+          <Key>
+            <PropertyRef Name="VlogaKLJ" />
+          </Key>
+          <Property Name="VlogaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="AplikacijaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VlogeUporabnikov">
+          <Key>
+            <PropertyRef Name="VlogaKLJ" />
+            <PropertyRef Name="LokacijaKLJ" />
+            <PropertyRef Name="UporabnikKLJ" />
+          </Key>
+          <Property Name="VlogaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="LokacijaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="UporabnikKLJ" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aplikacija" EntityType="Self.Aplikacija" />
+          <EntitySet Name="Lokacija" EntityType="Self.Lokacija" />
+          <EntitySet Name="Pravice" EntityType="Self.Pravice" />
+          <EntitySet Name="Uporabniki" EntityType="Self.Uporabniki" />
+          <EntitySet Name="Vloge" EntityType="Self.Vloge" />
+          <EntitySet Name="VlogeUporabnikov" EntityType="Self.VlogeUporabnikov" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mainModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Aplikacija">
+            <EntityTypeMapping TypeName="mainModel.Aplikacija">
+              <MappingFragment StoreEntitySet="Aplikacija">
+                <ScalarProperty Name="AplikacijaKLJ" ColumnName="AplikacijaKLJ" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Http" ColumnName="Http" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Database" ColumnName="Database" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lokacija">
+            <EntityTypeMapping TypeName="mainModel.Lokacija">
+              <MappingFragment StoreEntitySet="Lokacija">
+                <ScalarProperty Name="LokacijaKLJ" ColumnName="LokacijaKLJ" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pravice">
+            <EntityTypeMapping TypeName="mainModel.Pravice">
+              <MappingFragment StoreEntitySet="Pravice">
+                <ScalarProperty Name="PravicaKLJ" ColumnName="PravicaKLJ" />
+                <ScalarProperty Name="AplikacijaKLJ" ColumnName="AplikacijaKLJ" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uporabniki">
+            <EntityTypeMapping TypeName="mainModel.Uporabniki">
+              <MappingFragment StoreEntitySet="Uporabniki">
+                <ScalarProperty Name="UporabnikKLJ" ColumnName="UporabnikKLJ" />
+                <ScalarProperty Name="UporabnikID" ColumnName="UporabnikID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Priimek" ColumnName="Priimek" />
+                <ScalarProperty Name="WinUsername" ColumnName="WinUsername" />
+                <ScalarProperty Name="RFID" ColumnName="RFID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vloge">
+            <EntityTypeMapping TypeName="mainModel.Vloge">
+              <MappingFragment StoreEntitySet="Vloge">
+                <ScalarProperty Name="VlogaKLJ" ColumnName="VlogaKLJ" />
+                <ScalarProperty Name="AplikacijaKLJ" ColumnName="AplikacijaKLJ" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VlogeUporabnikov">
+            <EntityTypeMapping TypeName="mainModel.VlogeUporabnikov">
+              <MappingFragment StoreEntitySet="VlogeUporabnikov">
+                <ScalarProperty Name="VlogaKLJ" ColumnName="VlogaKLJ" />
+                <ScalarProperty Name="LokacijaKLJ" ColumnName="LokacijaKLJ" />
+                <ScalarProperty Name="UporabnikKLJ" ColumnName="UporabnikKLJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

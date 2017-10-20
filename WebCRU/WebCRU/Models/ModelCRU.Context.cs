@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace si.hit.WebCRU
+namespace WebCRU.Models
 {
     using System;
     using System.Data.Entity;

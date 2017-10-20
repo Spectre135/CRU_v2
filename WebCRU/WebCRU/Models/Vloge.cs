@@ -7,19 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace si.hit.WebCRU
+namespace WebCRU.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class VlogeUporabnikov
+    public partial class Vloge
     {
         public long VlogaKLJ { get; set; }
-        public long LokacijaKLJ { get; set; }
-        public long UporabnikKLJ { get; set; }
-    
-        public virtual Lokacija Lokacija { get; set; }
-        public virtual Uporabniki Uporabniki { get; set; }
-        public virtual Vloge Vloge { get; set; }
+        public long AplikacijaKLJ { get; set; }
+        public string Naziv { get; set; }
+        public string Opis { get; set; }
     }
 }

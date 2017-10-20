@@ -7,26 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace si.hit.WebCRU
+namespace WebCRU.Models
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Pravice
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pravice()
-        {
-            this.Vloge = new HashSet<Vloge>();
-        }
-    
         public long PravicaKLJ { get; set; }
         public long AplikacijaKLJ { get; set; }
         public string Naziv { get; set; }
         public string Opis { get; set; }
-    
-        public virtual Aplikacija Aplikacija { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vloge> Vloge { get; set; }
     }
 }

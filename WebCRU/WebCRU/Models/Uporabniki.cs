@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace si.hit.WebCRU
+namespace WebCRU.Models
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Uporabniki
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Uporabniki()
-        {
-            this.VlogeUporabnikov = new HashSet<VlogeUporabnikov>();
-        }
-    
         public long UporabnikKLJ { get; set; }
         public string UporabnikID { get; set; }
         public string Ime { get; set; }
         public string Priimek { get; set; }
         public string WinUsername { get; set; }
         public string RFID { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VlogeUporabnikov> VlogeUporabnikov { get; set; }
     }
 }

@@ -7,23 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace si.hit.WebCRU
+namespace WebCRU.Models
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Lokacija
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Lokacija()
-        {
-            this.VlogeUporabnikov = new HashSet<VlogeUporabnikov>();
-        }
-    
         public long LokacijaKLJ { get; set; }
         public string Opis { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VlogeUporabnikov> VlogeUporabnikov { get; set; }
     }
 }

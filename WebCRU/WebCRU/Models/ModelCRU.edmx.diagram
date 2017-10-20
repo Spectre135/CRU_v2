@@ -11,12 +11,6 @@
         <EntityTypeShape EntityType="mainModel.Uporabniki" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.Vloge" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.VlogeUporabnikov" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
-        <AssociationConnector Association="mainModel.FK_Pravice_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="mainModel.FK_Vloge_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="mainModel.FK_VlogeUporabnikov_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="mainModel.FK_VlogeUporabnikov_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="mainModel.FK_VlogeUporabnikov_2_0" ManuallyRouted="false" />
-        <AssociationConnector Association="mainModel.VlogePravice" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

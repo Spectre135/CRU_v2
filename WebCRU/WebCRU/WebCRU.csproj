@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,6 +69,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -98,68 +100,75 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataServiceWCF.svc" />
     <Content Include="Global.asax" />
-    <Content Include="ModelCRU.Context.tt">
+    <Content Include="Models\ModelCRU.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelCRU.edmx</DependentUpon>
       <LastGenOutput>ModelCRU.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelCRU.tt">
+    <Content Include="Models\ModelCRU.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelCRU.edmx</DependentUpon>
       <LastGenOutput>ModelCRU.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aplikacija.cs">
+    <Compile Include="Models\Aplikacija.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\AplikacijeController.cs" />
+    <Compile Include="DataServiceWCF.svc.cs">
+      <DependentUpon>DataServiceWCF.svc</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Lokacija.cs">
+    <Compile Include="IDataServiceWCF.cs" />
+    <Compile Include="Models\Lokacija.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelCRU.Context.cs">
+    <Compile Include="Models\ModelCRU.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCRU.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelCRU.cs">
+    <Compile Include="Models\ModelCRU.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelCRU.Designer.cs">
+    <Compile Include="Models\ModelCRU.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCRU.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Pravice.cs">
+    <Compile Include="Models\Pravice.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\DataService.cs" />
-    <Compile Include="Uporabniki.cs">
+    <Compile Include="Service\DAOService.cs" />
+    <Compile Include="Models\Uporabniki.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vloge.cs">
+    <Compile Include="Models\Vloge.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
-    <Compile Include="VlogeUporabnikov.cs">
+    <Compile Include="Models\VlogeUporabnikov.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataBase\cru.db" />
-    <EntityDeploy Include="ModelCRU.edmx">
+    <EntityDeploy Include="Models\ModelCRU.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelCRU.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ModelCRU.edmx.diagram">
+    <Content Include="Models\ModelCRU.edmx.diagram">
       <DependentUpon>ModelCRU.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
@@ -172,7 +181,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
