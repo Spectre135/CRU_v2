@@ -1,0 +1,206 @@
+<div class="modal-content">
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label class="red" for="name">Name</label>
+            <input name="name" type="text" id="name" class="form-control" ng-model="editDto.name" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="firstname">FirsName</label>
+                    <input name="firstname" type="text" id="firstname" class="form-control" ng-model="editDto.firstName" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="lastname">LastName</label>
+                    <input name="lastname" type="text" id="lastname" class="form-control" ng-model="editDto.lastName" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="red" for="tin">TIN</label>
+                    <input name="tin" type="text" id="tin" class="form-control" ng-model="editDto.tin" />
+                </div>
+            </div>
+            <div class="col-md-2"/> <!--empty!-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="birthdate">BirthDate</label>
+                    <div class="input-group date col-xs-6 date" data-provide="datepicker">
+                        <input name="birthdate" type="text" class="form-control" auto-close="true" close-on-date-selection="true" datepicker-popup="dd.MM.yyyy" ng-model="editDto.birthDate"/>
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="red" for="street">Street</label>
+            <input name="street" type="text" id="street" class="form-control" ng-model="editDto.street" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">    
+                <div class="form-group">
+                    <label class="red"  for="postcode">PostCode</label>
+                    <input name="postcode" type="text" id="postcode" class="form-control" ng-model="editDto.postCode" />
+                </div>
+            </div> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red"  for="city">City</label>
+                    <input name="city" type="text" id="city" class="form-control" ng-model="editDto.city" />
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group" >
+                    <label class="red" for="countryCode">CountryCode</label>
+                    <ui-select ng-model="editDto.countryCode" ng-click="getCountryCodeList()" uis-open-close="onOpenClose(true)" >
+                        <ui-select-match>{{$select.selected.id}}</ui-select-match>
+                        <ui-select-choices refresh="getCountryCodeListSelected(editDto.countryCode)" refresh-delay="0" repeat="countryCode.id as countryCode in countryCodeList | filter:$select.search" >
+                            <div ng-bind="countryCode.id | highlight: $select.search"></div>
+                            <div ng-bind="countryCode.name"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>  
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="red" for="resCountryCode">ResCountryCode</label>
+                    <ui-select ng-model="editDto.resCountryCode" ng-click="getCountryCodeList()">
+                        <ui-select-match>{{$select.selected.id}}</ui-select-match>
+                        <ui-select-choices refresh="getCountryCodeListSelected(editDto.resCountryCode)" refresh-delay="0" repeat="countryCode.id as countryCode in countryCodeList | filter:$select.search" >
+                            <div ng-bind="countryCode.id | highlight: $select.search"></div>
+                            <div ng-bind="countryCode.name"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="red" for="taxCode">TaxCode</label>
+                    <input name="taxCode" type="text" id="taxCode" class="form-control" ng-model="editDto.taxCode" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="red" for="resCountryCode2">ResCountryCode2</label>
+                    <ui-select ng-model="editDto.resCountryCode2" ng-click="getCountryCodeList()">
+                        <ui-select-match>{{$select.selected.id}}</ui-select-match>
+                        <ui-select-choices refresh="getCountryCodeListSelected(editDto.resCountryCode2)" refresh-delay="0" repeat="countryCode.id as countryCode in countryCodeList | filter:$select.search" >
+                            <div ng-bind="countryCode.id | highlight: $select.search"></div>
+                            <div ng-bind="countryCode.name"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="red" for="taxCode2">TaxCode2</label>
+                    <input name="taxCode2" type="text" id="taxCode2" class="form-control" ng-model="editDto.taxCode2" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="red" for="resCountryCode3">ResCountryCode3</label>
+                    <ui-select ng-model="editDto.resCountryCode3">
+                        <ui-select-match>{{$select.selected.id}}</ui-select-match>
+                        <ui-select-choices refresh="getCountryCodeListSelected(editDto.resCountryCode3)" refresh-delay="0" repeat="countryCode.id as countryCode in countryCodeList | filter:$select.search" >
+                            <div ng-bind="countryCode.id | highlight: $select.search"></div>
+                            <div ng-bind="countryCode.name"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="red" for="taxCode3">TaxCode3</label>
+                    <input name="taxCode3" type="text" id="taxCode3" class="form-control" ng-model="editDto.taxCode3" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"> 
+                <div class="form-group">
+                    <label class="red" for="accountNumber">AccountNumber</label>
+                    <input name="accountNumber" type="text" id="accountNumber" class="form-control" ng-model="editDto.accountNumber" />
+                </div>
+            </div>
+
+            <div class="col-md-2"> 
+                <div class="form-group">
+                    <label class="red" for="accountBalanceCurrCode">CurrencyCode</label>
+                    <input name="accountBalanceCurrCode" type="text" id="accountBalanceCurrCode" class="form-control" ng-model="editDto.accountBalanceCurrCode" />
+                </div>
+            </div>
+
+
+            <div class="col-md-4"> 
+                <div class="form-group">
+                    <label class="red" for="accountNumberType">AccountNumberType</label>
+                    <ui-select ng-model="editDto.accountNumberType" ng-click="getAccountNumberTypeList()">
+                        <ui-select-match>{{$select.selected.id}}</ui-select-match>
+                        <ui-select-choices refresh="getAccountNumberTypeListSelected(editDto.accountNumberType)" refresh-delay="0" repeat="accountNumberType.id as accountNumberType in accountNumberTypeList | filter:$select.search" >
+                            <div ng-bind="accountNumberType.id | highlight: $select.search"></div>
+                            <div ng-bind="accountNumberType.name"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"> 
+                <div class="form-group">
+                    <label class="red" for="accountBalance">AccountBalance</label>
+                    <input name="accountBalance" type="text" id="accountBalance" class="form-control money" ng-model="editDto.accountBalance" smart-float/>
+                </div>
+            </div>
+            <div class="col-md-3"> 
+                <div class="form-group">
+                    <label class="red" for="accountBalanceUSD">AccountBalanceUSD</label>
+                    <input name="accountBalanceUSD" type="text" id="accountBalanceUSD" class="form-control money" ng-model="editDto.accountBalanceUSD" smart-float/>
+                </div>
+            </div>
+            <div class="col-md-3"> 
+                <div class="form-group hide-inputbtns">
+                    <label class="red" for="accountBalanceEUR">AccountBalanceEUR</label>
+                    <input id="accountBalanceEUR" type="text" name="accountBalanceEUR" class="form-control money" ng-model="editDto.accountBalanceEUR" smart-float/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <span class="pull-left">
+            <button type="button" class="buttonNkbm"  data-dismiss="modal" ng-click="save()">Save</button>
+        </span>
+        <button type="button" class="buttonNkbm"  data-dismiss="modal" ng-click="cancel()">Close</button>
+    </div>
+
+</div>
+<script language="javascript" type="text/javascript">
+    formatLocale();
+    jQuery('.selectpicker').selectpicker();
+    window.onload = grayOut(false);
+</script>
+

@@ -100,7 +100,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataServiceWCF.svc" />
     <Content Include="Global.asax" />
     <Content Include="Models\ModelCRU.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -117,18 +116,19 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\DbColumn.cs" />
+    <Compile Include="DAO\ReflectPropertyInfo.cs" />
+    <Compile Include="DTO\DAplikacija.cs" />
+    <Compile Include="DTO\DResponse.cs" />
     <Compile Include="Models\Aplikacija.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AplikacijeController.cs" />
-    <Compile Include="DataServiceWCF.svc.cs">
-      <DependentUpon>DataServiceWCF.svc</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\RestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IDataServiceWCF.cs" />
     <Compile Include="Models\Lokacija.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>

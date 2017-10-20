@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<div id="header">
+    
+</div>
+
+<body>
+    <table class="tabled" align="center">
+        <caption>
+            <div>
+                <form id="custom-search-form" class="pull-right">
+                    <div class="inline">
+                        <input class="search" size="50" type="text" name="input" placeholder="Search.." />
+                    </div>
+                    <div class="inline">
+                        <button type="submit" class="btn btnSearch" (click)="getData()">
+                            <span class=" glyphicon glyphicon-search" />
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </caption>
+        <thead class="theadd">
+            <tr>
+                <th>Date</th>
+                <th>ReportType</th>
+                <th>TIN</th>
+                <th>ResCountryCode</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Name</th>
+                <th>CountryCode</th>
+                <th>AccountNumber</th>
+                <th>AccountBalance</th>
+                <th>AccountBalanceUSD</th>
+                <th>AccountBalanceEUR</th>
+                <th>Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="trd" ngFor="let dto of data">
+                <td> {{dto.datum| date:'dd.MM.yyyy'}} </td>
+                <td class="middle"> {{dto.reportType}} </td>
+                <td> {{dto.tin}} </td>
+                <td class="middle"> {{dto.resCountryCode}} </td>
+                <td> {{dto.firstName}} </td>
+                <td> {{dto.lastName}} </td>
+                <td> {{dto.name}} </td>
+                <td class="middle">{{ dto.countryCode}} </td>
+                <td> {{dto.accountNumber}} </td>
+                <td class="right"> {{dto.accountBalance| number:2}} </td>
+                <td class="right"> {{dto.accountBalanceUSD| number:2}} </td>
+                <td class="right"> {{dto.accountBalanceEUR| number:2}} </td>
+                <td class="right"> {{dto.payment| number:2}} </td>
+            </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</body>
+</html>

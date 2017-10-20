@@ -2,6 +2,8 @@
 using System.Linq;
 using WebCRU.Models;
 using System.Web.Script.Serialization;
+using WebCRU.DAO;
+using WebCRU.DTO;
 
 namespace si.hit.WebCRU.Service
 {
@@ -51,6 +53,23 @@ namespace si.hit.WebCRU.Service
             }
 
             return response;
+        }
+
+        /*Berem SQLite bazo preko navadnega selecta*/
+        public DResponse GetDResponse(string SearchString, int pageIndex, int pageSelected, string sortKey, string asc)
+        {
+            DAO dao = new DAO();
+
+            DResponse dto = new DResponse
+            {
+                DataList = dao.GetData(SearchString.Replace("undefined", ""), pageIndex, pageSelected, sortKey, asc),
+                RowsCount = dao.GetRowsCount(SearchString)
+            };
+
+            //return JsonConvert.SerializeObject(dto, new JsonSerializerSettings() { DateFormatString = "dd.MM.yyyy" });
+
+            return dto;
+
         }
 
     }
