@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("FatcaManagement");
+var app = angular.module("CRUManagement");
 
 //config Header v katerega vpišemo nkbmAuthToken iz sessionStorage
 app.factory('httpRequestInterceptor', function () {
@@ -21,16 +21,16 @@ app.config(function ($httpProvider) {
 app.factory('apiService', function ($q, $http) {
     var service = {};
 
-    //Get data
-    service.getData = function (searchString,reportTypeSelected,pageIndex,pageSizeSelected,sortKey,asc) {
+    //Get apikacije
+    service.getAplikacije = function (searchString,pageIndex,pageSizeSelected,sortKey,asc) {
         var deferred = $q.defer();
         //posivim ekran
         window.onload = grayOut(true);
         
         $http({
             method: 'GET',
-            url: 'http://localhost:18546/RestService.svc/Porocanje/' + searchString,
-            params: {/*reportType:reportTypeSelected.id,*/
+            url: '/api/aplikacije2/' + searchString,
+            params: {
                      pageIndex: pageIndex,
                      pageSizeSelected: pageSizeSelected.selected,
                      sortKey :sortKey,
@@ -51,11 +51,28 @@ app.factory('apiService', function ($q, $http) {
     
     //Save data
     service.saveData = function (dto) {  
-       window.onload = grayOut(true);
-       $http.post("rest/save/", angular.toJson(dto)).then(function (status) {
+        window.onload = grayOut(true);
+        /*
+       $http.post("api/save/", angular.toJson(dto)).then(function (status) {
             window.onload = grayOut(false);
             window.localStorage.setItem('status', status);
         });
+        */
+        $http({
+            method: 'POST',
+            url: '/api/save/',
+            data: dto
+
+        }).success(function (data) {
+            window.localStorage.setItem('status', status);
+
+        }).error(function (response) {
+            window.localStorage.setItem('status', status);
+
+        }).finally(function () {
+            window.onload = grayOut(false);
+        });
+
     };
 
     //Šifranti

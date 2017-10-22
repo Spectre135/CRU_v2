@@ -1,9 +1,9 @@
 'user strict';
 
-var app = angular.module("FatcaManagement", ['ngSanitize', 'ui.select', 'ui.bootstrap']);
+var app = angular.module("CRUManagement", ['ngSanitize', 'ui.select', 'ui.bootstrap']);
 
 //Query data
-app.controller("FatcaController", function ($scope, $modal, apiService) {
+app.controller("CRUController", function ($scope, $modal, apiService) {
 
     $scope.searchString;
     $scope.rowNumber = -1;
@@ -14,7 +14,6 @@ app.controller("FatcaController", function ($scope, $modal, apiService) {
     $scope.reportTypeListRead = 'false';
     $scope.accountNumberTypeList;
     $scope.countryCodeList;
-    $scope.reportTypeList=[{id:'*'}];
     sifrant:[];
 
     //pagination
@@ -25,7 +24,6 @@ app.controller("FatcaController", function ($scope, $modal, apiService) {
     $scope.sortKey='null';
     $scope.asc='null';
     $scope.pageSizeSelected = {selected: 5};
-    $scope.reportTypeSelected = {id:'*'};
 
 
     $scope.pageChanged = function () {
@@ -52,9 +50,9 @@ app.controller("FatcaController", function ($scope, $modal, apiService) {
         }
     };
 
-    //getData 
-    $scope.getData = function () {
-        apiService.getData($scope.searchString, $scope.reportTypeSelected, $scope.pageIndex, $scope.pageSizeSelected,$scope.sortKey,$scope.asc)
+    //getAplikacije
+    $scope.getAplikacije = function () {
+        apiService.getAplikacije($scope.searchString, $scope.pageIndex, $scope.pageSizeSelected,$scope.sortKey,$scope.asc)
                 .then(function (data) {
                     $scope.data = data.DataList;
                     $scope.totalCount = data.RowsCount;
@@ -67,8 +65,8 @@ app.controller("FatcaController", function ($scope, $modal, apiService) {
     $scope.openModal = function (dto) {
         window.onload = grayOut(true);
         $modal.open({
-            templateUrl: 'Pages/edit.html',
-            controller: 'FatcaControllerEditCtrl',
+            templateUrl: 'editAplikacije.html',
+            controller: 'AplEditCtrl',
             controllerAs: 'vm',
             scope: $scope,
             backdrop: 'static',
@@ -145,7 +143,7 @@ app.controller("FatcaController", function ($scope, $modal, apiService) {
 });
 
 //Edit data
-app.controller('FatcaControllerEditCtrl', function ($scope, $modalInstance, dto, apiService) {
+app.controller('AplEditCtrl', function ($scope, $modalInstance, dto, apiService) {
     $scope.editDto = angular.copy(dto);
 
     //save

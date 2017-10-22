@@ -1,7 +1,7 @@
-var HEADER_NAME = 'FatcaManagement-Handle-Errors-Generically';
+var HEADER_NAME = 'CRUManagement-Handle-Errors-Generically';
 var specificallyHandleInProgress = false;
 
-angular.module('FatcaManagement').factory('RequestsErrorHandler', ['$q', function($q) {
+angular.module('CRUManagement').factory('RequestsErrorHandler', ['$q', function($q) {
     return {
         // --- The user's API for claiming responsiblity for requests ---
         specificallyHandled: function(specificallyHandledBlock) {
@@ -20,7 +20,7 @@ angular.module('FatcaManagement').factory('RequestsErrorHandler', ['$q', functio
 
             if (shouldHandle) {
                 //window.localStorage.setItem('status', $q.defer().promise.data);
-                window.location = "pages/error/error.html";
+                //window.location = "error/error.html";
             }
 
             return $q.reject(rejection);
@@ -28,7 +28,7 @@ angular.module('FatcaManagement').factory('RequestsErrorHandler', ['$q', functio
     };
 }]);
 
-angular.module('FatcaManagement').config(['$provide', '$httpProvider', function($provide, $httpProvider) {
+angular.module('CRUManagement').config(['$provide', '$httpProvider', function($provide, $httpProvider) {
     $httpProvider.interceptors.push('RequestsErrorHandler');
 
     // --- Decorate $http to add a special header by default ---

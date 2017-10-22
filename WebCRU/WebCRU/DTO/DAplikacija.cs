@@ -8,6 +8,9 @@ namespace WebCRU.DTO
 {
     public class DAplikacija
     {
+        [DataFieldAttribute("AplikacijaKLJ")]
+        public int AplikacijaKLJ { get; set; }
+
         [DataFieldAttribute("Ime")]
         [DataSearchAttribute("Ime")]
         public string Ime { get; set; }

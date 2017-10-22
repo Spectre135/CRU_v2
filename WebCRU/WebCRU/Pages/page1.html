@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>  
-        <title>PORFU</title>
+        <title>CRU</title>
         <link type="image/x-icon" href="../Images/favicon.ico" rel="shortcut icon" />
         <link type="image/ico" href="../Images/favicon.ico" rel="icon" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -56,7 +56,7 @@
         </nav>
     </div>
 
-    <body ng-app="FatcaManagement" ng-controller="FatcaController">
+    <body ng-app="CRUManagement" ng-controller="CRUController">
 
         <table class="tabled" align="center">
             <caption>
@@ -66,7 +66,7 @@
                             <input class="search" size="50" type="text" name="input" ng-model="searchString"  placeholder="Search.." required ng-trim="true" />
                         </div>
                         <div class="inline">
-                            <button type="submit" class="btn btnSearch" ng-click="getData()">  
+                            <button type="submit" class="btn btnSearch" ng-click="getAplikacije()">  
                                 <span class=" glyphicon glyphicon-search"/>         
                             </button>
                         </div>
@@ -75,70 +75,32 @@
             </caption>
             <thead class="theadd">
                 <tr>
-                    <th class="sort" ng-click="sort('Date')">Date
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Date'" ng-class="{'glyphicon glyphicon-triangle-top':asc,'glyphicon glyphicon-triangle-bottom':!asc}"></span>
+
+                    <th class="sort" ng-click="sort('Ime')">Ime
+                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Ime'" ng-class="getSortClass()"/>
                     </th>
-                    <th>
-                        <span>
-                            ReportType
-                            <ui-select ng-model="reportTypeSelected.id" theme="selectize" search-enabled="false" ng-click="getReportTypeList()" on-select="getData()" >
-                                <ui-select-match>{{$select.selected.id}}</ui-select-match>
-                                <ui-select-choices repeat="reportType.id as reportType in reportTypeList | filter:$select.search">
-                                    <div ng-bind="reportType.id"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </span>
+                    <th class="sort" ng-click="sort('Naziv')">Naziv
+                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Naziv'" ng-class="getSortClass()"/>
                     </th>
-                    <th class="sort" ng-click="sort('tin')">TIN
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'tin'" ng-class="getSortClass()"/>
+                    <th class="sort" ng-click="sort('Opis')">Opis
+                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Opis'" ng-class="getSortClass()"/>
                     </th>
-                    <th class="sort" ng-click="sort('ResCountryCode')">ResCountryCode
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'ResCountryCode'" ng-class="getSortClass()"/>
+                    <th class="sort" ng-click="sort('Http')">Http
+                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Http'" ng-class="getSortClass()"/>
                     </th>
-                    <th class="sort" ng-click="sort('FirstName')">FirstName
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'FirstName'" ng-class="getSortClass()"/>
+                    <th class="sort" ng-click="sort('Database')">Database
+                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Database'" ng-class="getSortClass()"/>
                     </th>
-                    <th class="sort" ng-click="sort('LastName')">LastName
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'LastName'" ng-class="getSortClass()"/>
-                    </th>
-                    <th class="sort" ng-click="sort('Name')">Name
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Name'" ng-class="getSortClass()"/>
-                    </th>
-                    <th class="sort" ng-click="sort('CountryCode')">CountryCode
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'CountryCode'" ng-class="getSortClass()"/>
-                    </th>
-                    <th class="sort" ng-click="sort('AccountNumber')">AccountNumber
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'AccountNumber'" ng-class="getSortClass()"/>
-                    </th>
-                    <th class="sort" ng-click="sort('AccountBalance')">AccountBalance
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'AccountBalance'" ng-class="getSortClass()"/>
-                    </th>
-                    <th class="sort" ng-click="sort('AccountBalanceUSD')">AccountBalanceUSD
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'AccountBalanceUSD'" ng-class="getSortClass()"/>
-                    </th>
-                    <th class="sort" ng-click="sort('AccountBalanceEUR')">AccountBalanceEUR
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'AccountBalanceEUR'" ng-class="getSortClass()"/>
-                    </th>
-                    <th class="sort" ng-click="sort('Payment')">Payment
-                        <span class="glyphicon sort-icon" ng-show="sortKey === 'Payment'" ng-class="getSortClass()"/>
-                    </th>
+                   
                 </tr>
             </thead>
             <tbody>
                 <tr class="trd" title="DbClick to edit" ng-repeat="dto in data" ng-dblclick="openModal(dto)">
-                    <td> {{dto.Datum| date:'dd.MM.yyyy'}} </td>
-                    <td class="middle"> {{dto.ReportType}} </td>
-                    <td> {{dto.Tin}} </td> 
-                    <td class="middle"> {{dto.ResCountryCode}} </td>  
-                    <td> {{dto.FirstName}} </td> 
-                    <td> {{dto.LastName}} </td> 
-                    <td> {{dto.Name}} </td> 
-                    <td class="middle">{{ dto.CountryCode}} </td> 
-                    <td> {{dto.AccountNumber}} </td> 
-                    <td class="right"> {{dto.AccountBalance| number:2}} </td> 
-                    <td class="right"> {{dto.AccountBalanceUSD| number:2}} </td> 
-                    <td class="right"> {{dto.AccountBalanceEUR| number:2}} </td> 
-                    <td class="right"> {{dto.Payment| number:2}} </td> 
+                    <td> {{dto.Ime}} </td> 
+                    <td> {{dto.Naziv}} </td>  
+                    <td> {{dto.Opis}} </td> 
+                    <td> {{dto.Http}} </td> 
+                    <td> {{dto.Database}} </td> 
                 </tr>
             </tbody>    
             <tfoot>  

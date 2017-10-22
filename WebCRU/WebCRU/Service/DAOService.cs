@@ -37,6 +37,8 @@ namespace si.hit.WebCRU.Service
             using (CruDBEntities db = new CruDBEntities())
             {
                 db.Aplikacija.Add(aplikacija);
+
+                db.SaveChanges();
             }
 
         }

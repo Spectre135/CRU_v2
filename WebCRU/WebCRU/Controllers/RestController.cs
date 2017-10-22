@@ -24,17 +24,14 @@ namespace si.hit.WebCRU.Controllers
             return response;
         }
 
-        [Route("api/aplikacije/aplikacija")]
-        public HttpResponseMessage Post(Aplikacija aplikacija)
+        [Route("api/save/")]
+        public IHttpActionResult Post(Aplikacija aplikacija)
         {
             DAOService service = new DAOService();
 
             service.AddAplikacija(aplikacija);
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
-
-
-            return response;
+            return Ok();
         }
 
         [Route("api/uporabniki")]
