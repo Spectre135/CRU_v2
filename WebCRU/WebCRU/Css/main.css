@@ -69,15 +69,15 @@ th {
 .theadd th {
     font-family: 'Roboto';
     /*background: #F2F2F2;*/
-    color: #2681d2;
+    color: white;
     padding: 10px;
     font-weight: normal;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#ffffff));
-    background-image: -webkit-linear-gradient(top, #ddd, #ffffff);
-    background-image: -moz-linear-gradient(top, #ddd, #ffffff);
-    background-image: -ms-linear-gradient(top, #ddd, #ffffff);
-    background-image: -o-linear-gradient(top, #ddd, #ffffff);
-    background-image: linear-gradient(to bottom, #ddd, #ffffff);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2681d2), to(#1a5991));
+    background-image: -webkit-linear-gradient(top, #2681d2, #1a5991);
+    background-image: -moz-linear-gradient(top, #2681d2, #1a5991);
+    background-image: -ms-linear-gradient(top, #2681d2, #1a5991);
+    background-image: -o-linear-gradient(top, #2681d2, #1a5991);
+    background-image: linear-gradient(to bottom, #2681d2, #1a5991);
     -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
     -moz-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
     box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
@@ -283,6 +283,10 @@ input {
 
 .pull-left {
     float: left !important;
+}
+
+.pull-right {
+    float: right !important;
 }
 
 .paging-tbl{

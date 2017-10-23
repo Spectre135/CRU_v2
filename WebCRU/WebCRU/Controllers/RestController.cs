@@ -13,6 +13,7 @@ namespace si.hit.WebCRU.Controllers
 {
     public class RestController : ApiController
     {
+        [HttpGet]
         [Route("api/aplikacije/{uporabnikID}")]
         public HttpResponseMessage Get(string uporabnikID)
         {
@@ -25,8 +26,9 @@ namespace si.hit.WebCRU.Controllers
             return response;
         }
 
+        [HttpPost]
         [Route("api/save/")]
-        public HttpResponseMessage Post(Aplikacija aplikacija)
+        public HttpResponseMessage Save([FromBody]Aplikacija aplikacija)
         {
             DAOService service = new DAOService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
@@ -38,6 +40,27 @@ namespace si.hit.WebCRU.Controllers
             }catch(Exception ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError,ex);
+            }
+
+
+            return response;
+        }
+
+        [HttpPost]
+        [Route("api/delete/")]
+        public HttpResponseMessage Delete([FromBody]Aplikacija aplikacija)
+        {
+            DAOService service = new DAOService();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+            try
+            {
+                service.DeleteAplikacija(aplikacija);
+
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
 
 

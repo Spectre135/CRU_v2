@@ -1,4 +1,12 @@
 <div class="modal-content">
+    <div class="modal-header">
+        <span class="pull-right">
+            <button type="button" class="buttonNkbm" ng-click="delete()">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+        </span>
+    </div>
+
     <div class="modal-body">
 
         <div class="form-group">
@@ -34,7 +42,7 @@
 
         <div class="form-group">
             <label class="red" for="database">Database</label>
-            <input name="database" type="text" id="database" class="form-control" ng-model="editDto.Database" />
+            <input name="database" type="text" id="database" class="form-control" ng-model="editDto.DataBase" />
         </div>
 
     <div class="modal-footer">

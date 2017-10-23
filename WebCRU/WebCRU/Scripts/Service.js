@@ -52,15 +52,31 @@ app.factory('apiService', function ($q, $http) {
     //Save data
     service.saveData = function (dto) {  
         window.onload = grayOut(true);
-        /*
-       $http.post("api/save/", angular.toJson(dto)).then(function (status) {
-            window.onload = grayOut(false);
-            window.localStorage.setItem('status', status);
-        });
-        */
+
         $http({
             method: 'POST',
             url: '/api/save/',
+            data: dto
+
+        }).success(function (data) {
+            window.localStorage.setItem('status', status);
+
+        }).error(function (response) {
+            window.localStorage.setItem('status', response.Message);
+
+        }).finally(function () {
+            window.onload = grayOut(false);
+        });
+
+    };
+
+    //Delete record
+    service.deleteRecord = function (dto) {
+        window.onload = grayOut(true);
+
+        $http({
+            method: 'POST',
+            url: '/api/delete/',
             data: dto
 
         }).success(function (data) {

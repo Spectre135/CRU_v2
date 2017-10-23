@@ -68,6 +68,34 @@ namespace si.hit.WebCRU.Service
             }
         }
 
+        public void DeleteAplikacija(Aplikacija aplikacija)
+        {
+
+            using (CruDBEntities db = new CruDBEntities())
+            {
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (aplikacija != null)
+                        {
+                            db.Aplikacija.Attach(aplikacija);
+                            db.Aplikacija.Remove(aplikacija);
+                            db.SaveChanges();
+                            tran.Commit();
+                        }
+                       
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw ex;
+                    }
+                }
+
+            }
+        }
+
         public List<Uporabniki> GetUporabniki()
         {
             List<Uporabniki> response = new List<Uporabniki>();
@@ -90,7 +118,8 @@ namespace si.hit.WebCRU.Service
             DResponse dto = new DResponse
             {
                 DataList = dao.GetData(SearchString.Replace("undefined", ""), pageIndex, pageSelected, sortKey, asc),
-                RowsCount = dao.GetRowsCount(SearchString)
+                //RowsCount = dao.GetRowsCount(SearchString)
+                RowsCount = 10
             };
 
             return dto;

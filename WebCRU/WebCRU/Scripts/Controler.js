@@ -157,6 +157,11 @@ app.controller('AplEditCtrl', function ($scope, $modalInstance, dto, apiService)
         apiService.saveData($scope.editDto);
     };
 
+    //delete
+    $scope.delete = function () {
+        apiService.deleteRecord($scope.editDto);
+    };
+
     //cancel
     $scope.cancel = function () {
         $scope.editDto;
