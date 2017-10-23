@@ -61,7 +61,13 @@ app.controller("CRUController", function ($scope, $modal, apiService) {
                 });
     };
 
-    //editData
+    //new Aplikacija
+    $scope.newAplikacija = function () {
+        var newDto = {};
+        this.openModal(newDto);
+    };
+
+    //openModal for edit
     $scope.openModal = function (dto) {
         window.onload = grayOut(true);
         $modal.open({

@@ -59,9 +59,12 @@
     <body ng-app="CRUManagement" ng-controller="CRUController">
 
         <table class="tabled" align="center">
-            <caption>
-                <div>
-                    <form id="custom-search-form" class="pull-right">
+            <caption>     
+                    <form id="custom-search-form" >
+                        <div class="pull-left">
+                            <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="newAplikacija()">New</button>
+                        </div>
+                    <div class="pull-right">
                         <div class="inline">
                             <input class="search" size="50" type="text" name="input" ng-model="searchString"  placeholder="Search.." required ng-trim="true" />
                         </div>
@@ -70,8 +73,8 @@
                                 <span class=" glyphicon glyphicon-search"/>         
                             </button>
                         </div>
+                        </div>
                     </form>
-                </div>
             </caption>
             <thead class="theadd">
                 <tr>

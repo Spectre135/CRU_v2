@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebCRU.DAO;
 using WebCRU.DTO;
+using System;
 
 namespace si.hit.WebCRU.Controllers
 {
@@ -25,13 +26,22 @@ namespace si.hit.WebCRU.Controllers
         }
 
         [Route("api/save/")]
-        public IHttpActionResult Post(Aplikacija aplikacija)
+        public HttpResponseMessage Post(Aplikacija aplikacija)
         {
             DAOService service = new DAOService();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
 
-            service.AddAplikacija(aplikacija);
+            try
+            {
+                service.SaveAplikacija(aplikacija);
 
-            return Ok();
+            }catch(Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError,ex);
+            }
+
+
+            return response;
         }
 
         [Route("api/uporabniki")]

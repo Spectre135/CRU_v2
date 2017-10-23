@@ -19,8 +19,7 @@ angular.module('CRUManagement').factory('RequestsErrorHandler', ['$q', function(
                 && rejection.config.headers[HEADER_NAME]);
 
             if (shouldHandle) {
-                //window.localStorage.setItem('status', $q.defer().promise.data);
-                //window.location = "error/error.html";
+                window.location = "error/error.html";
             }
 
             return $q.reject(rejection);

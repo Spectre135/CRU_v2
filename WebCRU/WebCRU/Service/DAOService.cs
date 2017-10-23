@@ -4,6 +4,8 @@ using WebCRU.Models;
 using System.Web.Script.Serialization;
 using WebCRU.DAO;
 using WebCRU.DTO;
+using System.Data.Entity;
+using System;
 
 namespace si.hit.WebCRU.Service
 {
@@ -32,15 +34,38 @@ namespace si.hit.WebCRU.Service
 
         }
 
-        public void AddAplikacija(Aplikacija aplikacija)
+        public void SaveAplikacija(Aplikacija aplikacija)
         {
+
             using (CruDBEntities db = new CruDBEntities())
             {
-                db.Aplikacija.Add(aplikacija);
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
 
-                db.SaveChanges();
+                        if (aplikacija.AplikacijaKLJ == 0)
+                        {
+                            db.Aplikacija.Add(aplikacija);
+                        }
+                        else
+                        {
+                            db.Aplikacija.Attach(aplikacija);
+                            db.Entry(aplikacija).State = EntityState.Modified;
+                        }
+
+                        db.SaveChanges();
+                        tran.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw ex;
+                    }
+                }
+
             }
-
         }
 
         public List<Uporabniki> GetUporabniki()
@@ -67,8 +92,6 @@ namespace si.hit.WebCRU.Service
                 DataList = dao.GetData(SearchString.Replace("undefined", ""), pageIndex, pageSelected, sortKey, asc),
                 RowsCount = dao.GetRowsCount(SearchString)
             };
-
-            //return JsonConvert.SerializeObject(dto, new JsonSerializerSettings() { DateFormatString = "dd.MM.yyyy" });
 
             return dto;
 

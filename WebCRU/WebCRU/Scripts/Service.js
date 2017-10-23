@@ -67,7 +67,7 @@ app.factory('apiService', function ($q, $http) {
             window.localStorage.setItem('status', status);
 
         }).error(function (response) {
-            window.localStorage.setItem('status', status);
+            window.localStorage.setItem('status', response.Message);
 
         }).finally(function () {
             window.onload = grayOut(false);

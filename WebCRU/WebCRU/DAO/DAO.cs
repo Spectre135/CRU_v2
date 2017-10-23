@@ -44,7 +44,7 @@ namespace WebCRU.DAO
                     }
 
                 }
-
+                connection.Dispose();
                 return result;
             }
             catch (Exception ex)
