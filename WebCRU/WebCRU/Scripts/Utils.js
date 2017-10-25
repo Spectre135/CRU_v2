@@ -63,6 +63,7 @@ if (vis) {
 }
 }
 
+//Cookies util
 function setCookie(c_name,value,exdays)
 {
     var exdate=new Date();
@@ -94,4 +95,13 @@ function getCookies(){
     cookies[pair[0]] = unescape(pair[1]);
   }
   return cookies;
+}
+
+//Get sortClass
+function getSortClass(asc) {
+    if (asc) {
+        return 'glyphicon glyphicon-triangle-top';
+    } else {
+        return 'glyphicon glyphicon-triangle-bottom';
+    }
 }

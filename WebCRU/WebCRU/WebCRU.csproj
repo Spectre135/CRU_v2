@@ -115,21 +115,22 @@
       <DependentUpon>ModelCRU.edmx</DependentUpon>
       <LastGenOutput>ModelCRU.cs</LastGenOutput>
     </Content>
-    <Content Include="Pages\editAplikacije.html" />
+    <Content Include="Pages\aplikacije\editAplikacije.html" />
     <Content Include="Pages\error\error.html" />
-    <Content Include="Pages\footer.html" />
-    <Content Include="Pages\header.html" />
-    <Content Include="Pages\page1.html" />
-    <Content Include="Pages\page2.html" />
+    <Content Include="Pages\home.html" />
+    <Content Include="Pages\aplikacije\aplikacije.html" />
+    <Content Include="Pages\paging\Paging.html" />
     <Content Include="Scripts\bootstrap\bootstrap-toggle\bootstrap-toggle-bootstrap-toggle.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\ui-bootstrap\ui-bootstrap-tpls-0.13.4.min.js" />
-    <Content Include="Scripts\Controler.js" />
+    <Content Include="Scripts\AplikacijaControler.js" />
     <Content Include="Scripts\error\angular-error-handling.js" />
     <Content Include="Scripts\inputmask\jquery.inputmask.js" />
     <Content Include="Scripts\inputmask\jquery.inputmask.numeric.extensions.js" />
     <Content Include="Scripts\jquery\jquery-2.1.3.min.js" />
     <Content Include="Scripts\locale\locale_sl.js" />
+    <Content Include="Scripts\PagingDirective.js" />
+    <Content Include="Scripts\Route.js" />
     <Content Include="Scripts\select\select.js" />
     <Content Include="Scripts\Service.js" />
     <Content Include="Scripts\Utils.js" />

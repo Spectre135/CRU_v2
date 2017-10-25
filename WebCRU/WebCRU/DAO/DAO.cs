@@ -44,13 +44,11 @@ namespace WebCRU.DAO
                     }
 
                 }
-                connection.Dispose();
                 return result;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                throw ex;
             }
             finally
             {

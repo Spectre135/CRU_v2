@@ -27,7 +27,7 @@ namespace si.hit.WebCRU.Controllers
         }
 
         [HttpPost]
-        [Route("api/save/")]
+        [Route("api/aplikacije/save/")]
         public HttpResponseMessage Save([FromBody]Aplikacija aplikacija)
         {
             DAOService service = new DAOService();
@@ -47,7 +47,7 @@ namespace si.hit.WebCRU.Controllers
         }
 
         [HttpPost]
-        [Route("api/delete/")]
+        [Route("api/aplikacije/delete/")]
         public HttpResponseMessage Delete([FromBody]Aplikacija aplikacija)
         {
             DAOService service = new DAOService();

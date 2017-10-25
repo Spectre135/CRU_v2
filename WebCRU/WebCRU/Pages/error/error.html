@@ -33,7 +33,8 @@
         
         document.getElementById("errorButton").onclick = function () {
             window.localStorage.removeItem("error");
-            location.href = "/Pages/page1.html";
+            window.localStorage.removeItem("status");
+            location.href = "/Pages/home.html";
         };
 
     </script>
