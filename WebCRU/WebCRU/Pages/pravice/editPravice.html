@@ -1,0 +1,61 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <span class="pull-right">
+            <button type="button" class="buttonNkbm" ng-click="delete()">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+        </span>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label class="red" for="name">Ime</label>
+            <input name="ime" type="text" id="ime" class="form-control" ng-model="editDto.Ime" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="firstname">Naziv</label>
+                    <input name="naziv" type="text" id="naziv" class="form-control" ng-model="editDto.Naziv" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="lastname">Opis</label>
+                    <input name="opis" type="text" id="opis" class="form-control" ng-model="editDto.Opis" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="red" for="tin">Http</label>
+                    <input name="http" type="text" id="http" class="form-control" ng-model="editDto.Http" />
+                </div>
+            </div>
+            <div class="col-md-2"/> <!--empty!-->
+        </div>
+
+        <div class="form-group">
+            <label class="red" for="database">Database</label>
+            <input name="database" type="text" id="database" class="form-control" ng-model="editDto.DataBase" />
+        </div>
+
+    <div class="modal-footer">
+        <span class="pull-left">
+            <button type="button" class="buttonNkbm"  data-dismiss="modal" ng-click="save()">Save</button>
+        </span>
+        <button type="button" class="buttonNkbm"  data-dismiss="modal" ng-click="cancel()">Close</button>
+    </div>
+
+</div>
+<script language="javascript" type="text/javascript">
+    //formatLocale();
+    //jQuery('.selectpicker').selectpicker();
+    window.onload = grayOut(false);
+</script>
+

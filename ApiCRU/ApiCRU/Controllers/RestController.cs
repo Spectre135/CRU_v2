@@ -79,7 +79,6 @@ namespace si.hit.WebCRU.Controllers
             return response;
         }
 
-
         /*Drugi način branja baze*/
         [Route("api/aplikacije2/{searchString}")]
         public HttpResponseMessage Get(string searchString, int pageIndex, int pageSizeSelected, string sortKey, string asc)
@@ -89,6 +88,20 @@ namespace si.hit.WebCRU.Controllers
             dto = service.GetDResponse(searchString, pageIndex, pageSizeSelected, sortKey, asc);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+
+            return response;
+        }
+
+
+        [Route("api/sifranti/{id}")]
+        public HttpResponseMessage GetSifranti(string id)
+        {
+            DAOService service = new DAOService();
+            //List<DSifranti> dto = service.GetSifranti(id);
+            List<DSifranti> dto = new List<DSifranti>();
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+
 
             return response;
         }

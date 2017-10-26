@@ -41,12 +41,12 @@ app.directive('paging', function () {
                 return 'glyphicon glyphicon-triangle-bottom';
             }
         };
-    }]
+    }];
 
 
     return {
         restrict: 'EA',
         controller: controller,
-        templateUrl: 'paging/Paging.html'
-    }
-})
+        templateUrl: 'Pages/paging/Paging.html'
+    };
+});

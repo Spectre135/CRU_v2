@@ -1,16 +1,24 @@
 ﻿var app = angular.module("CRUManagement", ['ngRoute', 'ngSanitize', 'ui.select', 'ui.bootstrap']);
 
-// configure our routes
+// configure app routes
 app.config(function ($routeProvider) {
     $routeProvider
 
         // route for the aplikacije page
         .when('/aplikacije', {
-            templateUrl: 'aplikacije/aplikacije.html',
+            templateUrl: 'Pages/aplikacije/aplikacije.html',
             controller: 'AplikacijaController'
         })
 
+        // route for the pravice page
+        .when('/pravice', {
+            templateUrl: 'Pages/pravice/pravice.html',
+            controller: 'PraviceController'
+        });
+
+
 });
+
 
 //utils directive
 //format decimal 

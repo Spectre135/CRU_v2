@@ -56,6 +56,48 @@ namespace WebCRU.DAO
             }
         }
 
+        public IEnumerable<DSifranti> GetSifranti(string id)
+        {
+
+            try
+            {
+
+                List<DSifranti> result = new List<DSifranti>();
+
+                SQLiteConnection connection = new SQLiteConnection(ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
+
+                using (connection)
+                {
+                    connection.Open();
+                    SQLiteCommand cmd;
+                    using (cmd = new SQLiteCommand("", connection))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@id",id);
+
+                        SQLiteDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                result.Add(ReflectPropertyInfo.ReflectType<DSifranti>(reader));
+                            }
+                        }
+                    }
+
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                //connection.Close(); //tega ne rabimo če uporabimo using
+            }
+        }
+
         public int GetRowsCount(string query)
         {
             int pageCount = 0;

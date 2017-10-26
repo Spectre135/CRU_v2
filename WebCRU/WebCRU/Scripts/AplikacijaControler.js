@@ -38,7 +38,7 @@ app.controller("AplikacijaController", function ($scope, $modal, apiService) {
     $scope.openModal = function (dto) {
         window.onload = grayOut(true);
         $modal.open({
-            templateUrl: 'aplikacije/editAplikacije.html',
+            templateUrl: '/Pages/aplikacije/editAplikacije.html',
             controller: 'AplEditCtrl',
             controllerAs: 'vm',
             scope: $scope,

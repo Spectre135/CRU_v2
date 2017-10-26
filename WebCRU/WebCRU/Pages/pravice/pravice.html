@@ -1,0 +1,37 @@
+
+<table class="tabled" align="center">
+
+    <thead class="theadd">
+        <tr>
+
+            <th class="sort" ng-click="sort('Aplikacija')">
+                Ime
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'Aplikacija'" ng-class="getSortClass()" />
+            </th>
+            <th class="sort" ng-click="sort('Naziv')">
+                Naziv
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'Naziv'" ng-class="getSortClass()" />
+            </th>
+            <th class="sort" ng-click="sort('Opis')">
+                Opis
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'Opis'" ng-class="getSortClass()" />
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="trd" title="DbClick to edit" ng-repeat="dto in data" ng-dblclick="openModal(dto)">
+            <td> {{dto.Aplikacija}} </td>
+            <td> {{dto.Naziv}} </td>
+            <td> {{dto.Opis}} </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td align="right" colspan="100%">
+                <paging></paging>
+            </td>
+        </tr>
+    </tfoot>
+</table>

@@ -12,6 +12,7 @@ namespace si.hit.WebCRU.Service
     public class DAOService
     {
 
+        //Aplikacije CRUD operation
         public List<Aplikacija> GetAplikacije(string uporabnikID)
         {
 
@@ -125,6 +126,9 @@ namespace si.hit.WebCRU.Service
             return dto;
 
         }
+
+        //Pravice CRUD operation
+
 
     }
 }

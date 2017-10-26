@@ -2,12 +2,12 @@
 
 var app = angular.module("CRUManagement");
 
-//config Header v katerega vpišemo nkbmAuthToken iz sessionStorage
+//config Header we add AuthToken read from sessionStorage
 app.factory('httpRequestInterceptor', function () {
     return {
         request: function (config) {
 
-            config.headers['NkbmAuthToken'] = sessionStorage.getItem("NkbmAuthToken");
+            config.headers['AuthToken'] = sessionStorage.getItem("AuthToken");
             return config;
         }
     };
@@ -19,6 +19,9 @@ app.config(function ($httpProvider) {
 
 //Services
 app.factory('apiService', function ($q, $http) {
+
+    // set BackEnd Url
+    var backEndUrl = 'http://localhost:31207';
     var service = {};
 
     //Get apikacije
@@ -29,7 +32,7 @@ app.factory('apiService', function ($q, $http) {
 
         $http({
             method: 'GET',
-            url: '/api/aplikacije2/' + searchString,
+            url: backEndUrl +'/api/aplikacije2/' + searchString,
             params: {
                 pageIndex: pageIndex,
                 pageSizeSelected: pageSizeSelected.selected,
@@ -58,7 +61,7 @@ app.factory('apiService', function ($q, $http) {
 
         $http({
             method: 'POST',
-            url: '/api/aplikacije/save/',
+            url: backEndUrl + '/api/aplikacije/save/',
             data: dto
 
         }).success(function (data) {
@@ -80,7 +83,7 @@ app.factory('apiService', function ($q, $http) {
 
         $http({
             method: 'POST',
-            url: '/api/aplikacije/delete/',
+            url: backEndUrl + '/api/aplikacije/delete/',
             data: dto
 
         }).success(function (data) {
@@ -102,7 +105,7 @@ app.factory('apiService', function ($q, $http) {
         window.onload = grayOut(true);
         $http({
             method: 'GET',
-            url: 'rest/list/' + id
+            url: backEndUrl + '/api/sifranti/' + id
         }).success(function (data) {
             deferred.resolve(data);
         }).error(function () {
