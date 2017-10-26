@@ -70,7 +70,7 @@ namespace WebCRU.DAO
                 {
                     connection.Open();
                     SQLiteCommand cmd;
-                    using (cmd = new SQLiteCommand("", connection))
+                    using (cmd = new SQLiteCommand("Select * from Sifranti where id = @id", connection))
                     {
                         cmd.CommandType = CommandType.Text;
                         cmd.Parameters.AddWithValue("@id",id);

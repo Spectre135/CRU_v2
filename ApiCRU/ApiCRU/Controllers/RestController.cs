@@ -97,8 +97,7 @@ namespace si.hit.WebCRU.Controllers
         public HttpResponseMessage GetSifranti(string id)
         {
             DAOService service = new DAOService();
-            //List<DSifranti> dto = service.GetSifranti(id);
-            List<DSifranti> dto = new List<DSifranti>();
+            List<DSifranti> dto = service.GetDSifranti(id);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
 

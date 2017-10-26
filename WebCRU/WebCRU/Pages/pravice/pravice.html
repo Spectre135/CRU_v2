@@ -4,10 +4,18 @@
     <thead class="theadd">
         <tr>
 
-            <th class="sort" ng-click="sort('Aplikacija')">
-                Ime
-                <span class="glyphicon sort-icon" ng-show="sortKey === 'Aplikacija'" ng-class="getSortClass()" />
+            <th>
+                <span>
+                    Aplikacija
+                    <ui-select ng-model="aplikacijaSelected.id" theme="selectize" search-enabled="false" ng-click="getAplikacijeList()" on-select="getData()">
+                        <ui-select-match>{{$select.selected.id}}</ui-select-match>
+                        <ui-select-choices repeat="aplikacija.id as aplikacija in aplikacijeList | filter:$select.search">
+                            <span ng-bind="aplikacija.id"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </span>
             </th>
+
             <th class="sort" ng-click="sort('Naziv')">
                 Naziv
                 <span class="glyphicon sort-icon" ng-show="sortKey === 'Naziv'" ng-class="getSortClass()" />
