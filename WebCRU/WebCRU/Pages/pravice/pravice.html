@@ -1,18 +1,16 @@
 
 <table class="tabled" align="center">
 
+ 
+        <sifranti model="aplikacijaSelected.id" click="getAplikacijeList()" list="aplikacijeList"></sifranti>
+
+
     <thead class="theadd">
         <tr>
 
             <th>
                 <span>
                     Aplikacija
-                    <ui-select ng-model="aplikacijaSelected.id" theme="selectize" search-enabled="false" ng-click="getAplikacijeList()" on-select="getData()">
-                        <ui-select-match>{{$select.selected.id}}</ui-select-match>
-                        <ui-select-choices repeat="aplikacija.id as aplikacija in aplikacijeList | filter:$select.search">
-                            <span ng-bind="aplikacija.id"></span>
-                        </ui-select-choices>
-                    </ui-select>
                 </span>
             </th>
 
@@ -42,4 +40,5 @@
             </td>
         </tr>
     </tfoot>
+
 </table>

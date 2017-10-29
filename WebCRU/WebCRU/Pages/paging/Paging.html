@@ -1,42 +1,38 @@
-﻿<!DOCTYPE html>
-<html>
-<body>
-    <table class="paging-tbl">
-        <tr style="background-color: white;">
-            <td>
-                <span class="pull-right right">
-                    <ui-select ng-model="pageSizeSelected.selected" onkeypress="return false;" ng-change="changePageSize()" style="min-width:50px">
-                        <ui-select-match>{{$select.selected}}</ui-select-match>
-                        <ui-select-choices repeat="pageSize in PageSizeList | filter:$select.search">
-                            <span ng-bind="pageSize"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </span>
-            </td>
-            <td>
-                <div class="pull-right right">
-                    <pagination total-items="totalCount"
-                                ng-change="pageChanged()"
-                                items-per-page="pageSizeSelected.selected"
-                                direction-links="true"
-                                ng-model="pageIndex"
-                                max-size="maxSize"
-                                class="pagination"
-                                boundary-links="true"
-                                rotate="false"
-                                num-pages="numPages"></pagination>
-                </div>
-            </td>
-            <td>
-                <table class="page">
-                    <tr style="background-color: white;">
-                        <td>
-                            <a>Page: {{pageIndex}} / {{numPages}}</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-</body>
-</html>
+﻿<table class="paging-tbl">
+    <tr style="background-color: white;">
+        <td>
+            <span class="pull-right right">
+                <ui-select ng-model="pageSizeSelected.selected" onkeypress="return false;" ng-change="changePageSize()" style="min-width:50px">
+                    <ui-select-match>{{$select.selected}}</ui-select-match>
+                    <ui-select-choices repeat="pageSize in PageSizeList | filter:$select.search">
+                        <span ng-bind="pageSize"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </span>
+        </td>
+        <td>
+            <div class="pull-right right">
+                <pagination total-items="totalCount"
+                            ng-change="pageChanged()"
+                            items-per-page="pageSizeSelected.selected"
+                            direction-links="true"
+                            ng-model="pageIndex"
+                            max-size="maxSize"
+                            class="pagination"
+                            boundary-links="true"
+                            rotate="false"
+                            num-pages="numPages"></pagination>
+            </div>
+        </td>
+        <td>
+            <table class="page">
+                <tr style="background-color: white;">
+                    <td>
+                        <a>Page: {{pageIndex}} / {{numPages}}</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+

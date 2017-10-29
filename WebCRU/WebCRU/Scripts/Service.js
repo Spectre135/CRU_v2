@@ -55,13 +55,45 @@ app.factory('apiService', function ($q, $http) {
         return deferred.promise;
     };
 
+    //Get Data
+    service.getData = function (searchString, pageIndex, pageSizeSelected, sortKey, asc) {
+        var deferred = $q.defer();
+        //posivim ekran
+        window.onload = grayOut(true);
+
+        $http({
+            method: 'GET',
+            url: backEndUrl + '/api/aplikacije2/' + searchString,
+            params: {
+                pageIndex: pageIndex,
+                pageSizeSelected: pageSizeSelected.selected,
+                sortKey: sortKey,
+                asc: asc
+            }
+
+        }).success(function (data) {
+            deferred.resolve(data);
+
+        }).error(function (response) {
+            window.localStorage.setItem('error', response.Message);
+            window.localStorage.setItem('status', status);
+            deferred.reject(response);
+
+        }).finally(function () {
+            window.onload = grayOut(false);
+        });
+
+        return deferred.promise;
+    };
+
     //Save data
-    service.saveData = function (dto) {
+    service.saveData = function (apiUrl,dto) {
         window.onload = grayOut(true);
 
         $http({
             method: 'POST',
-            url: backEndUrl + '/api/aplikacije/save/',
+            //url: backEndUrl + '/api/aplikacije/save/',
+            url : backEndUrl + apiUrl,
             data: dto
 
         }).success(function (data) {
@@ -83,7 +115,8 @@ app.factory('apiService', function ($q, $http) {
 
         $http({
             method: 'POST',
-            url: backEndUrl + '/api/aplikacije/delete/',
+            //url: backEndUrl + '/api/aplikacije/delete/',
+            url: backEndUrl + apiUrl,
             data: dto
 
         }).success(function (data) {

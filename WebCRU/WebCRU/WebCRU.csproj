@@ -68,12 +68,16 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Css\main.css" />
+    <Content Include="Css\navbar.css" />
     <Content Include="Css\select.css" />
     <Content Include="Css\selectize.css" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\hit_universe_of_fun.png" />
-    <Content Include="Images\logo_hit.png" />
-    <Content Include="Images\logo_hit2.png" />
+    <Content Include="Images\icon_app.png" />
+    <Content Include="Images\icon_users.png" />
+    <Content Include="Images\icon_pravice.png" />
+    <Content Include="Images\icon_user.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Pages\error\error.jsp" />
     <Content Include="Pages\error\error500.jsp" />
     <None Include="Web.Debug.config">
@@ -88,9 +92,10 @@
     <Content Include="Pages\aplikacije\editAplikacije.html" />
     <Content Include="Pages\error\error.html" />
     <Content Include="Pages\Home.html" />
-    <Content Include="Pages\paging\Paging.html" />
+    <Content Include="Pages\paging\paging.html" />
     <Content Include="Pages\pravice\editPravice.html" />
     <Content Include="Pages\pravice\pravice.html" />
+    <Content Include="Pages\sifranti\aplikacije.html" />
     <Content Include="Scripts\AplikacijaControler.js" />
     <Content Include="Scripts\bootstrap\bootstrap-toggle\bootstrap-toggle-bootstrap-toggle.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -105,6 +110,7 @@
     <Content Include="Scripts\Route.js" />
     <Content Include="Scripts\select\select.js" />
     <Content Include="Scripts\Service.js" />
+    <Content Include="Scripts\SifrantiDirective.js" />
     <Content Include="Scripts\Utils.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

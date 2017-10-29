@@ -416,13 +416,6 @@ input:focus, select:focus
 .datepicker {
     z-index:1051 !important;
 }
-.navbar{
-    background-image: none;
-    background-color: #2681d2;
-    -webkit-box-shadow:inset 0 1px 0 rgba(153, 0, 51,0.15),0 1px 5px rgba(0,0,0,0.075);
-    box-shadow:inset 0 1px 0 rgba(153, 0, 51,0.15),0 1px 5px rgba(0,0,0,0.075);
-    border-radius: 6px 6px 6px 6px;
-}
 /*
 .bootstrap-select.btn-group .dropdown-menu li a:hover {
     color: white !important;
@@ -459,3 +452,11 @@ input:focus, select:focus
     position: absolute;
 }
 */
+.logo {
+    background: url("/Images/logo.png") no-repeat;
+    height: 40px;
+    width: 100px;
+    filter: #fff; /* IE6-9 */
+    -webkit-filter: brightness(100); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: brightness(100); /* Microsoft Edge and Firefox 35+ */
+}

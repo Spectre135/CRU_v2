@@ -8,6 +8,7 @@ app.controller("AplikacijaController", function ($scope, $modal, apiService) {
     $scope.searchString;
     $scope.rowNumber = -1;
     $scope.data = [];
+    /*
     $scope.sifranti = [];
     $scope.accountNumberTypeRead = 'false';
     $scope.countryCodeListRead = 'false';
@@ -15,6 +16,7 @@ app.controller("AplikacijaController", function ($scope, $modal, apiService) {
     $scope.accountNumberTypeList;
     $scope.countryCodeList;
     sifrant: [];
+    */
 
 
     //getAplikacijeData
@@ -121,12 +123,14 @@ app.controller('AplEditCtrl', function ($scope, $modalInstance, dto, apiService)
 
     //save
     $scope.save = function () {
-        apiService.saveData($scope.editDto);
+        url = '/api/aplikacije/save/';
+        apiService.saveData(url,$scope.editDto);
     };
 
     //delete
     $scope.delete = function () {
-        apiService.deleteRecord($scope.editDto);
+        url = '/api/aplikacije/delete/';
+        apiService.deleteRecord(url,$scope.editDto);
     };
 
     //cancel
