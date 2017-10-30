@@ -1,16 +1,14 @@
 
 <table class="tabled" align="center">
 
- 
-        <sifranti model="aplikacijaSelected.id" click="getAplikacijeList()" list="aplikacijeList"></sifranti>
-
-
     <thead class="theadd">
         <tr>
 
             <th>
+                Aplikacija
                 <span>
-                    Aplikacija
+                    <!--model click in list attribute must be set in SifrantiDirective before use-->
+                    <sifranti model="aplikacija" click="getAplikacijeList()" list="aplikacijeList"></sifranti> 
                 </span>
             </th>
 

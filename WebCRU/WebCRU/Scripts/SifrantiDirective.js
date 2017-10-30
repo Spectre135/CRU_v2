@@ -7,19 +7,22 @@ var app = angular.module("CRUManagement");
 
 app.directive('sifranti', function ($compile, apiService) {
 
-    //var html = "";
+    var selectedValue = "";
 
     var controller = ['$scope', function ($scope) {
 
-        $scope.sifranti = [];
-        $scope.sifrantList;
-        $scope.aplikacijeListRead = 'false';
-        $scope.aplikacijeList;
-        $scope.aplikacijaSelected = [{ id: '*' }];
-        $scope.sifrantSelected = [{ id: '*' }];
-        sifrant: [];
+        $scope.selectedItemChanged = function(id) {
+            
+            $scope.aplikacijaKLJ = id;
+            console.log($scope.aplikacijaKLJ);
+            $scope.getData;
+        };
 
         //Šifrant aplikacij
+        $scope.aplikacijeListRead = 'false'; // use to read once from database
+        $scope.aplikacijeList; //list
+        $scope.aplikacija = [{ id: '*' }];  //model
+
         $scope.getAplikacijeList = function () {
             if ($scope.aplikacijeListRead === 'false') {
                 $scope.aplikacijeList = [{ Naziv: 'Loading...' }];
@@ -27,6 +30,24 @@ app.directive('sifranti', function ($compile, apiService) {
                     .then(function (data) {
                         $scope.aplikacijeList = data;
                         $scope.aplikacijeListRead = 'true';
+                    }, function (error) {
+                        console.log('error', error);
+                    });
+            }
+        };
+
+        //Šifrant vlog
+        $scope.vlogeListRead = 'false';
+        $scope.vlogeList;
+        $scope.vloge = [{ id: '*' }];
+
+        $scope.getVlogeList = function () {
+            if ($scope.vlogeListRead === 'false') {
+                $scope.vlogeList = [{ Naziv: 'Loading...' }];
+                apiService.getSifranti("VLOGE")
+                    .then(function (data) {
+                        $scope.vlogeList = data;
+                        $scope.vlogeListRead = 'true';
                     }, function (error) {
                         console.log('error', error);
                     });
@@ -41,18 +62,19 @@ app.directive('sifranti', function ($compile, apiService) {
         scope: {
             model: '@',
             click: '@',
-            list:  '@'
+            list: '@',
+            getData: '&'
         },
         link: function (scope, element, attrs) {
-
-            var template = '<ui-select ng-model="' + scope.model + '" ng-click="' + scope.click + '">' +
+            //create html element 'ui-select'' 
+            var html = '<ui-select ng-model="' + scope.model + '.id" ng-click="' + scope.click + '" on-select="selectedItemChanged($select.selected.Id)" >' +
                 '<ui-select-match> {{$select.selected.Naziv}}</ui-select-match >' +
-                '<ui-select-choices repeat="sifrant.id as sifrant in ' + scope.list + ' | filter:$select.search">' +
-                '<div ng-bind="sifrant.Naziv"></div></ui-select-choices></ui-select >';
+                '<ui-select-choices repeat="sifrant.Id as sifrant in ' + scope.list + ' | filter:$select.search">' +
+                '<lang ng-bind="sifrant.Naziv"></lang></ui-select-choices></ui-select >';
 
-            console.log(template);
-            element.append(template);
-            $compile(template)(scope);
+            var el = $compile(html)(scope);
+            element.append(el);
+
 
         }
     };

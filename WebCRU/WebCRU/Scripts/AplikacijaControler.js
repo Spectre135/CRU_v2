@@ -3,26 +3,17 @@
 var app = angular.module("CRUManagement");
 
 //Query data
-app.controller("AplikacijaController", function ($scope, $modal, apiService) {
+app.controller("aplikacijaController", function ($scope, $modal, apiService) {
 
     $scope.searchString;
     $scope.rowNumber = -1;
     $scope.data = [];
-    /*
-    $scope.sifranti = [];
-    $scope.accountNumberTypeRead = 'false';
-    $scope.countryCodeListRead = 'false';
-    $scope.reportTypeListRead = 'false';
-    $scope.accountNumberTypeList;
-    $scope.countryCodeList;
-    sifrant: [];
-    */
 
 
     //getAplikacijeData
     $scope.getData = function () {
         apiService.getAplikacije($scope.searchString, $scope.pageIndex, $scope.pageSizeSelected, $scope.sortKey, $scope.asc)
-                .then(function (data) {
+            .then(function (data) {
                     $scope.data = data.DataList;
                     $scope.totalCount = data.RowsCount;
                 }, function (response) {
@@ -41,7 +32,7 @@ app.controller("AplikacijaController", function ($scope, $modal, apiService) {
         window.onload = grayOut(true);
         $modal.open({
             templateUrl: '/Pages/aplikacije/editAplikacije.html',
-            controller: 'AplEditCtrl',
+            controller: 'aplEditCtrl',
             controllerAs: 'vm',
             scope: $scope,
             backdrop: 'static',
@@ -58,67 +49,10 @@ app.controller("AplikacijaController", function ($scope, $modal, apiService) {
         $scope.rowNumber = row;
     };
 
-    //Sifranti//
-    $scope.getCountryCodeListSelected = function (id) {
-        if (typeof $scope.countryCodeList === 'undefined') {
-            $scope.countryCodeList = [{id: id}];
-        } else {
-            $scope.countryCodeList.push[{id: id}];
-        }
-
-    };
-
-    $scope.getAccountNumberTypeListSelected = function (id) {
-        if (typeof $scope.accountNumberTypeList === 'undefined') {
-            $scope.accountNumberTypeList = [{id: id}];
-        } else {
-            $scope.accountNumberTypeList.push[{id: id}];
-        }
-
-    };
-
-    $scope.getAccountNumberTypeList = function () {
-        if ($scope.accountNumberTypeRead === 'false') {
-            apiService.getSifranti("accountNumberType")
-                    .then(function (data) {
-                        $scope.accountNumberTypeList = data;
-                        $scope.accountNumberTypeRead = 'true';
-                    }, function (error) {
-                        console.log('error', error);
-                    });
-        }
-    };
-
-    $scope.getCountryCodeList = function () {
-        if ($scope.countryCodeListRead === 'false') {
-            $scope.countryCodeList = [{id: 'Loading...'}];
-            apiService.getSifranti("countryCode")
-                    .then(function (data) {
-                        $scope.countryCodeList = data;
-                        $scope.countryCodeListRead = 'true';
-                    }, function (error) {
-                        console.log('error', error);
-                    });
-        }
-    };
-
-    $scope.getReportTypeList = function () {
-        if ($scope.reportTypeListRead === 'false') {
-            $scope.countryCodeList = [{id: 'Loading...'}];
-            apiService.getSifranti("reportType")
-                    .then(function (data) {
-                        $scope.reportTypeList = data;
-                        $scope.reportTypeListRead = 'true';
-                    }, function (error) {
-                        console.log('error', error);
-                    });
-        }
-    };
-
 });
 
 //Edit data
-app.controller('AplEditCtrl', function ($scope, $modalInstance, dto, apiService) {
+app.controller('aplEditCtrl', function ($scope, $modalInstance, dto, apiService) {
     $scope.editDto = angular.copy(dto);
 
     //save

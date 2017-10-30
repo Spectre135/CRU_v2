@@ -3,14 +3,17 @@
 var app = angular.module("CRUManagement");
 
 //Query data
-app.controller("PraviceController", function ($scope, $modal, apiService) {
+app.controller("praviceController", function ($scope, $modal, apiService) {
 
-    //getAplikacijeData
+    $scope.aplikacijaKLJ;
+
+    //getPraviceData
     $scope.getData = function () {
-        apiService.getAplikacije($scope.searchString, $scope.pageIndex, $scope.pageSizeSelected, $scope.sortKey, $scope.asc)
+        console.log("pravice klic");
+        var url = '/api/pravice/';
+        apiService.getData(url, $scope.aplikacijaKLJ)
             .then(function (data) {
-                $scope.data = data.DataList;
-                $scope.totalCount = data.RowsCount;
+                $scope.data = data;
             }, function (response) {
                 window.localStorage.setItem('error', response.message);
             });

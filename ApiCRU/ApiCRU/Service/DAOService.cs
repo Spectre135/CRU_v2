@@ -35,6 +35,25 @@ namespace si.hit.WebCRU.Service
 
         }
 
+        public List<Pravice> GetPravice(int aplikacijaKLJ)
+        {
+
+            List<Pravice> response = new List<Pravice>();
+
+            using (CruDBEntities db = new CruDBEntities())
+            {
+                IQueryable<Pravice> pra = from p in db.Pravice
+                                          where p.AplikacijaKLJ == aplikacijaKLJ
+                                          select p;
+
+                response = pra.ToList();
+
+            }
+
+            return response;
+
+        }
+
         public void SaveAplikacija(Aplikacija aplikacija)
         {
 

@@ -152,11 +152,12 @@
     font-size: 18px;
     line-height: 20px;
 }
-.navbar-logo{
+.navbar-logo {
     background: url("/Images/logo.png") no-repeat;
     height: 50px;
     width: 100px;
     filter: #fff; /* IE6-9 */
+    -ms-filter: brightness(100);
     -webkit-filter: brightness(100); /* Google Chrome, Safari 6+ & Opera 15+ */
     filter: brightness(100); /* Microsoft Edge and Firefox 35+ */
 }

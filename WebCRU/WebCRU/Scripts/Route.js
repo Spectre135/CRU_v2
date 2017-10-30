@@ -7,13 +7,13 @@ app.config(function ($routeProvider) {
         // route for the aplikacije page
         .when('/aplikacije', {
             templateUrl: 'Pages/aplikacije/aplikacije.html',
-            controller: 'AplikacijaController'
+            controller: 'aplikacijaController'
         })
 
         // route for the pravice page
         .when('/pravice', {
             templateUrl: 'Pages/pravice/pravice.html',
-            controller: 'PraviceController'
+            controller: 'praviceController'
         });
 
 

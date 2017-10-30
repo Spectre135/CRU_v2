@@ -10,7 +10,7 @@ function grayOut(vis) {
 var options = options || {};
 var zindex = options.zindex || 50;
 var opacity = options.opacity || 60;
-var opaque = (opacity / 100);
+var opaque = opacity / 100;
 var bgcolor = options.bgcolor || '#FFFFFF';
 var dark=document.getElementById('darkenScreenObject');
 
@@ -68,14 +68,14 @@ function setCookie(c_name,value,exdays)
 {
     var exdate=new Date();
     exdate.setDate(exdate.getDate() + exdays);
-    var c_value=escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
+    var c_value = escape(value) + (exdays === null) ? "" : "; expires=" + exdate.toUTCString();
     document.cookie=c_name + "=" + c_value;
 }
 
 function getCookie(c_name)
 {
     var i,x,y,ARRcookies=document.cookie.split(";");
-    for (i=0;i<ARRcookies.length;i++)
+    for (i=0; i<ARRcookies.length; i++)
     {
         x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
         y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);

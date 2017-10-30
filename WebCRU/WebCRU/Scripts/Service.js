@@ -56,20 +56,14 @@ app.factory('apiService', function ($q, $http) {
     };
 
     //Get Data
-    service.getData = function (searchString, pageIndex, pageSizeSelected, sortKey, asc) {
+    service.getData = function (url,searchString) {
         var deferred = $q.defer();
         //posivim ekran
         window.onload = grayOut(true);
 
         $http({
             method: 'GET',
-            url: backEndUrl + '/api/aplikacije2/' + searchString,
-            params: {
-                pageIndex: pageIndex,
-                pageSizeSelected: pageSizeSelected.selected,
-                sortKey: sortKey,
-                asc: asc
-            }
+            url: backEndUrl + url + searchString
 
         }).success(function (data) {
             deferred.resolve(data);

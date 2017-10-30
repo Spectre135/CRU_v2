@@ -15,7 +15,7 @@ namespace si.hit.WebCRU.Controllers
     {
         [HttpGet]
         [Route("api/aplikacije/{uporabnikID}")]
-        public HttpResponseMessage Get(string uporabnikID)
+        public HttpResponseMessage GetAplikacije(string uporabnikID)
         {
             DAOService service = new DAOService();
             List<Aplikacija> dto = service.GetAplikacije(uporabnikID);
@@ -23,6 +23,19 @@ namespace si.hit.WebCRU.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
 
             
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/pravice/{aplikacijaKLJ}")]
+        public HttpResponseMessage GetPravice(string aplikacijaKLJ)
+        {
+            DAOService service = new DAOService();
+            List<Pravice> dto = service.GetPravice(Int32.Parse(aplikacijaKLJ));
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+
+
             return response;
         }
 
