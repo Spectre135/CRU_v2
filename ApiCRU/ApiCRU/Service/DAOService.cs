@@ -127,8 +127,16 @@ namespace si.hit.WebCRU.Service
 
         }
 
-        //Pravice CRUD operation
+        //Sifranti
+        public List<DSifranti> GetDSifranti(string id)
+        {
+            DAO dao = new DAO();
 
+            List<DSifranti> dto = dao.GetSifranti(id).ToList();
+
+            return dto;
+
+        }
 
     }
 }

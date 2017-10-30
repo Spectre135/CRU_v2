@@ -1,13 +1,19 @@
 
 <table class="tabled" align="center">
 
+ 
+        <sifranti model="aplikacijaSelected.id" click="getAplikacijeList()" list="aplikacijeList"></sifranti>
+
+
     <thead class="theadd">
         <tr>
 
-            <th class="sort" ng-click="sort('Aplikacija')">
-                Ime
-                <span class="glyphicon sort-icon" ng-show="sortKey === 'Aplikacija'" ng-class="getSortClass()" />
+            <th>
+                <span>
+                    Aplikacija
+                </span>
             </th>
+
             <th class="sort" ng-click="sort('Naziv')">
                 Naziv
                 <span class="glyphicon sort-icon" ng-show="sortKey === 'Naziv'" ng-class="getSortClass()" />
@@ -34,4 +40,5 @@
             </td>
         </tr>
     </tfoot>
+
 </table>

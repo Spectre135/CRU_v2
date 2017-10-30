@@ -47,6 +47,6 @@ app.directive('paging', function () {
     return {
         restrict: 'EA',
         controller: controller,
-        templateUrl: 'Pages/paging/Paging.html'
+        templateUrl: 'Pages/paging/paging.html'
     };
 });

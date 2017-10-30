@@ -8,11 +8,11 @@ namespace WebCRU.DTO
 {
     public class DSifranti
     {
-        [DataFieldAttribute("id")]
-        public int SifrantKLJ { get; set; }
+        [DataFieldAttribute("SifrantiKLJ")]
+        public int Id { get; set; }
 
-        [DataFieldAttribute("Name")]
-        public string Ime { get; set; }
+        [DataFieldAttribute("Naziv")]
+        public string Naziv { get; set; }
 
     }
 }
