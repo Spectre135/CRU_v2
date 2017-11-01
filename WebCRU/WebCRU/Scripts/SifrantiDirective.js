@@ -11,13 +11,6 @@ app.directive('sifranti', function ($compile, apiService) {
 
     var controller = ['$scope', function ($scope) {
 
-        $scope.selectedItemChanged = function(id) {
-            
-            $scope.aplikacijaKLJ = id;
-            console.log($scope.aplikacijaKLJ);
-            $scope.getData;
-        };
-
         //Šifrant aplikacij
         $scope.aplikacijeListRead = 'false'; // use to read once from database
         $scope.aplikacijeList; //list
@@ -60,14 +53,15 @@ app.directive('sifranti', function ($compile, apiService) {
         restrict: 'EA',
         controller: controller,
         scope: {
-            model: '@',
+            model: '@', //text
             click: '@',
             list: '@',
-            getData: '&'
+            onchange: '&' //method
         },
         link: function (scope, element, attrs) {
             //create html element 'ui-select'' 
-            var html = '<ui-select ng-model="' + scope.model + '.id" ng-click="' + scope.click + '" on-select="selectedItemChanged($select.selected.Id)" >' +
+            //note expression binding (&), you need to explicitely call it with a JSON containing !!on-select="data({id: $select.selected.Id})
+            var html = '<ui-select ng-model="' + scope.model + '.id" ng-click="' + scope.click + '" on-select="onchange({id: $select.selected.Id})" >' +
                 '<ui-select-match> {{$select.selected.Naziv}}</ui-select-match >' +
                 '<ui-select-choices repeat="sifrant.Id as sifrant in ' + scope.list + ' | filter:$select.search">' +
                 '<lang ng-bind="sifrant.Naziv"></lang></ui-select-choices></ui-select >';

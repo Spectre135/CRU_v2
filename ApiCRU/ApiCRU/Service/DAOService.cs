@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using WebCRU.Models;
-using System.Web.Script.Serialization;
 using WebCRU.DAO;
 using WebCRU.DTO;
 using System.Data.Entity;
@@ -43,7 +42,8 @@ namespace si.hit.WebCRU.Service
             using (CruDBEntities db = new CruDBEntities())
             {
                 IQueryable<Pravice> pra = from p in db.Pravice
-                                          where p.AplikacijaKLJ == aplikacijaKLJ
+                                          join vp in db. on p.AplikacijaKLJ equals v.AplikacijaKLJ
+                                          where p.AplikacijaKLJ == aplikacijaKLJ && p.
                                           select p;
 
                 response = pra.ToList();

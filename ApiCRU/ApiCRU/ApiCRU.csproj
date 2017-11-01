@@ -109,13 +109,11 @@
     <Content Include="Global.asax" />
     <Content Include="Models\ModelCRU.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCRU.edmx</DependentUpon>
-      <LastGenOutput>ModelCRU.Context.cs</LastGenOutput>
+      <LastGenOutput>ModelCRU.Context1.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ModelCRU.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCRU.edmx</DependentUpon>
-      <LastGenOutput>ModelCRU.cs</LastGenOutput>
+      <LastGenOutput>ModelCRU1.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -128,28 +126,33 @@
     <Compile Include="DTO\Sifranti.cs" />
     <Compile Include="DTO\DAplikacija.cs" />
     <Compile Include="DTO\DResponse.cs" />
-    <Compile Include="Models\Aplikacija.cs">
-      <DependentUpon>ModelCRU.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\RestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aplikacija.cs">
+      <DependentUpon>ModelCRU.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Lokacija.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelCRU.Context.cs">
+    <Compile Include="Models\ModelCRU.Context.cs" />
+    <Compile Include="Models\ModelCRU.Context1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCRU.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelCRU.cs">
+    <Compile Include="Models\ModelCRU.cs" />
+    <Compile Include="Models\ModelCRU.Designer.cs">
+      <DependentUpon>ModelCRU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelCRU1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelCRU.Designer.cs">
+    <Compile Include="Models\ModelCRU1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCRU.edmx</DependentUpon>
@@ -157,8 +160,6 @@
     <Compile Include="Models\Pravice.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\DAOService.cs" />
     <Compile Include="Models\Uporabniki.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
@@ -168,12 +169,14 @@
     <Compile Include="Models\VlogeUporabnikov.cs">
       <DependentUpon>ModelCRU.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\DAOService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataBase\cru.db" />
     <EntityDeploy Include="Models\ModelCRU.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelCRU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelCRU1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\ModelCRU.edmx.diagram">
       <DependentUpon>ModelCRU.edmx</DependentUpon>

@@ -27,11 +27,11 @@ namespace si.hit.WebCRU.Controllers
         }
 
         [HttpGet]
-        [Route("api/pravice/{aplikacijaKLJ}")]
-        public HttpResponseMessage GetPravice(string aplikacijaKLJ)
+        [Route("api/pravice/")]
+        public HttpResponseMessage GetPravice(int aplikacijaKLJ, int vlogaKLJ)
         {
             DAOService service = new DAOService();
-            List<Pravice> dto = service.GetPravice(Int32.Parse(aplikacijaKLJ));
+            List<Pravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
 

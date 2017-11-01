@@ -5,10 +5,18 @@
         <tr>
 
             <th>
-                Aplikacija
+                <span>Aplikacija</span>
                 <span>
                     <!--model click in list attribute must be set in SifrantiDirective before use-->
-                    <sifranti model="aplikacija" click="getAplikacijeList()" list="aplikacijeList"></sifranti> 
+                    <sifranti model="aplikacija" click="getAplikacijeList()" list="aplikacijeList" onchange="getData(id)"></sifranti>
+                </span>
+            </th>
+
+            <th>
+                <span>Vloga</span>
+                <span>
+                    <!--model click in list attribute must be set in SifrantiDirective before use-->
+                    <sifranti model="vloge" click="getVlogeList()" list="vlogeList" onchange="getData(id)"></sifranti>
                 </span>
             </th>
 
