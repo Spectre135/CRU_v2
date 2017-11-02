@@ -14,9 +14,18 @@ namespace WebCRU.Models
     
     public partial class Vloge
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Vloge()
+        {
+            this.VlogePravice = new HashSet<VlogePravice>();
+        }
+    
         public long VlogaKLJ { get; set; }
-        public long AplikacijaKLJ { get; set; }
+        public Nullable<long> AplikacijaKLJ { get; set; }
         public string Naziv { get; set; }
         public string Opis { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VlogePravice> VlogePravice { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace si.hit.WebCRU.Service
     {
 
         //Aplikacije CRUD operation
-        public List<Aplikacija> GetAplikacije(string uporabnikID)
+        public List<Aplikacija> GetAplikacije(string _uporabnikID)
         {
 
             List<Aplikacija> response = new List<Aplikacija>();
@@ -23,7 +23,7 @@ namespace si.hit.WebCRU.Service
                                              join v in db.Vloge on a.AplikacijaKLJ equals v.AplikacijaKLJ
                                              join vu in db.VlogeUporabnikov on v.VlogaKLJ equals vu.VlogaKLJ
                                              join u in db.Uporabniki on vu.UporabnikKLJ equals u.UporabnikKLJ
-                                             where u.UporabnikID == uporabnikID
+                                             where u.UporabnikID == _uporabnikID
                                              select a;
 
                 response = apl.ToList();
@@ -34,19 +34,26 @@ namespace si.hit.WebCRU.Service
 
         }
 
-        public List<Pravice> GetPravice(int aplikacijaKLJ)
+        public List<Pravice> GetPravice(int _aplikacijaKLJ, int _vlogaKLJ)
         {
 
-            List<Pravice> response = new List<Pravice>();
+            List<DVloge> response = new List<DVloge>();
 
             using (CruDBEntities db = new CruDBEntities())
             {
-                IQueryable<Pravice> pra = from p in db.Pravice
-                                          join vp in db. on p.AplikacijaKLJ equals v.AplikacijaKLJ
-                                          where p.AplikacijaKLJ == aplikacijaKLJ && p.
-                                          select p;
-
-                response = pra.ToList();
+                IQueryable<Pravice> pra = from p  in db.Pravice
+                                          join vp in db.VlogePravice on p.PravicaKLJ equals vp.PravicaKLJ
+                                          join v  in db.Vloge on vp.VlogaKLJ equals v.VlogaKLJ
+                                          join a  in db.Aplikacija on p.AplikacijaKLJ equals a.AplikacijaKLJ
+                                          where p.AplikacijaKLJ == (_aplikacijaKLJ == 0 ? p.AplikacijaKLJ:_aplikacijaKLJ) && 
+                                                v.VlogaKLJ == (_vlogaKLJ == 0 ? v.VlogaKLJ:_vlogaKLJ)
+                                          .join( new DVloge
+                                          {
+                                              AplikacijaKLJ = a.AplikacijaKLJ
+                                              Name = a.Name,
+                                              Attribute = b.Attribute
+                                          })
+            .ToList();
 
             }
 

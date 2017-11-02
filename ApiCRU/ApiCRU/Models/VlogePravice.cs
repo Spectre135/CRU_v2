@@ -12,13 +12,11 @@ namespace WebCRU.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Pravice
+    public partial class VlogePravice
     {
         public long PravicaKLJ { get; set; }
-        public Nullable<long> AplikacijaKLJ { get; set; }
-        public string Naziv { get; set; }
-        public string Opis { get; set; }
+        public Nullable<long> VlogaKLJ { get; set; }
     
-        public virtual Aplikacija Aplikacija { get; set; }
+        public virtual Vloge Vloge { get; set; }
     }
 }

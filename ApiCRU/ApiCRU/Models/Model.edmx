@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="mainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=e:\razvoj\cru\database\cru.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="mainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=e:\razvoj\cru_v2\database\cru.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Aplikacija">
           <Key>
             <PropertyRef Name="AplikacijaKLJ" />
@@ -52,6 +52,14 @@
           <Property Name="Naziv" Type="varchar" MaxLength="8" />
           <Property Name="Opis" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="VlogePravice">
+          <Key>
+            <PropertyRef Name="PravicaKLJ" />
+            <PropertyRef Name="VlogaKLJ" />
+          </Key>
+          <Property Name="PravicaKLJ" Type="integer" Nullable="false" />
+          <Property Name="VlogaKLJ" Type="integer" Nullable="false" />
+        </EntityType>
         <EntityType Name="VlogeUporabnikov">
           <Key>
             <PropertyRef Name="VlogaKLJ" />
@@ -68,6 +76,7 @@
           <EntitySet Name="Pravice" EntityType="Self.Pravice" store:Type="Tables" />
           <EntitySet Name="Uporabniki" EntityType="Self.Uporabniki" store:Type="Tables" />
           <EntitySet Name="Vloge" EntityType="Self.Vloge" store:Type="Tables" />
+          <EntitySet Name="VlogePravice" EntityType="Self.VlogePravice" store:Type="Tables" />
           <EntitySet Name="VlogeUporabnikov" EntityType="Self.VlogeUporabnikov" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -84,6 +93,7 @@
           <Property Name="Http" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Database" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pravice" Relationship="Self.FK_Pravice_0_0" FromRole="Aplikacija" ToRole="Pravice" />
         </EntityType>
         <EntityType Name="Lokacija">
           <Key>
@@ -97,9 +107,10 @@
             <PropertyRef Name="PravicaKLJ" />
           </Key>
           <Property Name="PravicaKLJ" Type="Int64" Nullable="false" />
-          <Property Name="AplikacijaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="AplikacijaKLJ" Type="Int64" />
           <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Aplikacija" Relationship="Self.FK_Pravice_0_0" FromRole="Pravice" ToRole="Aplikacija" />
         </EntityType>
         <EntityType Name="Uporabniki">
           <Key>
@@ -117,10 +128,60 @@
             <PropertyRef Name="VlogaKLJ" />
           </Key>
           <Property Name="VlogaKLJ" Type="Int64" Nullable="false" />
-          <Property Name="AplikacijaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="AplikacijaKLJ" Type="Int64" />
           <Property Name="Naziv" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="Opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VlogePravice" Relationship="Self.FK_VlogePravice_0_0" FromRole="Vloge" ToRole="VlogePravice" />
         </EntityType>
+        <EntityType Name="VlogePravice">
+          <Key>
+            <PropertyRef Name="PravicaKLJ" />
+          </Key>
+          <Property Name="PravicaKLJ" Type="Int64" Nullable="false" />
+          <Property Name="VlogaKLJ" Type="Int64" />
+          <NavigationProperty Name="Vloge" Relationship="Self.FK_VlogePravice_0_0" FromRole="VlogePravice" ToRole="Vloge" />
+        </EntityType>
+        <Association Name="FK_Pravice_0_0">
+          <End Role="Aplikacija" Type="Self.Aplikacija" Multiplicity="0..1" />
+          <End Role="Pravice" Type="Self.Pravice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aplikacija">
+              <PropertyRef Name="AplikacijaKLJ" />
+            </Principal>
+            <Dependent Role="Pravice">
+              <PropertyRef Name="AplikacijaKLJ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VlogePravice_0_0">
+          <End Role="Vloge" Type="Self.Vloge" Multiplicity="0..1" />
+          <End Role="VlogePravice" Type="Self.VlogePravice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vloge">
+              <PropertyRef Name="VlogaKLJ" />
+            </Principal>
+            <Dependent Role="VlogePravice">
+              <PropertyRef Name="VlogaKLJ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mainEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aplikacija" EntityType="Self.Aplikacija" />
+          <EntitySet Name="Lokacija" EntityType="Self.Lokacija" />
+          <EntitySet Name="Pravice" EntityType="Self.Pravice" />
+          <EntitySet Name="Uporabniki" EntityType="Self.Uporabniki" />
+          <EntitySet Name="Vloge" EntityType="Self.Vloge" />
+          <EntitySet Name="VlogePravice" EntityType="Self.VlogePravice" />
+          <AssociationSet Name="FK_Pravice_0_0" Association="Self.FK_Pravice_0_0">
+            <End Role="Aplikacija" EntitySet="Aplikacija" />
+            <End Role="Pravice" EntitySet="Pravice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VlogePravice_0_0" Association="Self.FK_VlogePravice_0_0">
+            <End Role="Vloge" EntitySet="Vloge" />
+            <End Role="VlogePravice" EntitySet="VlogePravice" />
+          </AssociationSet>
+          <EntitySet Name="VlogeUporabnikov" EntityType="mainModel.VlogeUporabnikov" />
+        </EntityContainer>
         <EntityType Name="VlogeUporabnikov">
           <Key>
             <PropertyRef Name="VlogaKLJ" />
@@ -131,20 +192,12 @@
           <Property Name="LokacijaKLJ" Type="Int64" Nullable="false" />
           <Property Name="UporabnikKLJ" Type="Int64" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Aplikacija" EntityType="Self.Aplikacija" />
-          <EntitySet Name="Lokacija" EntityType="Self.Lokacija" />
-          <EntitySet Name="Pravice" EntityType="Self.Pravice" />
-          <EntitySet Name="Uporabniki" EntityType="Self.Uporabniki" />
-          <EntitySet Name="Vloge" EntityType="Self.Vloge" />
-          <EntitySet Name="VlogeUporabnikov" EntityType="Self.VlogeUporabnikov" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="mainModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="mainModelStoreContainer" CdmEntityContainer="mainEntities">
           <EntitySetMapping Name="Aplikacija">
             <EntityTypeMapping TypeName="mainModel.Aplikacija">
               <MappingFragment StoreEntitySet="Aplikacija">
@@ -197,12 +250,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VlogePravice">
+            <EntityTypeMapping TypeName="mainModel.VlogePravice">
+              <MappingFragment StoreEntitySet="VlogePravice">
+                <ScalarProperty Name="PravicaKLJ" ColumnName="PravicaKLJ" />
+                <ScalarProperty Name="VlogaKLJ" ColumnName="VlogaKLJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="VlogeUporabnikov">
             <EntityTypeMapping TypeName="mainModel.VlogeUporabnikov">
               <MappingFragment StoreEntitySet="VlogeUporabnikov">
-                <ScalarProperty Name="VlogaKLJ" ColumnName="VlogaKLJ" />
-                <ScalarProperty Name="LokacijaKLJ" ColumnName="LokacijaKLJ" />
                 <ScalarProperty Name="UporabnikKLJ" ColumnName="UporabnikKLJ" />
+                <ScalarProperty Name="LokacijaKLJ" ColumnName="LokacijaKLJ" />
+                <ScalarProperty Name="VlogaKLJ" ColumnName="VlogaKLJ" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -221,7 +282,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
