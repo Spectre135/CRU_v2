@@ -5,14 +5,15 @@ var app = angular.module("CRUManagement");
 //Query data
 app.controller("praviceController", function ($scope, $modal, apiService) {
 
-    $scope.aplikacijaKLJ;
-    $scope.vlogaKLJ;
+    $scope.aplikacijaKLJ=0;
+    $scope.vlogaKLJ=0;
 
     //getPraviceData
     $scope.getDataAplikacijaKLJ = function (id) {
+        console.log(id);
         $scope.aplikacijaKLJ = id;
-        var url = '/api/pravice/';
-        apiService.getData(url, $scope.aplikacijaKLJ, $scope.vlogaKLJ)
+
+        apiService.getVlogePravice($scope.aplikacijaKLJ, $scope.vlogaKLJ)
             .then(function (data) {
                 $scope.data = data;
             }, function (response) {
@@ -21,9 +22,10 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
     };
 
     $scope.getDataVlogaKLJ = function (id) {
+        console.log(id);
         $scope.vlogaKLJ = id;
-        var url = '/api/pravice/';
-        apiService.getData(url, $scope.aplikacijaKLJ, $scope.vlogaKLJ)
+
+        apiService.getVlogePravice($scope.aplikacijaKLJ, $scope.vlogaKLJ)
             .then(function (data) {
                 $scope.data = data;
             }, function (response) {

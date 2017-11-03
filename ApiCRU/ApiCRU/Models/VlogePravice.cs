@@ -15,8 +15,6 @@ namespace WebCRU.Models
     public partial class VlogePravice
     {
         public long PravicaKLJ { get; set; }
-        public Nullable<long> VlogaKLJ { get; set; }
-    
-        public virtual Vloge Vloge { get; set; }
+        public long VlogaKLJ { get; set; }
     }
 }

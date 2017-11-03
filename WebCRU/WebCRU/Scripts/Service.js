@@ -24,6 +24,31 @@ app.factory('apiService', function ($q, $http) {
     var backEndUrl = 'http://localhost:31207';
     var service = {};
 
+    //Get Data generic
+    service.getData = function (url,searchString) {
+        var deferred = $q.defer();
+        //posivim ekran
+        window.onload = grayOut(true);
+
+        $http({
+            method: 'GET',
+            url: backEndUrl + url + searchString
+
+        }).success(function (data) {
+            deferred.resolve(data);
+
+        }).error(function (response) {
+            window.localStorage.setItem('error', response.Message);
+            window.localStorage.setItem('status', status);
+            deferred.reject(response);
+
+        }).finally(function () {
+            window.onload = grayOut(false);
+        });
+
+        return deferred.promise;
+    };
+
     //Get apikacije
     service.getAplikacije = function (searchString, pageIndex, pageSizeSelected, sortKey, asc) {
         var deferred = $q.defer();
@@ -55,15 +80,19 @@ app.factory('apiService', function ($q, $http) {
         return deferred.promise;
     };
 
-    //Get Data
-    service.getData = function (url,searchString) {
+    //Get VlogePravice
+    service.getVlogePravice = function (aplikacijaKLJ,vlogaKLJ) {
         var deferred = $q.defer();
         //posivim ekran
         window.onload = grayOut(true);
 
         $http({
             method: 'GET',
-            url: backEndUrl + url + searchString
+            url: backEndUrl + '/api/pravice/',
+            params: {
+                aplikacijaKLJ: aplikacijaKLJ,
+                vlogaKLJ: vlogaKLJ
+            }
 
         }).success(function (data) {
             deferred.resolve(data);

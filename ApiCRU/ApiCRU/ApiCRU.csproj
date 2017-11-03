@@ -125,7 +125,7 @@
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DbColumn.cs" />
     <Compile Include="DAO\ReflectPropertyInfo.cs" />
-    <Compile Include="DTO\DVloge.cs" />
+    <Compile Include="DTO\DVlogePravice.cs" />
     <Compile Include="DTO\Sifranti.cs" />
     <Compile Include="DTO\DAplikacija.cs" />
     <Compile Include="DTO\DResponse.cs" />

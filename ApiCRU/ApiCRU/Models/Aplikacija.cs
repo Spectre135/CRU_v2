@@ -14,20 +14,11 @@ namespace WebCRU.Models
     
     public partial class Aplikacija
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Aplikacija()
-        {
-            this.Pravice = new HashSet<Pravice>();
-        }
-    
         public long AplikacijaKLJ { get; set; }
         public string Ime { get; set; }
         public string Naziv { get; set; }
         public string Http { get; set; }
         public string Opis { get; set; }
         public string Database { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pravice> Pravice { get; set; }
     }
 }

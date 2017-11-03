@@ -31,7 +31,7 @@ namespace si.hit.WebCRU.Controllers
         public HttpResponseMessage GetPravice(int aplikacijaKLJ, int vlogaKLJ)
         {
             DAOService service = new DAOService();
-            List<Pravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
+            List<DVlogePravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
 

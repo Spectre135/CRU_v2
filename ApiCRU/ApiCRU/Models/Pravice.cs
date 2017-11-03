@@ -18,7 +18,5 @@ namespace WebCRU.Models
         public Nullable<long> AplikacijaKLJ { get; set; }
         public string Naziv { get; set; }
         public string Opis { get; set; }
-    
-        public virtual Aplikacija Aplikacija { get; set; }
     }
 }

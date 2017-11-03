@@ -13,10 +13,10 @@ namespace WebCRU.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CruDBEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public CruDBEntities()
-            : base("name=CruDBEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,12 +25,12 @@ namespace WebCRU.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Aplikacija> Aplikacija { get; set; }
-        public virtual DbSet<Lokacija> Lokacija { get; set; }
-        public virtual DbSet<Pravice> Pravice { get; set; }
-        public virtual DbSet<Uporabniki> Uporabniki { get; set; }
-        public virtual DbSet<Vloge> Vloge { get; set; }
-        public virtual DbSet<VlogePravice> VlogePravice { get; set; }
-        public virtual DbSet<VlogeUporabnikov> VlogeUporabnikov { get; set; }
+        public virtual DbSet<Aplikacija> Aplikacijas { get; set; }
+        public virtual DbSet<Lokacija> Lokacijas { get; set; }
+        public virtual DbSet<Pravice> Pravices { get; set; }
+        public virtual DbSet<Uporabniki> Uporabnikis { get; set; }
+        public virtual DbSet<Vloge> Vloges { get; set; }
+        public virtual DbSet<VlogePravice> VlogePravices { get; set; }
+        public virtual DbSet<VlogeUporabnikov> VlogeUporabnikovs { get; set; }
     }
 }

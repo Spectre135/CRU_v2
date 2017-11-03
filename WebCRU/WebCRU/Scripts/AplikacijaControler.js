@@ -42,7 +42,16 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
                 }
             }
         });
+
+        $modal.result.then(function (condition) {
+
+        });
+
     };
+
+
+
+
 
     //Row selected
     $scope.rowselected = function (row) {
@@ -58,18 +67,19 @@ app.controller('aplEditCtrl', function ($scope, $modalInstance, dto, apiService)
     //save
     $scope.save = function () {
         url = '/api/aplikacije/save/';
-        apiService.saveData(url,$scope.editDto);
+        apiService.saveData(url, $scope.editDto);
+        $modalInstance.close();
     };
 
     //delete
     $scope.delete = function () {
         url = '/api/aplikacije/delete/';
-        apiService.deleteRecord(url,$scope.editDto);
+        apiService.deleteRecord(url, $scope.editDto);
+        $modalInstance.close();
     };
 
     //cancel
     $scope.cancel = function () {
-        $scope.editDto;
         $modalInstance.dismiss('cancel');
     };
 });

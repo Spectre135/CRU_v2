@@ -6,24 +6,24 @@ using WebCRU.DAO;
 
 namespace WebCRU.DTO
 {
-    public class DVloge
+    public class DVlogePravice
     {
         [DataFieldAttribute("AplikacijaKLJ")]
-        public int AplikacijaKLJ { get; set; }
+        public long AplikacijaKLJ { get; set; }
 
         [DataFieldAttribute("AplikacijaNaziv")]
         [DataSearchAttribute("AplikacijaNaziv")]
         public string AplikacijaNaziv { get; set; }
 
         [DataFieldAttribute("VlogaKLJ")]
-        public string VlogaKLJ { get; set; }
+        public long VlogaKLJ { get; set; }
 
         [DataFieldAttribute("VlogaNaziv")]
         [DataSearchAttribute("VlogaNaziv")]
         public string VlogaNaziv { get; set; }
 
         [DataFieldAttribute("PravicaKLJ")]
-        public string PravicaKLJ { get; set; }
+        public long PravicaKLJ { get; set; }
 
         [DataFieldAttribute("PravicaNaziv")]
         [DataSearchAttribute("PravicaNaziv")]

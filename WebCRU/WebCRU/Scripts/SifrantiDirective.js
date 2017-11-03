@@ -7,8 +7,6 @@ var app = angular.module("CRUManagement");
 
 app.directive('sifranti', function ($compile, apiService) {
 
-    var selectedValue = "";
-
     var controller = ['$scope', function ($scope) {
 
         //Šifrant aplikacij
