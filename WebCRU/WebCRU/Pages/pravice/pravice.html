@@ -1,6 +1,26 @@
 
 <table class="tabled" align="center">
 
+    <caption>
+        <form id="custom-search-form">
+            <div class="pull-left">
+                <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="newPravica()">
+                    <span class="glyphicon glyphicon-plus"></span> New
+                </button>
+            </div>
+            <div class="pull-right">
+                <div class="inline">
+                    <input class="search"  style='width:100%' type="text" name="input" ng-model="searchString" placeholder="Search.." ng-trim="true" />
+                </div>
+                <div class="inline">
+                    <button type="submit" class="btn btnSearch" ng-click="getData()">
+                        <span class=" glyphicon glyphicon-search" />
+                    </button>
+                </div>
+            </div>
+        </form>
+    </caption>
+
     <thead class="theadd">
         <tr>
 
@@ -34,9 +54,10 @@
     </thead>
     <tbody>
         <tr class="trd" title="DbClick to edit" ng-repeat="dto in data" ng-dblclick="openModal(dto)">
-            <td> {{dto.Aplikacija}} </td>
-            <td> {{dto.Naziv}} </td>
-            <td> {{dto.Opis}} </td>
+            <td> {{dto.AplikacijaNaziv}} </td>
+            <td> {{dto.VlogaNaziv}} </td>
+            <td> {{dto.PravicaNaziv}} </td>
+            <td> {{dto.PravicaOpis}} </td>
         </tr>
     </tbody>
     <tfoot>

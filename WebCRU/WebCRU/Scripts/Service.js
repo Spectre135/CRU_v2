@@ -23,6 +23,14 @@ app.factory('apiService', function ($q, $http) {
     // set BackEnd Url
     var backEndUrl = 'http://localhost:31207';
     var service = {};
+    
+    function nullToUndefined (input) {
+        if (input === null || input === '') {
+            return 'undefined';
+        }
+
+        return input;
+    };
 
     //Get Data generic
     service.getData = function (url,searchString) {
@@ -32,7 +40,7 @@ app.factory('apiService', function ($q, $http) {
 
         $http({
             method: 'GET',
-            url: backEndUrl + url + searchString
+            url: backEndUrl + url + (searchString === null ? 'undefined' : searchString)
 
         }).success(function (data) {
             deferred.resolve(data);
@@ -57,7 +65,7 @@ app.factory('apiService', function ($q, $http) {
 
         $http({
             method: 'GET',
-            url: backEndUrl +'/api/aplikacije2/' + searchString,
+            url: backEndUrl + '/api/aplikacije2/' + nullToUndefined(searchString),
             params: {
                 pageIndex: pageIndex,
                 pageSizeSelected: pageSizeSelected.selected,

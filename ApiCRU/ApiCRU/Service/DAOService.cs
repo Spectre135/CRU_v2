@@ -49,7 +49,7 @@ namespace si.hit.WebCRU.Service
                                             select new DVlogePravice()
                                             {
                                                 AplikacijaKLJ = a.AplikacijaKLJ,
-                                                AplikacijaNaziv = a.Naziv,
+                                                AplikacijaNaziv = a.Opis,
                                                 PravicaKLJ = p.PravicaKLJ,
                                                 PravicaNaziv = p.Naziv,
                                                 PravicaOpis = p.Opis,

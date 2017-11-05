@@ -37,7 +37,7 @@
                     <input name="http" type="text" id="http" class="form-control" ng-model="editDto.Http" />
                 </div>
             </div>
-            <div class="col-md-2"/> <!--empty!-->
+            <div class="col-md-2" /> <!--empty!-->
         </div>
 
         <div class="form-group">
@@ -45,17 +45,21 @@
             <input name="database" type="text" id="database" class="form-control" ng-model="editDto.DataBase" />
         </div>
 
-    <div class="modal-footer">
-        <span class="pull-left">
-            <button type="button" class="buttonNkbm"  data-dismiss="modal" ng-click="save()">Save</button>
-        </span>
-        <button type="button" class="buttonNkbm"  data-dismiss="modal" ng-click="cancel()">Close</button>
-    </div>
+        <div class="modal-footer">
+            <span class="pull-left">
+                <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="save()">
+                    <span class="glyphicon glyphicon-ok"></span> Save
+                </button>
+            </span>
+            <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="cancel()">
+                <span class="glyphicon glyphicon-remove"></span> Close
+            </button>
+        </div>
 
-</div>
-<script language="javascript" type="text/javascript">
-    //formatLocale();
-    //jQuery('.selectpicker').selectpicker();
-    window.onload = grayOut(false);
-</script>
+    </div>
+    <script language="javascript" type="text/javascript">
+        //formatLocale();
+        //jQuery('.selectpicker').selectpicker();
+        window.onload = grayOut(false);
+    </script>
 

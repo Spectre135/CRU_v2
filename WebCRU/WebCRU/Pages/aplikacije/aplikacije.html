@@ -3,11 +3,13 @@
     <caption>
         <form id="custom-search-form">
             <div class="pull-left">
-                <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="newAplikacija()">New</button>
+                <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="newAplikacija()">
+                    <span class="glyphicon glyphicon-plus"></span> New
+                </button>
             </div>
             <div class="pull-right">
                 <div class="inline">
-                    <input class="search" size="50" type="text" name="input" ng-model="searchString" placeholder="Search.." ng-trim="true" />
+                    <input class="search"  style='width:100%'  type="text" name="input" ng-model="searchString" placeholder="Search.." ng-trim="true" />
                 </div>
                 <div class="inline">
                     <button type="submit" class="btn btnSearch" ng-click="getData()">
@@ -20,13 +22,13 @@
     <thead class="theadd">
         <tr>
 
-            <th class="sort" ng-click="sort('Ime')">
-                Ime
-                <span class="glyphicon sort-icon" ng-show="sortKey === 'Ime'" ng-class="getSortClass()" />
-            </th>
             <th class="sort" ng-click="sort('Naziv')">
                 Naziv
                 <span class="glyphicon sort-icon" ng-show="sortKey === 'Naziv'" ng-class="getSortClass()" />
+            </th>
+            <th class="sort" ng-click="sort('Ime')">
+                Ime
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'Ime'" ng-class="getSortClass()" />
             </th>
             <th class="sort" ng-click="sort('Opis')">
                 Opis
@@ -45,8 +47,8 @@
     </thead>
     <tbody>
         <tr class="trd" title="DbClick to edit" ng-repeat="dto in data" ng-dblclick="openModal(dto)">
-            <td> {{dto.Ime}} </td>
             <td> {{dto.Naziv}} </td>
+            <td> {{dto.Ime}} </td>
             <td> {{dto.Opis}} </td>
             <td> {{dto.Http}} </td>
             <td> {{dto.DataBase}} </td>

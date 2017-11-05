@@ -29,8 +29,10 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
 
     //openModal for edit
     $scope.openModal = function (dto) {
+
         window.onload = grayOut(true);
-        $modal.open({
+
+        var modalInstance = $modal.open({
             templateUrl: '/Pages/aplikacije/editAplikacije.html',
             controller: 'aplEditCtrl',
             controllerAs: 'vm',
@@ -42,15 +44,12 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
                 }
             }
         });
-
-        $modal.result.then(function (condition) {
-
-        });
+        //we refresh data after modal close 
+        modalInstance.result.then(function () {
+            $scope.getData();
+        }, function () { });
 
     };
-
-
-
 
 
     //Row selected

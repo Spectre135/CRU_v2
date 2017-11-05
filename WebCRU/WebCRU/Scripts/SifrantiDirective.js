@@ -51,18 +51,18 @@ app.directive('sifranti', function ($compile, apiService) {
         restrict: 'EA',
         controller: controller,
         scope: {
-            model: '@', //text
+            model: '@', //text parameter
             click: '@',
             list: '@',
-            onchange: '&' //method
+            onchange: '&' //method parameter
         },
         link: function (scope, element, attrs) {
             //create html element 'ui-select'' 
             //note expression binding (&), you need to explicitely call it with a JSON containing !!on-select="data({id: $select.selected.Id})
-            var html = '<ui-select ng-model="' + scope.model + '.id" ng-click="' + scope.click + '" on-select="onchange({id: $select.selected.Id})" >' +
-                '<ui-select-match> {{$select.selected.Naziv}}</ui-select-match >' +
+            var html = '<ui-select ng-model="' + scope.model + '.id" ng-click="' + scope.click + '" on-select="onchange({id: $select.selected.Id})">' +
+                '<ui-select-match> {{$select.selected.Naziv}}</ui-select-match>' +
                 '<ui-select-choices repeat="sifrant.Id as sifrant in ' + scope.list + ' | filter:$select.search">' +
-                '<lang ng-bind="sifrant.Naziv"></lang></ui-select-choices></ui-select >';
+                '<lang ng-bind="sifrant.Naziv"></lang></ui-select-choices></ui-select>';
 
             var el = $compile(html)(scope);
             element.append(el);
