@@ -1,0 +1,142 @@
+﻿<Window x:Class="WpfAppCRU_V2.winCRU"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppCRU_V2"
+        mc:Ignorable="d"
+          Title="CRU" MinHeight="600" MinWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Background="{x:Null}">
+    <Grid >
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10"/>
+        </Grid.Effect>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--LoGO-->
+        <Border Background="#134187" Grid.Column="0" Grid.Row="0" x:Name="brdLogo" MouseDown="brdLogo_MouseDown">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0">
+                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image Source="Images/access_64x64.png" Width="20" Height="20"></Image>
+                        <Label Content="Skupni register uporabnikov" Foreground="White" FontWeight="Bold" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="1">
+                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image>
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Source" Value="Images/icon_group_3_64.png"/>
+                                    <Setter Property="Height" Value="Auto"/>
+                                    <Setter Property="Width" Value="64"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="Images/icon_group_3_64.png"/>
+                                            <Setter Property="Width" Value="70"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+        <!--Glava-->
+        <Border Grid.Column="1" Grid.Row="0" x:Name="brdGlava" MouseDown="brdGlava_MouseDown">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="-90" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF134187" Offset="0"/>
+                    <GradientStop Color="#FF2C5697" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Background="White">
+                    <DockPanel Width="108" HorizontalAlignment="Right">
+                        <Button x:Name="btnMinimize" Content="__" Click="btnMinimize_Click" Style="{DynamicResource minibutton}" ></Button>
+                        <Button x:Name="btnMaximize" Content="[ ]" Style="{DynamicResource minibutton}" Click="btnMaximize_Click" ></Button>
+                        <Button x:Name="btnClose" Content="X" Click="btnClose_Click" Style="{DynamicResource minibutton}" ></Button>
+                    </DockPanel>
+                </Border>
+            </Grid>
+
+        </Border>
+        <!--Menu-->
+        <Border Grid.Column="0" Grid.Row="1">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform AngleY="10" AngleX="-20" CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF134187"/>
+                    <GradientStop Color="#FF3063B0" Offset="0.993"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel HorizontalAlignment="Left">
+                <Button x:Name="btnAplikacije" Height="50" Style="{DynamicResource menubutton}" Click="btnAplikacije_Click">
+                    <DockPanel Width="200" Margin="15,0,0,0">
+                        <Image Source="Images/icon_app_32.png" Width="32"/>
+                        <Label Content="Aplikacije" Foreground="White" FontSize="16" />
+                    </DockPanel>
+                </Button>
+                <Button x:Name="btnUporabniki" Height="50" Style="{DynamicResource menubutton}" Click="btnUporabniki_Click">
+                    <DockPanel Width="200" Margin="15,0,0,0">
+                        <Image Source="Images/icon_user_32.png" Width="32"/>
+                        <Label Content="Uporabniki" Foreground="White" FontSize="16" />
+                    </DockPanel>
+                </Button>
+                <Button x:Name="btnVloge" Height="50" Style="{DynamicResource menubutton}" Click="btnVloge_Click">
+                    <DockPanel Width="200" Margin="15,0,0,0">
+                        <Image Source="Images/icon_group_2_32.png" Width="32"/>
+                        <Label Content="Vloge" Foreground="White" FontSize="16"/>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="btnPravice" Height="50" Style="{DynamicResource menubutton}" Click="btnPravice_Click">
+                    <DockPanel Width="200" Margin="15,0,0,0">
+                        <Image Source="Images/icon_lock_32.png" Width="32"/>
+                        <Label Content="Pravice" Foreground="White" FontSize="16" />
+                    </DockPanel>
+                </Button>
+                <Canvas>
+                    <Border/>
+                </Canvas>
+            </StackPanel>
+        </Border>
+
+        <!--Vsebina-->
+        <Border Grid.Column="1" Grid.Row="1" Background="#FFEEEEEE" >
+            <Grid x:Name="mainContent">
+                
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
