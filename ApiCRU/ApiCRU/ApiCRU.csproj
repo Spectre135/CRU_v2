@@ -122,9 +122,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DbColumn.cs" />
     <Compile Include="DAO\ReflectPropertyInfo.cs" />
+    <Compile Include="DTO\DAuth.cs" />
     <Compile Include="DTO\DVlogePravice.cs" />
     <Compile Include="DTO\Sifranti.cs" />
     <Compile Include="DTO\DAplikacija.cs" />
