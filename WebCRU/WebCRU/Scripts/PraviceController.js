@@ -2,7 +2,6 @@
 
 var app = angular.module("CRUManagement");
 
-//Query data
 app.controller("praviceController", function ($scope, $modal, apiService) {
 
     $scope.aplikacijaKLJ=0;

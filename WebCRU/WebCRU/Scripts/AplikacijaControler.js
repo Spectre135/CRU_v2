@@ -2,7 +2,6 @@
 
 var app = angular.module("CRUManagement");
 
-//Query data
 app.controller("aplikacijaController", function ($scope, $modal, apiService) {
 
     $scope.searchString;

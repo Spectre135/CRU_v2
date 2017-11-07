@@ -19,8 +19,19 @@ app.config(function ($routeProvider) {
         .when('/pravice', {
             templateUrl: 'Pages/pravice/pravice.html',
             controller: 'praviceController'
-        });
+        })
 
+        // route for the error page
+        .when('/error', {
+            templateUrl: 'Pages/error/error.html'
+        })
+
+
+            // route for the test page
+        .when('/test', {
+            templateUrl: 'Pages/test/test.html',
+            controller: 'testController'
+        });
 });
 
 

@@ -4,6 +4,7 @@ using WebCRU.DTO;
 using System.Web.Http;
 using System.Net.Http;
 using System.Web;
+using WebCRU.Auth;
 
 namespace WebCRU.Controllers
 {
@@ -11,15 +12,14 @@ namespace WebCRU.Controllers
     {
         [HttpGet]
         [Route("api/auth/{uporabnikID}")]
-        public HttpResponseMessage Auth(string uporabnikID)
+        public HttpResponseMessage Auth(string UporabnikID)
         {
 
             DAuth auth = new DAuth()
             {
-                SessionAuthToken = Guid.NewGuid().ToString()
+                SessionAuthToken = Guid.NewGuid().ToString(),
+                IsUserValidInAD = ValidateUserAD.ValidateUser(UporabnikID)
             };
-
-            HttpContext.Current.Session["AuthSessionToken"]= auth.SessionAuthToken;
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, auth);
 

@@ -8,5 +8,6 @@ namespace WebCRU.DTO
     public class DAuth
     {
         public string SessionAuthToken { get; set; }
+        public Boolean IsUserValidInAD { get; set; }
     }
 }

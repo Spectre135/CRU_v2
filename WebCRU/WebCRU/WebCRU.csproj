@@ -78,6 +78,7 @@
     <Content Include="Images\icon_pravice.png" />
     <Content Include="Images\icon_user.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\icon_test.png" />
     <Content Include="Pages\error\error.jsp" />
     <Content Include="Pages\error\error500.jsp" />
     <None Include="Web.Debug.config">
@@ -96,6 +97,7 @@
     <Content Include="Pages\pravice\editPravice.html" />
     <Content Include="Pages\pravice\pravice.html" />
     <Content Include="Pages\sifranti\aplikacije.html" />
+    <Content Include="Pages\test\test.html" />
     <Content Include="Scripts\AplikacijaControler.js" />
     <Content Include="Scripts\bootstrap\bootstrap-toggle\bootstrap-toggle-bootstrap-toggle.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -112,6 +114,7 @@
     <Content Include="Scripts\select\select.js" />
     <Content Include="Scripts\Service.js" />
     <Content Include="Scripts\SifrantiDirective.js" />
+    <Content Include="Scripts\TestController.js" />
     <Content Include="Scripts\Utils.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
