@@ -18,7 +18,7 @@ namespace WebCRU.Controllers
             DAuth auth = new DAuth()
             {
                 SessionAuthToken = Guid.NewGuid().ToString(),
-                IsUserValidInAD = ValidateUserAD.ValidateUser(UporabnikID)
+                IsUserValidInAD = AuthWorker.ValidateUser(UporabnikID)
             };
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, auth);

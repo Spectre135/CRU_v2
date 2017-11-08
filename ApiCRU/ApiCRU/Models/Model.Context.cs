@@ -32,5 +32,6 @@ namespace WebCRU.Models
         public virtual DbSet<Vloge> Vloges { get; set; }
         public virtual DbSet<VlogePravice> VlogePravices { get; set; }
         public virtual DbSet<VlogeUporabnikov> VlogeUporabnikovs { get; set; }
+        public virtual DbSet<AuthSession> AuthSession { get; set; }
     }
 }

@@ -16,6 +16,17 @@
           <Property Name="Opis" Type="varchar" MaxLength="255" />
           <Property Name="Database" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="AuthSession">
+          <Key>
+            <PropertyRef Name="SessionToken" />
+          </Key>
+          <Property Name="SessionToken" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UporabnikKLJ" Type="int" />
+          <Property Name="SessionTimeOut" Type="integer" />
+          <Property Name="Issued" Type="datetime" />
+          <Property Name="LastAccessed" Type="datetime" />
+          <Property Name="Expired" Type="datetime" />
+        </EntityType>
         <EntityType Name="Lokacija">
           <Key>
             <PropertyRef Name="LokacijaKLJ" />
@@ -72,6 +83,7 @@
         </EntityType>
         <EntityContainer Name="mainModelStoreContainer">
           <EntitySet Name="Aplikacija" EntityType="Self.Aplikacija" store:Type="Tables" />
+          <EntitySet Name="AuthSession" EntityType="Self.AuthSession" store:Type="Tables" />
           <EntitySet Name="Lokacija" EntityType="Self.Lokacija" store:Type="Tables" />
           <EntitySet Name="Pravice" EntityType="Self.Pravice" store:Type="Tables" />
           <EntitySet Name="Uporabniki" EntityType="Self.Uporabniki" store:Type="Tables" />
@@ -156,7 +168,19 @@
           <EntitySet Name="Vloges" EntityType="Self.Vloge" />
           <EntitySet Name="VlogePravices" EntityType="Self.VlogePravice" />
           <EntitySet Name="VlogeUporabnikovs" EntityType="Self.VlogeUporabnikov" />
+          <EntitySet Name="AuthSession" EntityType="mainModel.AuthSession" />
         </EntityContainer>
+        <EntityType Name="AuthSession">
+          <Key>
+            <PropertyRef Name="SessionToken" />
+          </Key>
+          <Property Name="SessionToken" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UporabnikKLJ" Type="Int32" />
+          <Property Name="SessionTimeOut" Type="Int64" />
+          <Property Name="Issued" Type="DateTime" />
+          <Property Name="LastAccessed" Type="DateTime" />
+          <Property Name="Expired" Type="DateTime" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -229,6 +253,18 @@
                 <ScalarProperty Name="VlogaKLJ" ColumnName="VlogaKLJ" />
                 <ScalarProperty Name="LokacijaKLJ" ColumnName="LokacijaKLJ" />
                 <ScalarProperty Name="UporabnikKLJ" ColumnName="UporabnikKLJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthSession">
+            <EntityTypeMapping TypeName="mainModel.AuthSession">
+              <MappingFragment StoreEntitySet="AuthSession">
+                <ScalarProperty Name="Expired" ColumnName="Expired" />
+                <ScalarProperty Name="LastAccessed" ColumnName="LastAccessed" />
+                <ScalarProperty Name="Issued" ColumnName="Issued" />
+                <ScalarProperty Name="SessionTimeOut" ColumnName="SessionTimeOut" />
+                <ScalarProperty Name="UporabnikKLJ" ColumnName="UporabnikKLJ" />
+                <ScalarProperty Name="SessionToken" ColumnName="SessionToken" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

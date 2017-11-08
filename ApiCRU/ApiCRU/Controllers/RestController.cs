@@ -17,7 +17,7 @@ namespace si.hit.WebCRU.Controllers
         [Route("api/aplikacije/{uporabnikID}")]
         public HttpResponseMessage GetAplikacije(string uporabnikID)
         {
-            DAOService service = new DAOService();
+            CRUDService service = new CRUDService();
             List<Aplikacija> dto = service.GetAplikacije(uporabnikID);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
@@ -30,7 +30,7 @@ namespace si.hit.WebCRU.Controllers
         [Route("api/pravice/")]
         public HttpResponseMessage GetPravice(int aplikacijaKLJ, int vlogaKLJ)
         {
-            DAOService service = new DAOService();
+            CRUDService service = new CRUDService();
             List<DVlogePravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
@@ -43,7 +43,7 @@ namespace si.hit.WebCRU.Controllers
         [Route("api/aplikacije/save/")]
         public HttpResponseMessage Save([FromBody]Aplikacija aplikacija)
         {
-            DAOService service = new DAOService();
+            CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
 
             try
@@ -63,7 +63,7 @@ namespace si.hit.WebCRU.Controllers
         [Route("api/aplikacije/delete/")]
         public HttpResponseMessage Delete([FromBody]Aplikacija aplikacija)
         {
-            DAOService service = new DAOService();
+            CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
 
             try
@@ -83,7 +83,7 @@ namespace si.hit.WebCRU.Controllers
         [Route("api/uporabniki")]
         public HttpResponseMessage Get()
         {
-            DAOService service = new DAOService();
+            CRUDService service = new CRUDService();
             List<Uporabniki> dto = service.GetUporabniki();
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
@@ -97,7 +97,7 @@ namespace si.hit.WebCRU.Controllers
         public HttpResponseMessage Get(string searchString, int pageIndex, int pageSizeSelected, string sortKey, string asc)
         {
             DResponse dto = new DResponse();
-            DAOService service = new DAOService();
+            CRUDService service = new CRUDService();
             dto = service.GetDResponse(searchString, pageIndex, pageSizeSelected, sortKey, asc);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
@@ -109,7 +109,7 @@ namespace si.hit.WebCRU.Controllers
         [Route("api/sifranti/{id}")]
         public HttpResponseMessage GetSifranti(string id)
         {
-            DAOService service = new DAOService();
+            CRUDService service = new CRUDService();
             List<DSifranti> dto = service.GetDSifranti(id);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);

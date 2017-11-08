@@ -8,7 +8,7 @@ using System;
 
 namespace si.hit.WebCRU.Service
 {
-    public class DAOService
+    public class CRUDService
     {
 
         //Aplikacije CRUD operation
@@ -136,6 +136,18 @@ namespace si.hit.WebCRU.Service
                 IQueryable<Uporabniki> uprb = db.Uporabnikis;
 
                 response = uprb.ToList();
+            }
+
+            return response;
+        }
+
+        public static Uporabniki GetUporabnik(string UserName)
+        {
+           Uporabniki response = new Uporabniki();
+
+            using (Entities db = new Entities())
+            {
+                response = db.Uporabnikis.Where(b => b.UporabnikID == UserName).FirstOrDefault(); 
             }
 
             return response;

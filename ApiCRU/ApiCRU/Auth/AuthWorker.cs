@@ -1,9 +1,11 @@
-﻿using System;
+﻿using si.hit.WebCRU.Service;
+using System;
 using System.DirectoryServices.AccountManagement;
+using WebCRU.Models;
 
 namespace WebCRU.Auth
 {
-    public class ValidateUserAD
+    public class AuthWorker
     {
         
 
@@ -29,6 +31,25 @@ namespace WebCRU.Auth
 
 
             return valid;
+        }
+
+
+        //create new SessionToken
+        public string GetNewSessionToken(string UserName)
+        {
+            string SessionAuthToken = Guid.NewGuid().ToString();
+
+            Uporabniki _Uporabnik = CRUDService.GetUporabnik(UserName);
+
+            AuthSession _AuthSession = new AuthSession()
+            {
+                SessionToken = SessionAuthToken,
+                UporabnikKLJ
+                 
+            };
+
+
+            return SessionAuthToken;
         }
     }
 }
