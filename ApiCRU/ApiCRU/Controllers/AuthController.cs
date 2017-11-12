@@ -11,15 +11,11 @@ namespace WebCRU.Controllers
     public class AuthController : ApiController
     {
         [HttpGet]
-        [Route("api/auth/{uporabnikID}")]
+        [Route("api/auth/createsession/{uporabnikID}")]
         public HttpResponseMessage Auth(string UporabnikID)
         {
 
-            DAuth auth = new DAuth()
-            {
-                SessionAuthToken = Guid.NewGuid().ToString(),
-                IsUserValidInAD = AuthWorker.ValidateUser(UporabnikID)
-            };
+            DAuth auth = AuthWorker.CreateSession(UporabnikID);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, auth);
 
