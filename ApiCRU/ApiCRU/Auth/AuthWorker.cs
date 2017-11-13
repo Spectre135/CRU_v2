@@ -39,12 +39,12 @@ namespace WebCRU.Auth
         {
             string SessionAuthToken = Guid.NewGuid().ToString();
 
-            Uporabniki _Uporabnik = CRUDService.GetUporabnik(UserName);
+            Uporabniki Uporabnik = CRUDService.GetUporabnik(UserName);
 
             AuthSession _AuthSession = new AuthSession()
             {
                 SessionToken = SessionAuthToken,
-                UporabnikKLJ
+                //UporabnikKLJ = Uporabnik.UporabnikKLJ,
                  
             };
 
