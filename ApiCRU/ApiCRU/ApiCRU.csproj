@@ -107,6 +107,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\AuthServiceReference\ApiCRU.AuthServiceReference.DAuth.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AuthServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\AuthServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\AuthServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Global.asax" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -124,6 +133,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth\AuthWorker.cs" />
+    <Compile Include="Connected Services\AuthServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DbColumn.cs" />
@@ -190,6 +204,16 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <Content Include="DataBase\cru.db" />
+    <None Include="Connected Services\AuthServiceReference\service.wsdl" />
+    <None Include="Connected Services\AuthServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthServiceReference\WcfAuth.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -203,6 +227,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AuthServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
