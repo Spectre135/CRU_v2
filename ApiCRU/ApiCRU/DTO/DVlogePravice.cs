@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebCRU.DAO;
+using ApiCRU.DAO;
 
-namespace WebCRU.DTO
+namespace ApiCRU.DTO
 {
     public class DVlogePravice
     {

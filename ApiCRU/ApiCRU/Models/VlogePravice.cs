@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebCRU.Models
+namespace ApiCRU.Models
 {
     using System;
     using System.Collections.Generic;

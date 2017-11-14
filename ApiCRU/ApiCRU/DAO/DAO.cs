@@ -4,12 +4,12 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using System.Text;
-using WebCRU.DTO;
+using ApiCRU.DTO;
 using System.Data.SQLite;
 
-namespace WebCRU.DAO
+namespace ApiCRU.DAO
 {
-    public class DAO
+    public class DaoService
     {
 
         public IEnumerable<DAplikacija> GetData(string query, int pageIndex, int pageSize, string sortKey, string asceding)
@@ -56,7 +56,7 @@ namespace WebCRU.DAO
             }
         }
 
-        public IEnumerable<DSifranti> GetSifranti(string id)
+        public static IEnumerable<DSifranti> GetSifranti(string id)
         {
 
             try

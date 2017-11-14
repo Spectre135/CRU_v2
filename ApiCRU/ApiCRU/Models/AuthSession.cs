@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebCRU.Models
+namespace ApiCRU.Models
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace WebCRU.Models
     public partial class AuthSession
     {
         public string SessionToken { get; set; }
-        public Nullable<int> UporabnikKLJ { get; set; }
+        public Nullable<long> UporabnikKLJ { get; set; }
         public Nullable<long> SessionTimeOut { get; set; }
         public Nullable<System.DateTime> Issued { get; set; }
         public Nullable<System.DateTime> LastAccessed { get; set; }

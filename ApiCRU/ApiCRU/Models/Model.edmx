@@ -21,7 +21,7 @@
             <PropertyRef Name="SessionToken" />
           </Key>
           <Property Name="SessionToken" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="UporabnikKLJ" Type="int" />
+          <Property Name="UporabnikKLJ" Type="integer" />
           <Property Name="SessionTimeOut" Type="integer" />
           <Property Name="Issued" Type="datetime" />
           <Property Name="LastAccessed" Type="datetime" />
@@ -175,7 +175,7 @@
             <PropertyRef Name="SessionToken" />
           </Key>
           <Property Name="SessionToken" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UporabnikKLJ" Type="Int32" />
+          <Property Name="UporabnikKLJ" Type="Int64" />
           <Property Name="SessionTimeOut" Type="Int64" />
           <Property Name="Issued" Type="DateTime" />
           <Property Name="LastAccessed" Type="DateTime" />

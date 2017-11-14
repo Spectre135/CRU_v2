@@ -15,9 +15,10 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
             .then(function (data) {
                     $scope.data = data.DataList;
                     $scope.totalCount = data.RowsCount;
-                }, function (response) {
-                    window.localStorage.setItem('error', response.message);
-                });
+            }, function (response) {
+                    //error is handled in Service
+                    //window.localStorage.setItem('error', response.message);
+            });
     };
 
     //new Aplikacija

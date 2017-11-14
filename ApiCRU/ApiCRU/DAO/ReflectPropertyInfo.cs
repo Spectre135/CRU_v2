@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Text;
 
-namespace WebCRU.DAO
+namespace ApiCRU.DAO
 {
     public static class ReflectPropertyInfo
     {
@@ -19,10 +19,9 @@ namespace WebCRU.DAO
                 //for each public property on the original
                 foreach (PropertyInfo pi in propertyInfos)
                 {
-                    DataFieldAttribute[] datafieldAttributeArray = pi.GetCustomAttributes(typeof(DataFieldAttribute), false) as DataFieldAttribute[];
 
                     //this attribute is marked with AllowMultiple=false
-                    if (datafieldAttributeArray != null && datafieldAttributeArray.Length == 1)
+                    if (pi.GetCustomAttributes(typeof(DataFieldAttribute), false) is DataFieldAttribute[] datafieldAttributeArray && datafieldAttributeArray.Length == 1)
                     {
                         DataFieldAttribute dfa = datafieldAttributeArray[0];
 

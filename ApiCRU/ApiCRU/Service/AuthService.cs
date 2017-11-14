@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebCRU.Models;
+using ApiCRU.Models;
 
 namespace WebCRU.Service
 {
     public class AuthService
     {
-        public void SaveNewSession(AuthSession _AuthSession)
+        public static void SaveNewSession(AuthSession _AuthSession)
         {
 
             using (Entities db = new Entities())
@@ -30,6 +30,18 @@ namespace WebCRU.Service
                 }
 
             }
+        }
+
+        public static AuthSession GetSession(string SessionToken)
+        {
+            AuthSession response = new AuthSession();
+
+            using (Entities db = new Entities())
+            {
+                response = db.AuthSession.Where(b => b.SessionToken == SessionToken).FirstOrDefault();
+            }
+
+            return response;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using WebCRU.DTO;
+using ApiCRU.DTO;
 using System.Web.Http;
 using System.Net.Http;
 using System.Web;
@@ -11,15 +11,11 @@ namespace WebCRU.Controllers
     public class AuthController : ApiController
     {
         [HttpGet]
-        [Route("api/auth/{uporabnikID}")]
+        [Route("api/auth/createsession/{uporabnikID}")]
         public HttpResponseMessage Auth(string UporabnikID)
         {
 
-            DAuth auth = new DAuth()
-            {
-                SessionAuthToken = Guid.NewGuid().ToString(),
-                IsUserValidInAD = AuthWorker.ValidateUser(UporabnikID)
-            };
+            DAuth auth = AuthWorker.CreateSession(UporabnikID);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, auth);
 

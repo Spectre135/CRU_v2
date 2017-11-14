@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebCRU.Models;
-using WebCRU.DAO;
-using WebCRU.DTO;
+using ApiCRU.Models;
 using System.Data.Entity;
 using System;
+using ApiCRU.DTO;
+using ApiCRU.DAO;
 
-namespace si.hit.WebCRU.Service
+namespace ApiCRU.Service
 {
     public class CRUDService
     {
@@ -156,9 +156,9 @@ namespace si.hit.WebCRU.Service
         /*Berem SQLite bazo preko navadnega selecta*/
         public DResponse GetDResponse(string SearchString, int pageIndex, int pageSelected, string sortKey, string asc)
         {
-            DAO dao = new DAO();
+            DaoService dao = new DaoService();
 
-            DResponse dto = new DResponse
+            DResponse  dto = new DResponse
             {
                 DataList = dao.GetData(SearchString.Replace("undefined", ""), pageIndex, pageSelected, sortKey, asc),
                 //RowsCount = dao.GetRowsCount(SearchString)
@@ -172,9 +172,8 @@ namespace si.hit.WebCRU.Service
         //Sifranti
         public List<DSifranti> GetDSifranti(string id)
         {
-            DAO dao = new DAO();
 
-            List<DSifranti> dto = dao.GetSifranti(id).ToList();
+            List<DSifranti> dto = DaoService.GetSifranti(id).ToList();
 
             return dto;
 

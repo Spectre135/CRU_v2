@@ -17,7 +17,8 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
             .then(function (data) {
                 $scope.data = data;
             }, function (response) {
-                window.localStorage.setItem('error', response.message);
+                //error is handled in Service
+                //window.localStorage.setItem('error', response.message);
             });
     };
 
@@ -29,7 +30,8 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
             .then(function (data) {
                 $scope.data = data;
             }, function (response) {
-                window.localStorage.setItem('error', response.message);
+                //error is handled in Service
+                //window.localStorage.setItem('error', response.message);
             });
     };
 

@@ -46,7 +46,7 @@ app.factory('apiService', function ($q, $http) {
             deferred.resolve(data);
 
         }).error(function (response) {
-            window.localStorage.setItem('error', response.Message);
+            window.localStorage.setItem('error', response.Message + " " + response.ExceptionMessage);
             window.localStorage.setItem('status', status);
             deferred.reject(response);
 
@@ -77,7 +77,7 @@ app.factory('apiService', function ($q, $http) {
             deferred.resolve(data);
 
         }).error(function (response) {
-            window.localStorage.setItem('error', response.Message);
+            window.localStorage.setItem('error', response.Message + " " + response.ExceptionMessage);
             window.localStorage.setItem('status', status);
             deferred.reject(response);
 
@@ -106,7 +106,7 @@ app.factory('apiService', function ($q, $http) {
             deferred.resolve(data);
 
         }).error(function (response) {
-            window.localStorage.setItem('error', response.Message);
+            window.localStorage.setItem('error', response.Message + " " + response.ExceptionMessage);
             window.localStorage.setItem('status', status);
             deferred.reject(response);
 
@@ -131,8 +131,8 @@ app.factory('apiService', function ($q, $http) {
             window.localStorage.setItem('status', status);
 
         }).error(function (response) {
+            window.localStorage.setItem('error', response.Message + " " + response.ExceptionMessage);
             window.localStorage.setItem('status', status);
-            window.localStorage.setItem('error', response.Message);
 
         }).finally(function () {
             window.onload = grayOut(false);
@@ -154,8 +154,8 @@ app.factory('apiService', function ($q, $http) {
             window.localStorage.setItem('status', status);
 
         }).error(function (response) {
+            window.localStorage.setItem('error', response.Message + " " + response.ExceptionMessage);
             window.localStorage.setItem('status', status);
-            window.localStorage.setItem('error', response.Message);
 
         }).finally(function () {
             window.onload = grayOut(false);

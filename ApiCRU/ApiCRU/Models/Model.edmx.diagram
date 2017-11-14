@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="mainModel.Vloge" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.VlogePravice" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.VlogeUporabnikov" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="mainModel.AuthSession" Width="1.5" PointX="8" PointY="3.375" />
+        <EntityTypeShape EntityType="mainModel.AuthSession" Width="1.5" PointX="6.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
