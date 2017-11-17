@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfAuth", "WcfAuth\WcfAuth.csproj", "{23BD6183-5006-4599-A59D-2AB9A42CFCFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFAuthConsole", "WCFAuthConsole\WCFAuthConsole.csproj", "{B88D77E0-BD02-4E03-B9C3-FA04516608EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{23BD6183-5006-4599-A59D-2AB9A42CFCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23BD6183-5006-4599-A59D-2AB9A42CFCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23BD6183-5006-4599-A59D-2AB9A42CFCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23BD6183-5006-4599-A59D-2AB9A42CFCFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B88D77E0-BD02-4E03-B9C3-FA04516608EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B88D77E0-BD02-4E03-B9C3-FA04516608EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B88D77E0-BD02-4E03-B9C3-FA04516608EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B88D77E0-BD02-4E03-B9C3-FA04516608EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

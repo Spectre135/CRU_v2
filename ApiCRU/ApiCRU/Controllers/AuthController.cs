@@ -1,10 +1,7 @@
-﻿using System;
+﻿using ApiCRU.AuthService;
 using System.Net;
-using ApiCRU.DTO;
-using System.Web.Http;
 using System.Net.Http;
-using System.Web;
-using WebCRU.Auth;
+using System.Web.Http;
 
 namespace WebCRU.Controllers
 {
@@ -15,10 +12,11 @@ namespace WebCRU.Controllers
         public HttpResponseMessage Auth(string UporabnikID)
         {
 
-            DAuth auth = AuthWorker.CreateSession(UporabnikID);
+            AuthServiceClient proxy = new AuthServiceClient();
+
+            DAuth auth = proxy.GetSession(UporabnikID);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, auth);
-
 
             return response;
         }

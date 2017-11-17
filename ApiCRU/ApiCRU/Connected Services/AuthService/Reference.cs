@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApiCRU.AuthServiceReference {
+namespace ApiCRU.AuthService {
     using System.Runtime.Serialization;
     using System;
     
@@ -75,23 +75,23 @@ namespace ApiCRU.AuthServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AuthServiceReference.IAuthService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AuthService.IAuthService")]
     public interface IAuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetSession", ReplyAction="http://tempuri.org/IAuthService/GetSessionResponse")]
-        ApiCRU.AuthServiceReference.DAuth GetSession(string username);
+        ApiCRU.AuthService.DAuth GetSession(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetSession", ReplyAction="http://tempuri.org/IAuthService/GetSessionResponse")]
-        System.Threading.Tasks.Task<ApiCRU.AuthServiceReference.DAuth> GetSessionAsync(string username);
+        System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAuthServiceChannel : ApiCRU.AuthServiceReference.IAuthService, System.ServiceModel.IClientChannel {
+    public interface IAuthServiceChannel : ApiCRU.AuthService.IAuthService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AuthServiceClient : System.ServiceModel.ClientBase<ApiCRU.AuthServiceReference.IAuthService>, ApiCRU.AuthServiceReference.IAuthService {
+    public partial class AuthServiceClient : System.ServiceModel.ClientBase<ApiCRU.AuthService.IAuthService>, ApiCRU.AuthService.IAuthService {
         
         public AuthServiceClient() {
         }
@@ -112,11 +112,11 @@ namespace ApiCRU.AuthServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public ApiCRU.AuthServiceReference.DAuth GetSession(string username) {
+        public ApiCRU.AuthService.DAuth GetSession(string username) {
             return base.Channel.GetSession(username);
         }
         
-        public System.Threading.Tasks.Task<ApiCRU.AuthServiceReference.DAuth> GetSessionAsync(string username) {
+        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string username) {
             return base.Channel.GetSessionAsync(username);
         }
     }

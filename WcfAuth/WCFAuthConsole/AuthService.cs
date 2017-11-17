@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using WebCRU.Auth;
+﻿using WcfAuth.Auth;
 
 namespace WcfAuth
 {
@@ -16,6 +10,6 @@ namespace WcfAuth
         {
             return AuthWorker.CreateSession(username);
         }
-        
+
     }
 }

@@ -1,11 +1,10 @@
-﻿using ApiCRU.Service;
-using System;
+﻿using System;
 using System.DirectoryServices.AccountManagement;
-using ApiCRU.DTO;
-using ApiCRU.Models;
-using WebCRU.Service;
+using WcfAuth.Models;
+using WcfAuth;
+using WcfAuth.DAO;
 
-namespace WebCRU.Auth
+namespace WcfAuth.Auth
 {
     public class AuthWorker
     {
@@ -40,7 +39,7 @@ namespace WebCRU.Auth
         {
             string SessionAuthToken = Guid.NewGuid().ToString();
 
-            Uporabniki Uporabnik = CRUDService.GetUporabnik(UserName);
+            Uporabniki Uporabnik = DAOService.GetUporabnik(UserName);
 
             AuthSession _AuthSession = new AuthSession()
             {
@@ -51,7 +50,7 @@ namespace WebCRU.Auth
                 Expired = DateTime.Now.AddSeconds(1800)
             };
 
-            AuthService.SaveNewSession(_AuthSession);
+            DAOService.SaveNewSession(_AuthSession);
 
             return SessionAuthToken;
         }
@@ -61,7 +60,7 @@ namespace WebCRU.Auth
         {
             bool IsValid = false;
 
-            AuthSession _AuthSession = AuthService.GetSession(SessionToken);
+            AuthSession _AuthSession = DAOService.GetSession(SessionToken);
 
             if (_AuthSession.Expired < DateTime.Now)
             {
