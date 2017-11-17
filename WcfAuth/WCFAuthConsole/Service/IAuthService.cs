@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
+using WCFAuthConsole.DTO;
 
 namespace WcfAuth
 {
@@ -13,7 +12,10 @@ namespace WcfAuth
     {
 
         [OperationContract]
-        DAuth GetSession(string username);
+        DAuth GetSession(string userName);
+
+        [OperationContract]
+        DAplRoles GetApplicationRoles(string userName,string upl);
 
     }
 
@@ -24,5 +26,12 @@ namespace WcfAuth
         public string SessionAuthToken { get; set; }
         [DataMember]
         public Boolean IsUserValidInAD { get; set; }
+    }
+
+    [DataContract]
+    public class DAplRoles
+    {
+        [DataMember]
+        public List<DPravice> Pravice { get; set; }
     }
 }

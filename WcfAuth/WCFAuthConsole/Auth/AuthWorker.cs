@@ -1,8 +1,7 @@
 ﻿using System;
 using System.DirectoryServices.AccountManagement;
-using WcfAuth.Models;
-using WcfAuth;
 using WcfAuth.DAO;
+using WcfAuth.Models;
 
 namespace WcfAuth.Auth
 {
@@ -10,16 +9,16 @@ namespace WcfAuth.Auth
     {
 
         //validate user in Active Directory(AD)
-        private static bool ValidateUser(string UserName)
+        private static bool ValidateUser(string userName)
         {
             bool valid = false;
-            string Domain = "novakbm.nkbm.si";
+            string domain = "novakbm.nkbm.si";
 
             try
             {
-                using (var domainContext = new PrincipalContext(ContextType.Domain, Domain))
+                using (var domainContext = new PrincipalContext(ContextType.Domain, domain))
                 {
-                    using (UserPrincipal.FindByIdentity(domainContext, IdentityType.SamAccountName, UserName))
+                    using (UserPrincipal.FindByIdentity(domainContext, IdentityType.SamAccountName, userName))
                     {
                         valid = true;
                     }
@@ -35,13 +34,13 @@ namespace WcfAuth.Auth
         }
 
         //create new SessionToken
-        private static string GetNewSessionToken(string UserName)
+        private static string GetNewSessionToken(string userName)
         {
             string SessionAuthToken = Guid.NewGuid().ToString();
 
-            Uporabniki Uporabnik = DAOService.GetUporabnik(UserName);
+            Uporabniki Uporabnik = DAOService.GetUporabnik(userName);
 
-            AuthSession _AuthSession = new AuthSession()
+            AuthSession authSession = new AuthSession()
             {
                 SessionToken = SessionAuthToken,
                 UporabnikKLJ = Uporabnik.UporabnikKLJ,
@@ -50,17 +49,17 @@ namespace WcfAuth.Auth
                 Expired = DateTime.Now.AddSeconds(1800)
             };
 
-            DAOService.SaveNewSession(_AuthSession);
+            DAOService.SaveNewSession(authSession);
 
             return SessionAuthToken;
         }
 
         //check SessionToken is valid
-        public static bool IsTokenValid(string SessionToken)
+        public static bool IsTokenValid(string sessionToken)
         {
             bool IsValid = false;
 
-            AuthSession _AuthSession = DAOService.GetSession(SessionToken);
+            AuthSession _AuthSession = DAOService.GetSession(sessionToken);
 
             if (_AuthSession.Expired < DateTime.Now)
             {
@@ -72,21 +71,33 @@ namespace WcfAuth.Auth
         }
 
         //Create new session and return session token
-        public static DAuth CreateSession(string UserName)
+        public static DAuth CreateSession(string userName)
         {
 
             DAuth auth = new DAuth()
             {
+                SessionAuthToken = "invalid username in domain",
                 IsUserValidInAD = false
             };
 
-            if (ValidateUser(UserName))
+            if (ValidateUser(userName))
             {
-                auth.SessionAuthToken = GetNewSessionToken(UserName);
+                auth.SessionAuthToken = GetNewSessionToken(userName);
                 auth.IsUserValidInAD = true;
             };
 
             return auth;
+        }
+
+        //Get roles for application
+        public static DAplRoles GetApplicationRoles(string userName,string apl)
+        {
+            DAplRoles AplRoles = new DAplRoles()
+            {
+                Pravice = DAOService.GetPravice(userName, apl)
+            };
+
+            return AplRoles;
         }
 
     }

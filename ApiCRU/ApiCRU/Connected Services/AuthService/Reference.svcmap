@@ -26,6 +26,7 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="76761722-872c-4f79-b49a-c2d814540253" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="5ab1b264-f750-4fc2-832e-4a432a2a29a3" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
     <MetadataFile FileName="WcfAuth.xsd" MetadataType="Schema" ID="bfcda5b7-0781-47a1-b921-0e8083b9d2d5" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
+    <MetadataFile FileName="WCFAuthConsole.DTO.xsd" MetadataType="Schema" ID="90abeb63-301f-4a03-a890-94bcb8d65658" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

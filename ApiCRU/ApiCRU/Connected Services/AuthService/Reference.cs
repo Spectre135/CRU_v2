@@ -74,15 +74,127 @@ namespace ApiCRU.AuthService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DAplRoles", Namespace="http://schemas.datacontract.org/2004/07/WcfAuth")]
+    [System.SerializableAttribute()]
+    public partial class DAplRoles : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ApiCRU.AuthService.DPravice[] PraviceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ApiCRU.AuthService.DPravice[] Pravice {
+            get {
+                return this.PraviceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PraviceField, value) != true)) {
+                    this.PraviceField = value;
+                    this.RaisePropertyChanged("Pravice");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DPravice", Namespace="http://schemas.datacontract.org/2004/07/WCFAuthConsole.DTO")]
+    [System.SerializableAttribute()]
+    public partial class DPravice : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NazivField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OpisField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Naziv {
+            get {
+                return this.NazivField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NazivField, value) != true)) {
+                    this.NazivField = value;
+                    this.RaisePropertyChanged("Naziv");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Opis {
+            get {
+                return this.OpisField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OpisField, value) != true)) {
+                    this.OpisField = value;
+                    this.RaisePropertyChanged("Opis");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AuthService.IAuthService")]
     public interface IAuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetSession", ReplyAction="http://tempuri.org/IAuthService/GetSessionResponse")]
-        ApiCRU.AuthService.DAuth GetSession(string username);
+        ApiCRU.AuthService.DAuth GetSession(string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetSession", ReplyAction="http://tempuri.org/IAuthService/GetSessionResponse")]
-        System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string username);
+        System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetApplicationRoles", ReplyAction="http://tempuri.org/IAuthService/GetApplicationRolesResponse")]
+        ApiCRU.AuthService.DAplRoles GetApplicationRoles(string userName, string upl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetApplicationRoles", ReplyAction="http://tempuri.org/IAuthService/GetApplicationRolesResponse")]
+        System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userName, string upl);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -112,12 +224,20 @@ namespace ApiCRU.AuthService {
                 base(binding, remoteAddress) {
         }
         
-        public ApiCRU.AuthService.DAuth GetSession(string username) {
-            return base.Channel.GetSession(username);
+        public ApiCRU.AuthService.DAuth GetSession(string userName) {
+            return base.Channel.GetSession(userName);
         }
         
-        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string username) {
-            return base.Channel.GetSessionAsync(username);
+        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string userName) {
+            return base.Channel.GetSessionAsync(userName);
+        }
+        
+        public ApiCRU.AuthService.DAplRoles GetApplicationRoles(string userName, string upl) {
+            return base.Channel.GetApplicationRoles(userName, upl);
+        }
+        
+        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userName, string upl) {
+            return base.Channel.GetApplicationRolesAsync(userName, upl);
         }
     }
 }

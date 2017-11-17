@@ -7,13 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApiCRU.Models
+namespace WcfAuth.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using WcfAuth.Models;
-
+    
     public partial class Entities : DbContext
     {
         public Entities()

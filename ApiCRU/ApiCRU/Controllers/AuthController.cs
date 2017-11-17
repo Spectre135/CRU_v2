@@ -8,15 +8,30 @@ namespace WebCRU.Controllers
     public class AuthController : ApiController
     {
         [HttpGet]
-        [Route("api/auth/createsession/{uporabnikID}")]
-        public HttpResponseMessage Auth(string UporabnikID)
+        [Route("api/auth/createsession/")]
+        public HttpResponseMessage Auth(string uporabnikID)
         {
 
-            AuthServiceClient proxy = new AuthServiceClient();
+            AuthServiceClient authService = new AuthServiceClient();
 
-            DAuth auth = proxy.GetSession(UporabnikID);
+            DAuth dAuth = authService.GetSession(uporabnikID);
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, auth);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dAuth);
+
+            return response;
+        }
+
+
+        [HttpGet]
+        [Route("api/auth/roles/")]
+        public HttpResponseMessage Auth(string uporabnikID,string apl)
+        {
+
+            AuthServiceClient authService = new AuthServiceClient();
+
+            DAplRoles roles = authService.GetApplicationRoles(uporabnikID, apl);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, roles);
 
             return response;
         }

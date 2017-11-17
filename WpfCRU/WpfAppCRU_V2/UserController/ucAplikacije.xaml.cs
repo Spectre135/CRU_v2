@@ -24,5 +24,10 @@ namespace WpfAppCRU_V2.UserController
         {
             InitializeComponent();
         }
+
+        private void btnIskanje_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

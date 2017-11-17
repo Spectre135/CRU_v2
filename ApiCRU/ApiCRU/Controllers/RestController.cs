@@ -1,13 +1,11 @@
-﻿using ApiCRU.Models;
+﻿using ApiCRU.DTO;
+using ApiCRU.Models;
 using ApiCRU.Service;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ApiCRU.DAO;
-using ApiCRU.DTO;
-using System;
 
 namespace si.hit.WebCRU.Controllers
 {

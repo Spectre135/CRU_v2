@@ -110,6 +110,9 @@
     <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DAuth.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DAplRoles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\AuthService\configuration91.svcinfo" />
     <None Include="Connected Services\AuthService\configuration.svcinfo" />
     <None Include="Connected Services\AuthService\Reference.svcmap">
@@ -209,6 +212,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\AuthService\WcfAuth.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\WCFAuthConsole.DTO.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
