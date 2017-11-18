@@ -107,12 +107,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\AuthServiceReference\ApiCRU.AuthServiceReference.DAuth.datasource">
+    <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DAuth.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\AuthServiceReference\configuration91.svcinfo" />
-    <None Include="Connected Services\AuthServiceReference\configuration.svcinfo" />
-    <None Include="Connected Services\AuthServiceReference\Reference.svcmap">
+    <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DAplRoles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AuthService\configuration91.svcinfo" />
+    <None Include="Connected Services\AuthService\configuration.svcinfo" />
+    <None Include="Connected Services\AuthService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -132,8 +135,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auth\AuthWorker.cs" />
-    <Compile Include="Connected Services\AuthServiceReference\Reference.cs">
+    <Compile Include="Connected Services\AuthService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -142,7 +144,6 @@
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DbColumn.cs" />
     <Compile Include="DAO\ReflectPropertyInfo.cs" />
-    <Compile Include="DTO\DAuth.cs" />
     <Compile Include="DTO\DVlogePravice.cs" />
     <Compile Include="DTO\Sifranti.cs" />
     <Compile Include="DTO\DAplikacija.cs" />
@@ -192,7 +193,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\AuthService.cs" />
     <Compile Include="Service\CRUDService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -204,14 +204,17 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <Content Include="DataBase\cru.db" />
-    <None Include="Connected Services\AuthServiceReference\service.wsdl" />
-    <None Include="Connected Services\AuthServiceReference\service.xsd">
+    <None Include="Connected Services\AuthService\service.wsdl" />
+    <None Include="Connected Services\AuthService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AuthServiceReference\service1.xsd">
+    <None Include="Connected Services\AuthService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AuthServiceReference\WcfAuth.xsd">
+    <None Include="Connected Services\AuthService\WcfAuth.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\WCFAuthConsole.DTO.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -232,7 +235,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\AuthServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\AuthService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

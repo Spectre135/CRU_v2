@@ -1,24 +1,37 @@
-﻿using System;
+﻿using ApiCRU.AuthService;
 using System.Net;
-using ApiCRU.DTO;
-using System.Web.Http;
 using System.Net.Http;
-using System.Web;
-using WebCRU.Auth;
+using System.Web.Http;
 
 namespace WebCRU.Controllers
 {
     public class AuthController : ApiController
     {
         [HttpGet]
-        [Route("api/auth/createsession/{uporabnikID}")]
-        public HttpResponseMessage Auth(string UporabnikID)
+        [Route("api/auth/createsession/")]
+        public HttpResponseMessage Auth(string uporabnikID)
         {
 
-            DAuth auth = AuthWorker.CreateSession(UporabnikID);
+            AuthServiceClient authService = new AuthServiceClient();
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, auth);
+            DAuth dAuth = authService.GetSession(uporabnikID);
 
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dAuth);
+
+            return response;
+        }
+
+
+        [HttpGet]
+        [Route("api/auth/roles/")]
+        public HttpResponseMessage Auth(string uporabnikID,string apl)
+        {
+
+            AuthServiceClient authService = new AuthServiceClient();
+
+            DAplRoles roles = authService.GetApplicationRoles(uporabnikID, apl);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, roles);
 
             return response;
         }

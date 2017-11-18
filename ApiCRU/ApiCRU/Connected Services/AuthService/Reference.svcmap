@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f6821228-6270-44db-b7de-f0832fa96581" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4001/WcfAuth/Service/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="fcfe2953-1041-48b9-87c7-97501a1ba527" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="76761722-872c-4f79-b49a-c2d814540253" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="5ab1b264-f750-4fc2-832e-4a432a2a29a3" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
+    <MetadataFile FileName="WcfAuth.xsd" MetadataType="Schema" ID="bfcda5b7-0781-47a1-b921-0e8083b9d2d5" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
+    <MetadataFile FileName="WCFAuthConsole.DTO.xsd" MetadataType="Schema" ID="90abeb63-301f-4a03-a890-94bcb8d65658" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

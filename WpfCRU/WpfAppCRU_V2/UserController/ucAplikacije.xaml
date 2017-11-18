@@ -19,7 +19,7 @@
 
         <Border Background="White" Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Išči" Style="{DynamicResource mainbutton}" />
+            <Button x:Name="btnIskanje" Content="Išči" Style="{DynamicResource mainbutton}" Click="btnIskanje_Click" />
             </StackPanel>
         </Border>
     </Grid>

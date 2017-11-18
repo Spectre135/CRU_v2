@@ -12,7 +12,7 @@ namespace ApiCRU.Service
     {
 
         //Aplikacije CRUD operation
-        public List<Aplikacija> GetAplikacije(string _uporabnikID)
+        public List<Aplikacija> GetAplikacije(string uporabnikID)
         {
 
             List<Aplikacija> response = new List<Aplikacija>();
@@ -23,7 +23,7 @@ namespace ApiCRU.Service
                                              join v in db.Vloges on a.AplikacijaKLJ equals v.AplikacijaKLJ
                                              join vu in db.VlogeUporabnikovs on v.VlogaKLJ equals vu.VlogaKLJ
                                              join u in db.Uporabnikis on vu.UporabnikKLJ equals u.UporabnikKLJ
-                                             where u.UporabnikID == _uporabnikID
+                                             where u.UporabnikID == uporabnikID
                                              select a;
 
                 response = apl.ToList();
@@ -34,7 +34,7 @@ namespace ApiCRU.Service
 
         }
 
-        public List<DVlogePravice> GetPravice(int _aplikacijaKLJ, int _vlogaKLJ)
+        public List<DVlogePravice> GetPravice(int aplikacijaKLJ, int vlogaKLJ)
         {
 
 
@@ -44,8 +44,8 @@ namespace ApiCRU.Service
                                             join vp in db.VlogePravices on p.PravicaKLJ equals vp.PravicaKLJ
                                             join v in db.Vloges on vp.VlogaKLJ equals v.VlogaKLJ
                                             join a in db.Aplikacijas on p.AplikacijaKLJ equals a.AplikacijaKLJ
-                                            where p.AplikacijaKLJ == (_aplikacijaKLJ == 0 ? p.AplikacijaKLJ : _aplikacijaKLJ) &&
-                                                  v.VlogaKLJ == (_vlogaKLJ == 0 ? v.VlogaKLJ : _vlogaKLJ)
+                                            where p.AplikacijaKLJ == (aplikacijaKLJ == 0 ? p.AplikacijaKLJ : aplikacijaKLJ) &&
+                                                  v.VlogaKLJ == (vlogaKLJ == 0 ? v.VlogaKLJ : vlogaKLJ)
                                             select new DVlogePravice()
                                             {
                                                 AplikacijaKLJ = a.AplikacijaKLJ,
