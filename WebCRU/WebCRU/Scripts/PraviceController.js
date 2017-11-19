@@ -12,6 +12,7 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
     //getPraviceData
     $scope.getDataAplikacijaKLJ = function (id) {
         $scope.aplikacijaKLJ = id;
+        $scope.new = 'false';
 
         apiService.getVlogePravice($scope.aplikacijaKLJ, $scope.vlogaKLJ)
             .then(function (data) {
@@ -23,8 +24,8 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
     };
 
     $scope.getDataVlogaKLJ = function (id) {
-        console.log(id);
         $scope.vlogaKLJ = id;
+        $scope.new = 'false';
 
         apiService.getVlogePravice($scope.aplikacijaKLJ, $scope.vlogaKLJ)
             .then(function (data) {
@@ -62,7 +63,6 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
         });
         //we refresh data after modal close 
         modalInstance.result.then(function () {
-            console.log("refresh");
             $scope.new = 'false';
             $scope.getData();
         }, function () { });
@@ -91,6 +91,8 @@ app.controller('praviceEditCtrl', function ($scope, $modalInstance, dto, apiServ
 
     //cancel
     $scope.cancel = function () {
+        $scope.new = 'false';
+        console.log($scope.new);
         $modalInstance.dismiss('cancel');
     };
 });

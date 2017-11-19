@@ -51,7 +51,7 @@ table {
 
 th {
     font-family: 'Roboto';
-    color: #2681d2;
+    color: #134187;
     padding: 10px;
     font-weight: normal;
 }
@@ -74,22 +74,20 @@ td {
 }
 .theadd th {
     font-family: 'Roboto';
-    /*background: #F2F2F2;*/
     color: white;
     padding: 10px;
     font-weight: normal;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#2681d2), to(#1a5991));
-    background-image: -webkit-linear-gradient(top, #2681d2, #1a5991);
-    background-image: -moz-linear-gradient(top, #2681d2, #1a5991);
-    background-image: -ms-linear-gradient(top, #2681d2, #1a5991);
-    background-image: -o-linear-gradient(top, #2681d2, #1a5991);
-    background-image: linear-gradient(to bottom, #2681d2, #1a5991);
-    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-    -moz-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#134187), to(#2b5493));
+    background-image: -webkit-linear-gradient(top, #134187, #2b5493);
+    background-image: -moz-linear-gradient(top, #134187, #2b5493);
+    background-image: -ms-linear-gradient(top, #134187, #2b5493);
+    background-image: -o-linear-gradient(top, #134187, #2b5493);
+    background-image: linear-gradient(to bottom, #134187, #2b5493);
+    /*-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;*/
+    /*-moz-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;*/
+    /*box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;*/
     border-top: none;
     border-bottom: 1px #F2F2F2;
-    /*text-shadow: 0 1px 0 rgba(255,255,255,.5);*/
 }
 
 .trd:nth-child(odd) {
@@ -128,10 +126,10 @@ input {
     text-align: center;
     /*vertical-align: middle;*/
     cursor: pointer;
-    background-color: #2681d2;
+    background-color: #134187;
     border: 1px solid;
-    border-color: #2681d2;
-    border-bottom-color: #2681d2;
+    border-color: #134187;
+    border-bottom-color: #134187;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -169,7 +167,7 @@ input {
     padding: 6px 12px;
     margin-left: -1px;
     line-height: 1.42857143;
-    color: #2681d2;
+    color: #134187;
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -203,8 +201,8 @@ input {
     z-index: 3;
     color: #fff;
     cursor: default;
-    background-color: #2681d2;
-    border-color: #2681d2;
+    background-color: #134187;
+    border-color: #134187;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
@@ -316,7 +314,7 @@ input, select {
 
 input:focus, select:focus
 {
-    /*background-color: #2681d2;
+    /*background-color: #134187;
     color: white;
     */
 
@@ -329,7 +327,7 @@ input:focus, select:focus
     border-color: #ddd;
     color:#000000;
     font: 12px 'Roboto',Verdana, Arial, sans-serif;
-    /*color: #2681d2;*/
+    /*color: #134187;*/
     background-color: white;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -414,7 +412,7 @@ input:focus, select:focus
     transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
 }
 .red{
-    color: #2681d2;
+    color: #134187;
 }
 .white{
     color:white;
@@ -425,14 +423,14 @@ input:focus, select:focus
 /*
 .bootstrap-select.btn-group .dropdown-menu li a:hover {
     color: white !important;
-    background: #2681d2 !important;
+    background: #134187 !important;
 }
 */
 /*
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>.active>a, 
 .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{
     color: white !important;
-    background: #2681d2 !important;
+    background: #134187 !important;
     background-image: none;
 }
 */
@@ -446,7 +444,7 @@ input:focus, select:focus
 /*
 .ui-select-bootstrap .ui-select-choices-row.active > a {
     color: white !important;
-    background: #2681d2 !important;
+    background: #134187 !important;
 }
 */
 .ui-select-bootstrap > .ui-select-choices {
@@ -462,7 +460,7 @@ input:focus, select:focus
     background: url("/Images/logo.png") no-repeat;
     height: 40px;
     width: 100px;
-    filter: #fff; /* IE6-9 */
-    -webkit-filter: brightness(100); /* Google Chrome, Safari 6+ & Opera 15+ */
-    filter: brightness(100); /* Microsoft Edge and Firefox 35+ */
+}
+.loading {
+    background: url("/Images/loading.gif") no-repeat;
 }

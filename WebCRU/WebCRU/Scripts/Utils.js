@@ -18,8 +18,8 @@ var dark=document.getElementById('darkenScreenObject');
 if (!dark) {
 var tbody = document.getElementsByTagName("body")[0];
 var tnode = document.createElement('div'); // Create the layer.
-var img   = document.createElement('img');
-var box   = document.createElement('div');
+var img   = document.createElement('div');
+var box = document.createElement('div');
 
 tnode.style.position='absolute'; // Position absolutely
 tnode.style.top='0px'; // In the top
@@ -28,15 +28,18 @@ tnode.style.overflow='hidden'; // Try to avoid making scroll bars
 tnode.style.display='none'; // Start out Hidden
 tnode.id='darkenScreenObject'; // Name it so we can find it later
 
-box.className='centered';
+box.className = 'centered';
+img.className = 'loading';
 
 box.appendChild(img);
 tnode.appendChild(box);
 tbody.appendChild(tnode); // Add it to the web page
-dark=document.getElementById('darkenScreenObject'); // Get the object.
+dark = document.getElementById('darkenScreenObject'); // Get the object.
+
+
 }
 if (vis) {
-  document.body.style.cursor="wait";
+  //document.body.style.cursor="wait";
   // Calculate the page width and height
   if( document.body && ( document.body.scrollWidth || document.body.scrollHeight ) ) {
     var pageWidth = document.body.scrollWidth+'px';
@@ -58,7 +61,7 @@ if (vis) {
   dark.style.height= pageHeight;
   dark.style.display='block';
 } else {
-  document.body.style.cursor= "auto";
+  //document.body.style.cursor= "auto";
   dark.style.display='none';
 }
 }

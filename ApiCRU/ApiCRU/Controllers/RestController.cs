@@ -103,7 +103,6 @@ namespace si.hit.WebCRU.Controllers
             return response;
         }
 
-
         [Route("api/sifranti/{id}")]
         public HttpResponseMessage GetSifranti(string id)
         {

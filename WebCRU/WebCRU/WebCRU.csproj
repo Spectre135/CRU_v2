@@ -77,8 +77,9 @@
     <Content Include="Images\icon_users.png" />
     <Content Include="Images\icon_pravice.png" />
     <Content Include="Images\icon_user.png" />
-    <Content Include="Images\logo.png" />
+    <Content Include="Images\loading.gif" />
     <Content Include="Images\icon_test.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Pages\error\error.jsp" />
     <Content Include="Pages\error\error500.jsp" />
     <None Include="Web.Debug.config">
