@@ -1,19 +1,49 @@
 ﻿
 
 
-<button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="getAuthToken()"> Get auth token</button>
-<br />
-<label for="name">Žeton: </label>
-<label for="token">{{token}}</label>
-<br />
-<label for="name">ValidUser: </label>
-<label for="token">{{isValidUser}}</label>
 
-<br />
-<button type="button" class="buttonNkbm" ng-click="readSessionToken()"> Read auth token from session</button>
-<br />
-<label for="name">Session: </label>
-<label for="token">{{sessionToken}}</label>
+    <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="getAuthToken()"> Get auth token</button>
+    <br />
+    <label for="name">Žeton: </label>
+    <label for="token">{{token}}</label>
+    <br />
+    <label for="name">ValidUser: </label>
+    <label for="token">{{isValidUser}}</label>
+
+    <br />
+    <button type="button" class="buttonNkbm" ng-click="readSessionToken()"> Read auth token from session</button>
+    <br />
+    <label for="name">Session: </label>
+    <label for="token">{{sessionToken}}</label>
+
+    <br />
+    <button type="button" class="buttonNkbm" ng-click="startSpinner()"> Start spinner</button>
+    <br />
+
+    <br />
+    <button type="button" class="buttonNkbm" ng-click="stopSpinner()"> Stop spinner</button>
+    <br />
+
+<div>
+    <sarsha-spinner name="spinner1"></sarsha-spinner>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Data</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>sssss</td>
+                <td>fffff</td>
+                <td>fgfgfgfgfg</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
 
 

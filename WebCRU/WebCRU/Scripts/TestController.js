@@ -2,7 +2,7 @@
 
 var app = angular.module("CRUManagement");
 
-app.controller("testController", function ($scope, $modal, apiService) {
+app.controller("testController", function ($scope, $modal, apiService, spinnerService) {
 
     $scope.token;
     $scope.sessionToken;
@@ -25,5 +25,13 @@ app.controller("testController", function ($scope, $modal, apiService) {
         $scope.sessionToken = sessionStorage.getItem("AuthSessionToken");
     };
 
+
+    $scope.startSpinner = function () {
+        spinnerService.show('spinner1');
+    };
+
+    $scope.stopSpinner = function () {
+        spinnerService.close('spinner1');
+    };
 
 });

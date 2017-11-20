@@ -461,3 +461,6 @@ input:focus, select:focus
 .loading {
     background: url("/Images/loading.gif") no-repeat;
 }
+sarsha-spinner span {
+    display: block;
+}
