@@ -61,7 +61,7 @@ app.factory('apiService', function ($q, $http) {
     service.getAplikacije = function (searchString, pageIndex, pageSizeSelected, sortKey, asc) {
         var deferred = $q.defer();
         //posivim ekran
-        //window.onload = grayOut(true);
+        window.onload = grayOut(true);
 
         $http({
             method: 'GET',
@@ -82,7 +82,7 @@ app.factory('apiService', function ($q, $http) {
             deferred.reject(response);
 
         }).finally(function () {
-            //window.onload = grayOut(false);
+            window.onload = grayOut(false);
         });
 
         return deferred.promise;

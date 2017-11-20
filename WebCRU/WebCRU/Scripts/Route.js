@@ -1,4 +1,4 @@
-﻿var app = angular.module("CRUManagement", ['ngRoute', 'ngSanitize', 'ui.select', 'ui.bootstrap', 'sarsha.spinner']);
+﻿var app = angular.module("CRUManagement", ['ngRoute', 'ngSanitize', 'ui.select', 'ui.bootstrap']);
 
 // configure app routes
 app.config(function ($routeProvider) {

@@ -71,7 +71,6 @@
     <Content Include="Css\navbar.css" />
     <Content Include="Css\select.css" />
     <Content Include="Css\selectize.css" />
-    <Content Include="Css\spinner.css" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\hit_universe_of_fun.png" />
     <Content Include="Images\icon_app.png" />
@@ -114,7 +113,6 @@
     <Content Include="Scripts\select\select.js" />
     <Content Include="Scripts\Service.js" />
     <Content Include="Scripts\SifrantiDirective.js" />
-    <Content Include="Scripts\spinner\spinner.js" />
     <Content Include="Scripts\TestController.js" />
     <Content Include="Scripts\Utils.js" />
     <Content Include="Web.config">

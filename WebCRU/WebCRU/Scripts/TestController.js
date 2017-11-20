@@ -2,7 +2,7 @@
 
 var app = angular.module("CRUManagement");
 
-app.controller("testController", function ($scope, $modal, apiService, spinnerService) {
+app.controller("testController", function ($scope, $modal, apiService) {
 
     $scope.token;
     $scope.sessionToken;
@@ -27,11 +27,12 @@ app.controller("testController", function ($scope, $modal, apiService, spinnerSe
 
 
     $scope.startSpinner = function () {
-        spinnerService.show('spinner1');
+        grayOut(true);
+
     };
 
     $scope.stopSpinner = function () {
-        spinnerService.close('spinner1');
+        grayOut(false);
     };
 
 });

@@ -1,4 +1,4 @@
-//Date and number format locale
+﻿//Date and number format locale
 function formatLocale() {
     $('.date').datepicker({language: 'sl', autoclose: true, format: 'dd.mm.yyyy'});
     $('.money').inputmask('decimal', {radixPoint: ',', autoGroup: true, groupSeparator: '.', digits: 2, groupSize: 3, allowMinus: true});
@@ -18,24 +18,17 @@ var dark=document.getElementById('darkenScreenObject');
 if (!dark) {
 var tbody = document.getElementsByTagName("body")[0];
 var tnode = document.createElement('div'); // Create the layer.
-var img   = document.createElement('div');
-var box = document.createElement('div');
 
-tnode.style.position='absolute'; // Position absolutely
+tnode.style.position = 'absolute'; // Position absolutely
 tnode.style.top='0px'; // In the top
 tnode.style.left='0px'; // Left corner of the page
 tnode.style.overflow='hidden'; // Try to avoid making scroll bars
 tnode.style.display='none'; // Start out Hidden
 tnode.id='darkenScreenObject'; // Name it so we can find it later
 
-box.className = 'centered';
-img.className = 'loading';
-
-box.appendChild(img);
-tnode.appendChild(box);
 tbody.appendChild(tnode); // Add it to the web page
 dark = document.getElementById('darkenScreenObject'); // Get the object.
-
+dark.innerHTML = '<div class="loader"><svg class="circular" viewBox="25 25 50 50" ><circle class="path" cx="50" cy="50" r="10" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg ></div>';
 
 }
 if (vis) {
@@ -59,10 +52,10 @@ if (vis) {
   dark.style.backgroundColor=bgcolor;
   dark.style.width= pageWidth;
   dark.style.height= pageHeight;
-  dark.style.display='block';
-} else {
+  dark.style.display = 'block';
+  } else {
   //document.body.style.cursor= "auto";
-  dark.style.display='none';
+    dark.style.display = 'none';
 }
 }
 
@@ -108,3 +101,5 @@ function getSortClass(asc) {
         return 'glyphicon glyphicon-triangle-bottom';
     }
 }
+
+
