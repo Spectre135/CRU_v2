@@ -97,7 +97,6 @@
     <Content Include="Pages\paging\paging.html" />
     <Content Include="Pages\pravice\editPravice.html" />
     <Content Include="Pages\pravice\pravice.html" />
-    <Content Include="Pages\sifranti\aplikacije.html" />
     <Content Include="Pages\test\test.html" />
     <Content Include="Scripts\AplikacijaControler.js" />
     <Content Include="Scripts\bootstrap\bootstrap-toggle\bootstrap-toggle-bootstrap-toggle.min.js" />

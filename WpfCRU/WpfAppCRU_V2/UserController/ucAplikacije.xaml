@@ -5,22 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAppCRU_V2.UserController"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    
+
+
+
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <Border Background="White" Grid.Row="0">
-            <DataGrid x:Name="dtgAplikacije">
-                
+        <Border Background="White">
+            <Button Content="Išči" Style="{DynamicResource mainbutton}" />
+        </Border>
+        <Border Background="White" >
+            <DataGrid Margin="60" HorizontalAlignment="Left" VerticalAlignment="Top" AutoGenerateColumns="False" x:Name="grdAplikacije" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Path=Naziv}" Width="Auto" />
+                    <DataGridTextColumn Header="Ime" Binding="{Binding Path=Ime}" Width="Auto" />
+                    <DataGridTextColumn Header="Opis" Binding="{Binding Path=Opis}" Width="Auto" />
+                    <DataGridTextColumn Header="Http" Binding="{Binding Path=Http}" Width="Auto" />
+                    <DataGridTextColumn Header="DataBase" Binding="{Binding Path=DataBase}" Width="Auto" />
+                </DataGrid.Columns>
             </DataGrid>
         </Border>
-
-        <Border Background="White" Grid.Row="1">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="btnIskanje" Content="Išči" Style="{DynamicResource mainbutton}" Click="btnIskanje_Click" />
-            </StackPanel>
-        </Border>
     </Grid>
+    
 </UserControl>

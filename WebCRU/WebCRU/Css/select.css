@@ -89,11 +89,15 @@ body > .select2-container.open {
 }
 
 .ui-select-bootstrap .ui-select-toggle > .caret {
-  position: absolute;
+  /*position: absolute;*/
   height: 10px;
   top: 50%;
-  right: 10px;
-  margin-top: -2px;
+  /*right: 10px;*/
+  margin-top: 6px;
+}
+
+.btn .caret {
+    margin: 5px 5px;
 }
 
 /* Fix Bootstrap dropdown position when inside a input-group */

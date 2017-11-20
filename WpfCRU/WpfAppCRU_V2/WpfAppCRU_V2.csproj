@@ -82,6 +82,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\ucClass.cs" />
+    <Compile Include="DataModel\Aplikacije.cs" />
+    <Compile Include="DataModel\ResponseData.cs" />
     <Compile Include="DataModel\Uporabniki.cs" />
     <Compile Include="UserController\ucAplikacije.xaml.cs">
       <DependentUpon>ucAplikacije.xaml</DependentUpon>

@@ -21,7 +21,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="form-group">
@@ -34,38 +36,40 @@
                         </div>
                     </div>
                 </div>
-                </div>
-            </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="red" for="firstname">Naziv</label>
-                            <input name="naziv" type="text" id="naziv" class="form-control" ng-model="editDto.Naziv" />
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="red" for="lastname">Opis</label>
-                            <input name="opis" type="text" id="opis" class="form-control" ng-model="editDto.Opis" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <span class="pull-left">
-                        <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="save()">
-                            <span class="glyphicon glyphicon-ok"></span> Save
-                        </button>
-                    </span>
-                    <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="cancel()">
-                        <span class="glyphicon glyphicon-remove"></span> Close
-                    </button>
-                </div>
-
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="firstname">Naziv</label>
+                    <input name="naziv" type="text" id="naziv" class="form-control" ng-model="editDto.Naziv" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="lastname">Opis</label>
+                    <input name="opis" type="text" id="opis" class="form-control" ng-model="editDto.Opis" />
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <span class="pull-left">
+                <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="save()">
+                    <span class="glyphicon glyphicon-ok"></span> Save
+                </button>
+            </span>
+            <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="cancel()">
+                <span class="glyphicon glyphicon-remove"></span> Close
+            </button>
+        </div>
+
+    </div>
+</div>
 
 <script language="javascript" type="text/javascript">
     //formatLocale();

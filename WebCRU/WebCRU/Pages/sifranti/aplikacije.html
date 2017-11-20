@@ -1,7 +1,0 @@
-﻿<ui-select ng-model="aplikacijaSelected.id" ng-click="getAplikacijeList()">
-    <ui-select-match> {{$select.selected.Naziv}}</ui-select-match>
-    <ui-select-choices repeat="sifrant.id as sifrant in aplikacijeList | filter:$select.search">
-    <div ng-bind="sifrant.Naziv"></div>
-        </ui-select-choices>
-</ui-select>
-
