@@ -15,6 +15,12 @@ app.config(function ($routeProvider) {
             controller: 'aplikacijaController'
         })
 
+        // route for the uporabniki page
+        .when('/uporabniki', {
+            templateUrl: 'Pages/uporabniki/uporabniki.html',
+            controller: 'uporabnikiController'
+        })
+
         // route for the pravice page
         .when('/pravice', {
             templateUrl: 'Pages/pravice/pravice.html',
@@ -25,7 +31,6 @@ app.config(function ($routeProvider) {
         .when('/error', {
             templateUrl: 'Pages/error/error.html'
         })
-
 
             // route for the test page
         .when('/test', {

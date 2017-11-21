@@ -91,9 +91,10 @@ td {
     background:#F2F2F2;
 }
 
-.trd:hover { 
-    background: #ddd; 
-    cursor:pointer;
+.trd:hover {
+    background: #2b5493;
+    cursor: pointer;
+    color: #fff;
 }
 
 .trd {
@@ -309,13 +310,6 @@ input, select {
     border-radius: 4px;
 }
 
-input:focus, select:focus
-{
-    /*background-color: #134187;
-    color: white;
-    */
-
-}
 .page{
     background: white;
     height: 31px;
@@ -372,21 +366,7 @@ input:focus, select:focus
     background-image: none;
     box-shadow:none;
 }
-/*
-.bootstrap-select>.dropdown-toggle{
-    min-width:30px;
-    width: auto;
-    height:31px; 
-    border: 1px solid;
-    border-color: #ddd;
-    border-radius: 4px;
-    display: inline-block;
-    font: inherit;
-    line-height: 1.5em;
-}
 
-.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){width: auto;}
-*/
 .form-group {
     margin-bottom: 5px;
 }
@@ -417,20 +397,7 @@ input:focus, select:focus
 .datepicker {
     z-index:1051 !important;
 }
-/*
-.bootstrap-select.btn-group .dropdown-menu li a:hover {
-    color: white !important;
-    background: #134187 !important;
-}
-*/
-/*
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>.active>a, 
-.dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{
-    color: white !important;
-    background: #134187 !important;
-    background-image: none;
-}
-*/
+
 .bootstrap-select.btn-group .dropdown-menu > li > a {
     font: 12px 'Roboto',Verdana, Arial, sans-serif;
 }
@@ -438,21 +405,11 @@ input:focus, select:focus
 .ui-select-bootstrap > .ui-select-match > .btn {
     text-align: left !important;
 }
-/*
-.ui-select-bootstrap .ui-select-choices-row.active > a {
-    color: white !important;
-    background: #134187 !important;
-}
-*/
+
 .ui-select-bootstrap > .ui-select-choices {
     font: 12px 'Roboto',Verdana, Arial, sans-serif;
 }
-/*
-.ui-select-multiple input.ui-select-search {
-    width: 100% !important;
-    position: absolute;
-}
-*/
+
 .logo {
     background: url("/Images/logo.png") no-repeat;
     height: 40px;
@@ -467,6 +424,7 @@ input:focus, select:focus
     top: 40%;
     left: 50%;
     width: 100px;
+    z-index:9999;
 }
 .loader:before{
     content: '';
@@ -484,6 +442,7 @@ input:focus, select:focus
     left: 0;
     right: 0;
     margin: auto;
+    z-index: 9999;
 }
 
 .path {
@@ -517,15 +476,15 @@ input:focus, select:focus
 }
 @keyframes color {
     100%, 0% {
-        stroke: #0057e7;
+        stroke: #3333ff;
     }
     40% {
-        stroke: #134187;
+        stroke: #00e600;
     }
     66% {
-        stroke: #2b5493;
+        stroke: #ff9900;
     }
     80%, 90% {
-        stroke: #0057e7;
+        stroke: #b30000;
     }
 }

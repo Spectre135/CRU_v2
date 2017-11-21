@@ -19,7 +19,6 @@ angular.module('CRUManagement').factory('RequestsErrorHandler', ['$q', function(
                 && rejection.config.headers[HEADER_NAME]);
 
             if (shouldHandle) {
-                console.log('error')
                 window.location.href = '#error';
             }
 

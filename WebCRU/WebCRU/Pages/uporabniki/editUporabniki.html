@@ -10,22 +10,22 @@
     <div class="modal-body">
 
         <div class="form-group">
-            <label class="red" for="name">Ime</label>
-            <input name="ime" type="text" id="ime" class="form-control" ng-model="editDto.Ime" />
+            <label class="red" for="uporabnikID">UporabnikID</label>
+            <input name="uporabnikID" type="text" id="uporabnikID" class="form-control" ng-model="editDto.UporabnikID" />
         </div>
 
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="red" for="firstname">Naziv</label>
-                    <input name="naziv" type="text" id="naziv" class="form-control" ng-model="editDto.Naziv" />
+                    <label class="red" for="ime">Ime</label>
+                    <input name="ime" type="text" id="ime" class="form-control" ng-model="editDto.Ime" />
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="red" for="lastname">Opis</label>
-                    <input name="opis" type="text" id="opis" class="form-control" ng-model="editDto.Opis" />
+                    <label class="red" for="priimek">Priimek</label>
+                    <input name="priimek" type="text" id="priimek" class="form-control" ng-model="editDto.Priimek" />
                 </div>
             </div>
         </div>
@@ -33,16 +33,16 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="red" for="tin">Http</label>
-                    <input name="http" type="text" id="http" class="form-control" ng-model="editDto.Http" />
+                    <label class="red" for="winusername">WinUsername</label>
+                    <input name="winusername" type="text" id="winusername" class="form-control" ng-model="editDto.WinUsername" />
                 </div>
             </div>
             <div class="col-md-2" /> <!--empty!-->
         </div>
 
         <div class="form-group">
-            <label class="red" for="database">Database</label>
-            <input name="database" type="text" id="database" class="form-control" ng-model="editDto.DataBase" />
+            <label class="red" for="rfid">RFID</label>
+            <input name="rfid" type="text" id="rfid" class="form-control" ng-model="editDto.RFID" />
         </div>
         <br />
         <div class="modal-footer">
@@ -58,8 +58,6 @@
 
     </div>
     <script language="javascript" type="text/javascript">
-        //formatLocale();
-        //jQuery('.selectpicker').selectpicker();
         window.onload = grayOut(false);
     </script>
 

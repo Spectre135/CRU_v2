@@ -12,6 +12,8 @@ namespace ApiCRU.Service
     {
 
         //Aplikacije CRUD operation
+
+        //Aplikacije handle
         public List<Aplikacija> GetAplikacije(string uporabnikID)
         {
 
@@ -32,37 +34,6 @@ namespace ApiCRU.Service
 
             return response;
 
-        }
-
-        public List<DVlogePravice> GetPravice(int aplikacijaKLJ, int vlogaKLJ)
-        {
-
-
-            using (Entities db = new Entities())
-            {
-                IQueryable<DVlogePravice> vloge = (from p in db.Pravices
-                                            join vp in db.VlogePravices on p.PravicaKLJ equals vp.PravicaKLJ
-                                            join v in db.Vloges on vp.VlogaKLJ equals v.VlogaKLJ
-                                            join a in db.Aplikacijas on p.AplikacijaKLJ equals a.AplikacijaKLJ
-                                            where p.AplikacijaKLJ == (aplikacijaKLJ == 0 ? p.AplikacijaKLJ : aplikacijaKLJ) &&
-                                                  v.VlogaKLJ == (vlogaKLJ == 0 ? v.VlogaKLJ : vlogaKLJ)
-                                            select new DVlogePravice()
-                                            {
-                                                AplikacijaKLJ = a.AplikacijaKLJ,
-                                                AplikacijaNaziv = a.Opis,
-                                                PravicaKLJ = p.PravicaKLJ,
-                                                PravicaNaziv = p.Naziv,
-                                                PravicaOpis = p.Opis,
-                                                VlogaKLJ = v.VlogaKLJ,
-                                                VlogaNaziv = v.Naziv
-                                            });
-
-
-
-
-                return vloge.ToList();
-
-            }
         }
 
         public void SaveAplikacija(Aplikacija aplikacija)
@@ -127,6 +98,105 @@ namespace ApiCRU.Service
             }
         }
 
+        //Pravice handle
+        public List<DVlogePravice> GetPravice(int aplikacijaKLJ, int vlogaKLJ)
+        {
+
+
+            using (Entities db = new Entities())
+            {
+                IQueryable<DVlogePravice> vloge = (from p in db.Pravices
+                                            join vp in db.VlogePravices on p.PravicaKLJ equals vp.PravicaKLJ
+                                            join v in db.Vloges on vp.VlogaKLJ equals v.VlogaKLJ
+                                            join a in db.Aplikacijas on p.AplikacijaKLJ equals a.AplikacijaKLJ
+                                            where p.AplikacijaKLJ == (aplikacijaKLJ == 0 ? p.AplikacijaKLJ : aplikacijaKLJ) &&
+                                                  v.VlogaKLJ == (vlogaKLJ == 0 ? v.VlogaKLJ : vlogaKLJ)
+                                            select new DVlogePravice()
+                                            {
+                                                AplikacijaKLJ = a.AplikacijaKLJ,
+                                                AplikacijaNaziv = a.Opis,
+                                                PravicaKLJ = p.PravicaKLJ,
+                                                PravicaNaziv = p.Naziv,
+                                                PravicaOpis = p.Opis,
+                                                VlogaKLJ = v.VlogaKLJ,
+                                                VlogaNaziv = v.Naziv
+                                            });
+
+
+
+
+                return vloge.ToList();
+
+            }
+        }
+
+        public void SavePravice(DVlogePravice dVlogePravice)
+        {
+            Pravice pravice = this.ParsePravice(dVlogePravice);
+
+            using (Entities db = new Entities())
+            {
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+                        if (pravice.PravicaKLJ == 0)
+                        {
+                            db.Pravices.Add(pravice);
+                            db.VlogePravices.Add(this.ParseVlogePravice(dVlogePravice));
+
+                        }
+                        else
+                        {
+                            db.Pravices.Attach(pravice);
+                            db.Entry(pravice).State = EntityState.Modified;
+                        }
+
+                        db.SaveChanges();
+                        tran.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw ex.InnerException;
+                    }
+                }
+
+            }
+        }
+
+        public void DeletePravice(DVlogePravice dVlogePravice)
+        {
+            Pravice pravice = this.ParsePravice(dVlogePravice);
+
+            using (Entities db = new Entities())
+            {
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (pravice!= null)
+                        {
+                            db.Pravices.Attach(pravice);
+                            db.Pravices.Remove(pravice);
+                            db.SaveChanges();
+                            tran.Commit();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw ex;
+                    }
+                }
+
+            }
+        }
+
+        //Uporabniki handle
         public List<Uporabniki> GetUporabniki()
         {
             List<Uporabniki> response = new List<Uporabniki>();
@@ -141,6 +211,68 @@ namespace ApiCRU.Service
             return response;
         }
 
+        public void SaveUporabniki(Uporabniki uporabniki)
+        {
+
+            using (Entities db = new Entities())
+            {
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+                        if (uporabniki.UporabnikKLJ == 0)
+                        {
+                            db.Uporabnikis.Add(uporabniki);
+                        }
+                        else
+                        {
+                            db.Uporabnikis.Attach(uporabniki);
+                            db.Entry(uporabniki).State = EntityState.Modified;
+                        }
+
+                        db.SaveChanges();
+                        tran.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw ex.InnerException;
+                    }
+                }
+
+            }
+        }
+
+        public void DeleteUporabniki(Uporabniki uporabniki)
+        {
+
+            using (Entities db = new Entities())
+            {
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (uporabniki != null)
+                        {
+                            db.Uporabnikis.Attach(uporabniki);
+                            db.Uporabnikis.Remove(uporabniki);
+                            db.SaveChanges();
+                            tran.Commit();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw ex;
+                    }
+                }
+
+            }
+        }
+
         public static Uporabniki GetUporabnik(string UserName)
         {
            Uporabniki response = new Uporabniki();
@@ -153,6 +285,8 @@ namespace ApiCRU.Service
             return response;
         }
 
+
+        //Ostalo
         /*Berem SQLite bazo preko navadnega selecta*/
         public DResponse GetDResponse(string SearchString, int pageIndex, int pageSelected, string sortKey, string asc)
         {
@@ -177,6 +311,31 @@ namespace ApiCRU.Service
 
             return dto;
 
+        }
+
+        //Utils
+        private Pravice ParsePravice(DVlogePravice dVlogePravice)
+        {
+            Pravice pravice = new Pravice
+            {
+                PravicaKLJ = dVlogePravice.PravicaKLJ,
+                AplikacijaKLJ = dVlogePravice.AplikacijaKLJ,
+                Naziv = dVlogePravice.PravicaNaziv,
+                Opis = dVlogePravice.PravicaOpis
+            };
+
+            return pravice;
+        }
+
+        private VlogePravice ParseVlogePravice(DVlogePravice dVlogePravice)
+        {
+            VlogePravice vlogePravice = new VlogePravice
+            {
+                VlogaKLJ = dVlogePravice.VlogaKLJ,
+                PravicaKLJ = dVlogePravice.PravicaKLJ
+            };
+
+            return vlogePravice;
         }
 
     }

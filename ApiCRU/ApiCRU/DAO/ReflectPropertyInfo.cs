@@ -38,7 +38,7 @@ namespace ApiCRU.DAO
                         }
                         catch (IndexOutOfRangeException)
                         {
-                            System.Diagnostics.Trace.WriteLine("Ne najdem polja " + dfa.ColumnName);
+                            System.Diagnostics.Trace.WriteLine("Missing field " + dfa.ColumnName);
                         }
                     }
                 }

@@ -25,14 +25,4 @@ app.controller("testController", function ($scope, $modal, apiService) {
         $scope.sessionToken = sessionStorage.getItem("AuthSessionToken");
     };
 
-
-    $scope.startSpinner = function () {
-        grayOut(true);
-
-    };
-
-    $scope.stopSpinner = function () {
-        grayOut(false);
-    };
-
 });

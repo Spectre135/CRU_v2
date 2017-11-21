@@ -17,7 +17,7 @@
                         <input name="aplikacija" type="text" id="aplikacija" disabled class="form-control" ng-model="editDto.AplikacijaNaziv" />
                     </div>
                     <div ng-show="{{new}}">
-                        <sifranti model="aplikacija" click="getAplikacijeList()" list="aplikacijeList" onchange="getDataAplikacijaKLJ(id)"></sifranti>
+                        <sifranti model="aplikacija" click="getAplikacijeList()" list="aplikacijeList" onchange="updateAplikacijaKLJ(id)" ></sifranti>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                             <input name="vloga" type="text" id="vloga" disabled class="form-control" ng-model="editDto.VlogaNaziv" />
                         </div>
                         <div ng-show="{{new}}">
-                            <sifranti model="vloga" click="getVlogeList()" list="vlogeList" onchange="getDataVlogaKLJ(id)"></sifranti>
+                            <sifranti model="vloga" click="getVlogeList()" list="vlogeList" onchange="updateVlogaKLJ(id)"></sifranti>
                         </div>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="red" for="firstname">Naziv</label>
-                    <input name="naziv" type="text" id="naziv" class="form-control" ng-model="editDto.Naziv" />
+                    <label class="red" for="naziv">Naziv</label>
+                    <input name="naziv" type="text" id="naziv" class="form-control" ng-model="editDto.PravicaNaziv" />
                 </div>
             </div>
         </div>
@@ -51,12 +51,12 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="red" for="lastname">Opis</label>
-                    <input name="opis" type="text" id="opis" class="form-control" ng-model="editDto.Opis" />
+                    <label class="red" for="opis">Opis</label>
+                    <input name="opis" type="text" id="opis" class="form-control" ng-model="editDto.PravicaOpis" />
                 </div>
             </div>
         </div>
-
+        <br />
         <div class="modal-footer">
             <span class="pull-left">
                 <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="save()">
@@ -72,8 +72,6 @@
 </div>
 
 <script language="javascript" type="text/javascript">
-    //formatLocale();
-    //jQuery('.selectpicker').selectpicker();
     window.onload = grayOut(false);
 </script>
 

@@ -1,8 +1,10 @@
+
+
 <table class="tabled" align="center">
     <caption>
         <form id="custom-search-form">
             <div class="pull-left">
-                <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="newAplikacija()">
+                <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="newUporabnik()">
                     <span class="glyphicon glyphicon-plus"></span> New
                 </button>
             </div>
@@ -21,36 +23,36 @@
     <thead class="theadd">
         <tr>
 
-            <th class="sort" ng-click="sort('Naziv')">
-                Naziv
-                <span class="glyphicon sort-icon" ng-show="sortKey === 'Naziv'" ng-class="getSortClass()" />
+            <th class="sort" ng-click="sort('UporabnikID')">
+                UporabnikID
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'UporabnikID'" ng-class="getSortClass()" />
             </th>
             <th class="sort" ng-click="sort('Ime')">
                 Ime
                 <span class="glyphicon sort-icon" ng-show="sortKey === 'Ime'" ng-class="getSortClass()" />
             </th>
-            <th class="sort" ng-click="sort('Opis')">
-                Opis
-                <span class="glyphicon sort-icon" ng-show="sortKey === 'Opis'" ng-class="getSortClass()" />
+            <th class="sort" ng-click="sort('Priimek')">
+                Priimek
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'Priimek'" ng-class="getSortClass()" />
             </th>
-            <th class="sort" ng-click="sort('Http')">
-                Http
-                <span class="glyphicon sort-icon" ng-show="sortKey === 'Http'" ng-class="getSortClass()" />
+            <th class="sort" ng-click="sort('WinUsername')">
+                WinUsername
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'WinUsername'" ng-class="getSortClass()" />
             </th>
-            <th class="sort" ng-click="sort('Database')">
-                Database
-                <span class="glyphicon sort-icon" ng-show="sortKey === 'Database'" ng-class="getSortClass()" />
+            <th class="sort" ng-click="sort('RFID')">
+                RFID
+                <span class="glyphicon sort-icon" ng-show="sortKey === 'RFID'" ng-class="getSortClass()" />
             </th>
 
         </tr>
     </thead>
     <tbody>
         <tr class="trd" title="DbClick to edit" ng-repeat="dto in data" ng-dblclick="openModal(dto)">
-            <td> {{dto.Naziv}} </td>
+            <td> {{dto.UporabnikID}} </td>
             <td> {{dto.Ime}} </td>
-            <td> {{dto.Opis}} </td>
-            <td> {{dto.Http}} </td>
-            <td> {{dto.DataBase}} </td>
+            <td> {{dto.Priimek}} </td>
+            <td> {{dto.WinUsername}} </td>
+            <td> {{dto.RFID}} </td>
         </tr>
     </tbody>
     <tfoot>

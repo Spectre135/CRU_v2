@@ -2,27 +2,27 @@
 
 var app = angular.module("CRUManagement");
 
-app.controller("aplikacijaController", function ($scope, $modal, apiService) {
+app.controller("uporabnikiController", function ($scope, $modal, apiService) {
 
     $scope.searchString;
     $scope.rowNumber = -1;
     $scope.data = [];
     window.onload = grayOut(false);
+    var url = '/api/uporabniki/';
 
 
-    //getAplikacijeData
+    //getUporabnikiData
     $scope.getData = function () {
-        apiService.getAplikacije($scope.searchString, $scope.pageIndex, $scope.pageSizeSelected, $scope.sortKey, $scope.asc)
+        apiService.getData(url)
             .then(function (data) {
-                    $scope.data = data.DataList;
-                    $scope.totalCount = data.RowsCount;
+                $scope.data = data;
             }, function (response) {
-                    //error is handled in Service
+               //error is handled in Service
             });
     };
 
-    //new Aplikacija
-    $scope.newAplikacija = function () {
+    //new Uporabnik
+    $scope.newUporabnik = function () {
         var newDto = {};
         this.openModal(newDto);
     };
@@ -33,8 +33,8 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
         window.onload = grayOut(true);
 
         var modalInstance = $modal.open({
-            templateUrl: '/Pages/aplikacije/editAplikacije.html',
-            controller: 'aplEditCtrl',
+            templateUrl: '/Pages/uporabniki/editUporabniki.html',
+            controller: 'uprbEditCtrl',
             controllerAs: 'vm',
             scope: $scope,
             backdrop: 'static',
@@ -46,12 +46,7 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
         });
         //we refresh data after modal close 
         modalInstance.result.then(function () {
-            //don't use $scope.getData ASYNC !!!!!
-            apiService.getAplikacije($scope.searchString, $scope.pageIndex, $scope.pageSizeSelected, $scope.sortKey, $scope.asc)
-                .then(function (data) {
-                    $scope.data = data.DataList;
-                    $scope.totalCount = data.RowsCount;
-                }, function (response) {});
+            apiService.getData(url).then(function (data) {$scope.data = data;}, function (response) {});
         }, function () {});
 
     };
@@ -64,19 +59,19 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
 });
 
 //Edit data
-app.controller('aplEditCtrl', function ($scope, $modalInstance, dto, apiService) {
+app.controller('uprbEditCtrl', function ($scope, $modalInstance, dto, apiService) {
     $scope.editDto = angular.copy(dto);
 
     //save
     $scope.save = function () {
-        url = '/api/aplikacije/save/';
+        url = '/api/uporabniki/save/';
         apiService.saveData(url, $scope.editDto);
         $modalInstance.close();
     };
 
     //delete
     $scope.delete = function () {
-        url = '/api/aplikacije/delete/';
+        url = '/api/uporabniki/delete/';
         apiService.deleteRecord(url, $scope.editDto);
         $modalInstance.close();
     };

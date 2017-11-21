@@ -24,19 +24,6 @@ namespace si.hit.WebCRU.Controllers
             return response;
         }
 
-        [HttpGet]
-        [Route("api/pravice/")]
-        public HttpResponseMessage GetPravice(int aplikacijaKLJ, int vlogaKLJ)
-        {
-            CRUDService service = new CRUDService();
-            List<DVlogePravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
-
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
-
-
-            return response;
-        }
-
         [HttpPost]
         [Route("api/aplikacije/save/")]
         public HttpResponseMessage Save([FromBody]Aplikacija aplikacija)
@@ -78,6 +65,59 @@ namespace si.hit.WebCRU.Controllers
             return response;
         }
 
+        [HttpGet]
+        [Route("api/pravice/")]
+        public HttpResponseMessage GetPravice(int aplikacijaKLJ, int vlogaKLJ)
+        {
+            CRUDService service = new CRUDService();
+            List<DVlogePravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+
+
+            return response;
+        }
+
+        [HttpPost]
+        [Route("api/pravice/save/")]
+        public HttpResponseMessage Save([FromBody]DVlogePravice dVlogePravice)
+        {
+            CRUDService service = new CRUDService();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+            try
+            {
+                service.SavePravice(dVlogePravice);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
+
+
+            return response;
+        }
+
+        [HttpPost]
+        [Route("api/pravice/delete/")]
+        public HttpResponseMessage Delete([FromBody]DVlogePravice dVlogePravice)
+        {
+            CRUDService service = new CRUDService();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+            try
+            {
+                service.DeletePravice(dVlogePravice);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
+
+
+            return response;
+        }
+
         [Route("api/uporabniki")]
         public HttpResponseMessage Get()
         {
@@ -85,6 +125,46 @@ namespace si.hit.WebCRU.Controllers
             List<Uporabniki> dto = service.GetUporabniki();
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+
+
+            return response;
+        }
+
+        [HttpPost]
+        [Route("api/uporabniki/save/")]
+        public HttpResponseMessage Save([FromBody]Uporabniki uporabniki)
+        {
+            CRUDService service = new CRUDService();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+            try
+            {
+                service.SaveUporabniki(uporabniki);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
+
+
+            return response;
+        }
+
+        [HttpPost]
+        [Route("api/uporabniki/delete/")]
+        public HttpResponseMessage Delete([FromBody]Uporabniki uporabniki)
+        {
+            CRUDService service = new CRUDService();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+            try
+            {
+                service.DeleteUporabniki(uporabniki);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
 
 
             return response;
