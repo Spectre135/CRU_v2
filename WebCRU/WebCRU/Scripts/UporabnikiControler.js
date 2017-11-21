@@ -46,7 +46,7 @@ app.controller("uporabnikiController", function ($scope, $modal, apiService) {
         });
         //we refresh data after modal close 
         modalInstance.result.then(function () {
-            apiService.getData(url).then(function (data) {$scope.data = data;}, function (response) {});
+           window.onload = grayOut(false);
         }, function () {});
 
     };
@@ -65,15 +65,19 @@ app.controller('uprbEditCtrl', function ($scope, $modalInstance, dto, apiService
     //save
     $scope.save = function () {
         url = '/api/uporabniki/save/';
-        apiService.saveData(url, $scope.editDto);
-        $modalInstance.close();
+        apiService.saveData(url, $scope.editDto).then(function (response) {
+            $scope.getData();
+            $modalInstance.close();
+        });
     };
 
     //delete
     $scope.delete = function () {
         url = '/api/uporabniki/delete/';
-        apiService.deleteRecord(url, $scope.editDto);
-        $modalInstance.close();
+        apiService.deleteRecord(url, $scope.editDto).then(function (response) {
+            $scope.getData();
+            $modalInstance.close();
+        });
     };
 
     //cancel

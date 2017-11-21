@@ -23,8 +23,8 @@ app.factory('apiService', function ($q, $http) {
     // set BackEnd Url
     var backEndUrl = 'http://localhost:31207';
     var service = {};
-    
-    function nullToUndefined (input) {
+
+    function nullToUndefined(input) {
         if (input === null || input === '') {
             return 'undefined';
         }
@@ -75,7 +75,7 @@ app.factory('apiService', function ($q, $http) {
         }).success(function (data) {
             deferred.resolve(data);
 
-            }).error(function (response) {
+        }).error(function (response) {
             writeError(response);
             deferred.reject(response);
 
@@ -87,7 +87,7 @@ app.factory('apiService', function ($q, $http) {
     };
 
     //Get VlogePravice
-    service.getVlogePravice = function (aplikacijaKLJ,vlogaKLJ) {
+    service.getVlogePravice = function (aplikacijaKLJ, vlogaKLJ) {
         var deferred = $q.defer();
         //posivim ekran
         window.onload = grayOut(true);
@@ -115,46 +115,45 @@ app.factory('apiService', function ($q, $http) {
     };
 
     //Save data
-    service.saveData = function (apiUrl,dto) {
+    service.saveData = function (apiUrl, dto) {
+        var deferred = $q.defer();
         window.onload = grayOut(true);
 
         $http({
             method: 'POST',
-            //url: backEndUrl + '/api/aplikacije/save/',
-            url : backEndUrl + apiUrl,
+            url: backEndUrl + apiUrl,
             data: dto
+        })
+            .success(function (data) {
+                deferred.resolve(data);
+            }).error(function (response) {
+                writeError(response);
+                deferred.reject(response);
+            }).finally(function () {
+                window.onload = grayOut(false);
+            });
 
-        }).success(function (data) {
-            window.localStorage.setItem('status', status);
-
-        }).error(function (response) {
-            writeError(response);
-
-        }).finally(function () {
-            window.onload = grayOut(false);
-        });
-
+        return deferred.promise;
     };
 
     //Delete record
-    service.deleteRecord = function (dto) {
+    service.deleteRecord = function (apiUrl, dto) {
+        var deferred = $q.defer();
         window.onload = grayOut(true);
 
         $http({
             method: 'POST',
-            //url: backEndUrl + '/api/aplikacije/delete/',
             url: backEndUrl + apiUrl,
             data: dto
-
-        }).success(function (data) {
-            window.localStorage.setItem('status', status);
-
-        }).error(function (response) {
-            writeError(response);
-
-        }).finally(function () {
-            window.onload = grayOut(false);
-        });
+        })
+            .success(function (data) {
+                deferred.resolve(data);
+            }).error(function (response) {
+                writeError(response);
+                deferred.reject(response);
+            }).finally(function () {
+                window.onload = grayOut(false);
+            });
 
     };
 
@@ -167,7 +166,7 @@ app.factory('apiService', function ($q, $http) {
             url: backEndUrl + '/api/sifranti/' + id
         }).success(function (data) {
             deferred.resolve(data);
-            }).error(function (response) {
+        }).error(function (response) {
             writeError(response);
             deferred.reject(response);
         }).finally(function () {

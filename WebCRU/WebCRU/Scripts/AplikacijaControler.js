@@ -46,12 +46,7 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
         });
         //we refresh data after modal close 
         modalInstance.result.then(function () {
-            //don't use $scope.getData ASYNC !!!!!
-            apiService.getAplikacije($scope.searchString, $scope.pageIndex, $scope.pageSizeSelected, $scope.sortKey, $scope.asc)
-                .then(function (data) {
-                    $scope.data = data.DataList;
-                    $scope.totalCount = data.RowsCount;
-                }, function (response) {});
+            window.onload = grayOut(false);
         }, function () {});
 
     };
@@ -70,15 +65,19 @@ app.controller('aplEditCtrl', function ($scope, $modalInstance, dto, apiService)
     //save
     $scope.save = function () {
         url = '/api/aplikacije/save/';
-        apiService.saveData(url, $scope.editDto);
-        $modalInstance.close();
+        apiService.saveData(url, $scope.editDto).then(function (response) { 
+            $scope.getData();
+            $modalInstance.close();
+;        });
     };
 
     //delete
     $scope.delete = function () {
         url = '/api/aplikacije/delete/';
-        apiService.deleteRecord(url, $scope.editDto);
-        $modalInstance.close();
+        apiService.deleteRecord(url, $scope.editDto).then(function (response) {
+            $scope.getData();
+            $modalInstance.close();
+        });
     };
 
     //cancel
