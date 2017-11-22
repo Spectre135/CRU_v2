@@ -135,6 +135,7 @@ input {
 }
     .buttonNkbm:hover {
         background-color: #2274bc;
+        color:#fff;
     }
 
 .right{
@@ -365,6 +366,7 @@ input, select {
     background-color: white;
     background-image: none;
     box-shadow:none;
+    color: white;
 }
 
 .form-group {

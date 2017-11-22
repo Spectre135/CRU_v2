@@ -2,7 +2,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <span class="pull-right">
-            <button type="button" class="buttonNkbm alertDelete" >
+            <button type="button" class="buttonNkbm alertDelete">
                 <span class="glyphicon glyphicon-trash"></span> Delete
             </button>
 
@@ -11,16 +11,20 @@
 
     <div class="modal-body">
 
-        <div class="form-group">
-            <label class="red" for="name">Ime</label>
-            <input name="ime" type="text" id="ime" class="form-control" ng-model="editDto.Ime" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="red" for="firstname">Naziv</label>
+                    <input name="naziv" type="text" id="naziv" class="form-control" maxlength="8" ng-model="editDto.Naziv" />
+                </div>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="red" for="firstname">Naziv</label>
-                    <input name="naziv" type="text" id="naziv" class="form-control" ng-model="editDto.Naziv" />
+                    <label class="red" for="name">Ime</label>
+                    <input name="ime" type="text" id="ime" class="form-control" ng-model="editDto.Ime" />
                 </div>
             </div>
 
@@ -68,20 +72,22 @@
 
     $(document).on("click", ".alertDelete", function (e) {
         bootbox.confirm({
-            message: "Ali resnièno želite izbrisati zapis?",
-            size: 'small',
+            title: "Bri&#x161;em zapis?",
+            message: "Potrdi brisanje aplikacije !",
             buttons: {
-                confirm: {
-                    label: 'Yes',
+                cancel: {
+                    label: '<span class="glyphicon glyphicon-remove"></span> Cancel',
                     className: 'buttonNkbm'
                 },
-                cancel: {
-                    label: 'No',
+                confirm: {
+                    label: '<span class="glyphicon glyphicon-ok"></span> OK',
                     className: 'buttonNkbm'
                 }
             },
             callback: function (result) {
-                console.log('This was logged in the callback: ' + result);
+                if (result) {
+                    angular.element($("#aplikacijaController")).scope().delete();
+                };
             }
         });
     });
