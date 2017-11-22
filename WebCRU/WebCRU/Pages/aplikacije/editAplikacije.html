@@ -1,5 +1,5 @@
 
-<div class="modal-content">
+<div class="modal-content" id="AplikacijeModal">
     <div class="modal-header">
         <span class="pull-right">
             <button type="button" class="buttonNkbm alertDelete">
@@ -86,7 +86,7 @@
             },
             callback: function (result) {
                 if (result) {
-                    angular.element($("#aplikacijaController")).scope().delete();
+                    angular.element('#AplikacijeModal').scope().delete();
                 };
             }
         });
