@@ -30,12 +30,14 @@ namespace si.hit.WebCRU.Controllers
         {
             CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            Entities db = new Entities();
 
             try
             {
-                service.SaveAplikacija(aplikacija);
+                service.Save(aplikacija, db.Aplikacijas, aplikacija.AplikacijaKLJ);
 
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError,ex);
             }
@@ -50,10 +52,11 @@ namespace si.hit.WebCRU.Controllers
         {
             CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            Entities db = new Entities();
 
             try
             {
-                service.DeleteAplikacija(aplikacija);
+                service.Delete(aplikacija, db.Aplikacijas);
 
             }
             catch (Exception ex)
@@ -84,10 +87,11 @@ namespace si.hit.WebCRU.Controllers
         {
             CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            Entities db = new Entities();
 
             try
             {
-                service.SavePravice(dVlogePravice);
+                service.Save(CRUDService.ParsePravice(dVlogePravice), db.Pravices, dVlogePravice.PravicaKLJ);
             }
             catch (Exception ex)
             {
@@ -104,10 +108,11 @@ namespace si.hit.WebCRU.Controllers
         {
             CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            Entities db = new Entities();
 
             try
             {
-                service.DeletePravice(dVlogePravice);
+                service.Delete(CRUDService.ParsePravice(dVlogePravice), db.Pravices);
             }
             catch (Exception ex)
             {
@@ -136,10 +141,11 @@ namespace si.hit.WebCRU.Controllers
         {
             CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            Entities db = new Entities();
 
             try
             {
-                service.SaveUporabniki(uporabniki);
+                service.Save(uporabniki, db.Uporabnikis, uporabniki.UporabnikKLJ);
             }
             catch (Exception ex)
             {
@@ -156,10 +162,11 @@ namespace si.hit.WebCRU.Controllers
         {
             CRUDService service = new CRUDService();
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            Entities db = new Entities();
 
             try
             {
-                service.DeleteUporabniki(uporabniki);
+                service.Delete(uporabniki, db.Uporabnikis);
             }
             catch (Exception ex)
             {

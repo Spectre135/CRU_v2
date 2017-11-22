@@ -1,9 +1,11 @@
+
 <div class="modal-content">
     <div class="modal-header">
         <span class="pull-right">
-            <button type="button" class="buttonNkbm" ng-click="delete()">
+            <button type="button" class="buttonNkbm alertDelete" >
                 <span class="glyphicon glyphicon-trash"></span> Delete
             </button>
+
         </span>
     </div>
 
@@ -57,9 +59,33 @@
         </div>
 
     </div>
-    <script language="javascript" type="text/javascript">
-        //formatLocale();
-        //jQuery('.selectpicker').selectpicker();
-        window.onload = grayOut(false);
-    </script>
+</div>
+
+<script language="javascript" type="text/javascript">
+    //formatLocale();
+    //jQuery('.selectpicker').selectpicker();
+    window.onload = grayOut(false);
+
+    $(document).on("click", ".alertDelete", function (e) {
+        bootbox.confirm({
+            message: "Ali resnièno želite izbrisati zapis?",
+            size: 'small',
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'buttonNkbm'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'buttonNkbm'
+                }
+            },
+            callback: function (result) {
+                console.log('This was logged in the callback: ' + result);
+            }
+        });
+    });
+</script>
+
+
 

@@ -78,15 +78,19 @@ app.controller('praviceEditCtrl', function ($scope, $modalInstance, dto, apiServ
     //save
     $scope.save = function () {
         url = '/api/pravice/save/';
-        apiService.saveData(url, $scope.editDto);
-        $modalInstance.close();
+        apiService.postData(url, $scope.editDto).then(function (response) {
+            $scope.getData();
+            $modalInstance.close();
+        });
     };
 
     //delete
     $scope.delete = function () {
         url = '/api/pravice/delete/';
-        apiService.deleteRecord(url, $scope.editDto);
-        $modalInstance.close();
+        apiService.postData(url, $scope.editDto).then(function (response) {
+            $scope.getData();
+            $modalInstance.close();
+        });
     };
 
     //cancel

@@ -114,8 +114,8 @@ app.factory('apiService', function ($q, $http) {
         return deferred.promise;
     };
 
-    //Save data
-    service.saveData = function (apiUrl, dto) {
+    //POST data
+    service.postData = function (apiUrl, dto) {
         var deferred = $q.defer();
         window.onload = grayOut(true);
 
@@ -134,27 +134,6 @@ app.factory('apiService', function ($q, $http) {
             });
 
         return deferred.promise;
-    };
-
-    //Delete record
-    service.deleteRecord = function (apiUrl, dto) {
-        var deferred = $q.defer();
-        window.onload = grayOut(true);
-
-        $http({
-            method: 'POST',
-            url: backEndUrl + apiUrl,
-            data: dto
-        })
-            .success(function (data) {
-                deferred.resolve(data);
-            }).error(function (response) {
-                writeError(response);
-                deferred.reject(response);
-            }).finally(function () {
-                window.onload = grayOut(false);
-            });
-
     };
 
     //Šifranti

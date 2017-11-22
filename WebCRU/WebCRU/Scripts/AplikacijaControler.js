@@ -65,7 +65,7 @@ app.controller('aplEditCtrl', function ($scope, $modalInstance, dto, apiService)
     //save
     $scope.save = function () {
         url = '/api/aplikacije/save/';
-        apiService.saveData(url, $scope.editDto).then(function (response) { 
+        apiService.postData(url, $scope.editDto).then(function (response) { 
             $scope.getData();
             $modalInstance.close();
 ;        });
@@ -74,7 +74,7 @@ app.controller('aplEditCtrl', function ($scope, $modalInstance, dto, apiService)
     //delete
     $scope.delete = function () {
         url = '/api/aplikacije/delete/';
-        apiService.deleteRecord(url, $scope.editDto).then(function (response) {
+        apiService.postData(url, $scope.editDto).then(function (response) {
             $scope.getData();
             $modalInstance.close();
         });
