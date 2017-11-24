@@ -59,11 +59,15 @@ namespace WcfAuth.Auth
         {
             bool IsValid = false;
 
-            AuthSession _AuthSession = DAOService.GetSession(sessionToken);
+            AuthSession authSession = DAOService.GetSession(sessionToken);
 
-            if (_AuthSession.Expired < DateTime.Now)
+            if (authSession.Expired < DateTime.Now)
             {
                 IsValid = true;
+
+                //we extend session for another 30min
+                authSession.Expired = DateTime.Now.AddSeconds(1800);
+                DAOService.ExtendSession(authSession);
             }
 
 

@@ -35,5 +35,19 @@ namespace WebCRU.Controllers
 
             return response;
         }
+
+        [HttpGet]
+        [Route("api/auth/validatetoken/")]
+        public HttpResponseMessage Boolean(string sessionToken)
+        {
+
+            AuthServiceClient authService = new AuthServiceClient();
+
+            DSessionValid  sessionValid = authService.IsSessionValid(sessionToken);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sessionValid);
+
+            return response;
+        }
     }
 }

@@ -17,6 +17,9 @@ namespace WcfAuth
         [OperationContract]
         DAplRoles GetApplicationRoles(string userName,string upl);
 
+        [OperationContract]
+        DSessionValid IsSessionValid(string sessionToken);
+
     }
 
     [DataContract]
@@ -33,5 +36,12 @@ namespace WcfAuth
     {
         [DataMember]
         public List<DPravice> Pravice { get; set; }
+    }
+
+    [DataContract]
+    public class DSessionValid
+    {
+        [DataMember]
+        public bool SessionValid { get; set; }
     }
 }

@@ -56,6 +56,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.2\lib\net46\System.Data.SQLite.dll</HintPath>
@@ -107,12 +110,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DAuth.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DAplRoles.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DAuth.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AuthService\ApiCRU.AuthService.DSessionValid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AuthService\AuthService.wsdl" />
+    <None Include="Connected Services\AuthService\item.disco" />
     <None Include="Connected Services\AuthService\configuration91.svcinfo" />
     <None Include="Connected Services\AuthService\configuration.svcinfo" />
     <None Include="Connected Services\AuthService\Reference.svcmap">
@@ -204,17 +212,22 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <Content Include="DataBase\cru.db" />
-    <None Include="Connected Services\AuthService\service.wsdl" />
-    <None Include="Connected Services\AuthService\service.xsd">
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Connected Services\AuthService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AuthService\service1.xsd">
+    <None Include="Connected Services\AuthService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AuthService\WcfAuth.xsd">
+    <None Include="Connected Services\AuthService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AuthService\WCFAuthConsole.DTO.xsd">
+    <None Include="Connected Services\AuthService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
