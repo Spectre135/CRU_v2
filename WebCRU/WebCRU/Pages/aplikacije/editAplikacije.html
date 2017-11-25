@@ -2,10 +2,9 @@
 <div class="modal-content" id="AplikacijeModal">
     <div class="modal-header">
         <span class="pull-right">
-            <button type="button" class="buttonNkbm alertDelete">
+            <button class="buttonNkbm" ng-message="Bri&scaron;em zapis?" ng-confirm-click="delete()" item="item">
                 <span class="glyphicon glyphicon-trash"></span> Delete
             </button>
-
         </span>
     </div>
 
@@ -63,35 +62,11 @@
         </div>
 
     </div>
+
 </div>
 
 <script language="javascript" type="text/javascript">
     //formatLocale();
     //jQuery('.selectpicker').selectpicker();
     window.onload = grayOut(false);
-
-    $(document).on("click", ".alertDelete", function (e) {
-        bootbox.confirm({
-            title: "Bri&#x161;em zapis?",
-            message: "Potrdi brisanje aplikacije !",
-            buttons: {
-                cancel: {
-                    label: '<span class="glyphicon glyphicon-remove"></span> Cancel',
-                    className: 'buttonNkbm'
-                },
-                confirm: {
-                    label: '<span class="glyphicon glyphicon-ok"></span> OK',
-                    className: 'buttonNkbm'
-                }
-            },
-            callback: function (result) {
-                if (result) {
-                    angular.element('#AplikacijeModal').scope().delete();
-                };
-            }
-        });
-    });
 </script>
-
-
-

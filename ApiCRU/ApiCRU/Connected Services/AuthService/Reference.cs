@@ -180,6 +180,51 @@ namespace ApiCRU.AuthService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DSessionValid", Namespace="http://schemas.datacontract.org/2004/07/WcfAuth")]
+    [System.SerializableAttribute()]
+    public partial class DSessionValid : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SessionValidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool SessionValid {
+            get {
+                return this.SessionValidField;
+            }
+            set {
+                if ((this.SessionValidField.Equals(value) != true)) {
+                    this.SessionValidField = value;
+                    this.RaisePropertyChanged("SessionValid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AuthService.IAuthService")]
     public interface IAuthService {
@@ -195,6 +240,12 @@ namespace ApiCRU.AuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetApplicationRoles", ReplyAction="http://tempuri.org/IAuthService/GetApplicationRolesResponse")]
         System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userName, string upl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/IsSessionValid", ReplyAction="http://tempuri.org/IAuthService/IsSessionValidResponse")]
+        ApiCRU.AuthService.DSessionValid IsSessionValid(string sessionToken);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/IsSessionValid", ReplyAction="http://tempuri.org/IAuthService/IsSessionValidResponse")]
+        System.Threading.Tasks.Task<ApiCRU.AuthService.DSessionValid> IsSessionValidAsync(string sessionToken);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -238,6 +289,14 @@ namespace ApiCRU.AuthService {
         
         public System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userName, string upl) {
             return base.Channel.GetApplicationRolesAsync(userName, upl);
+        }
+        
+        public ApiCRU.AuthService.DSessionValid IsSessionValid(string sessionToken) {
+            return base.Channel.IsSessionValid(sessionToken);
+        }
+        
+        public System.Threading.Tasks.Task<ApiCRU.AuthService.DSessionValid> IsSessionValidAsync(string sessionToken) {
+            return base.Channel.IsSessionValidAsync(sessionToken);
         }
     }
 }

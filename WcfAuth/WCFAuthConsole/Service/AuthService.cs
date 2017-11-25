@@ -15,5 +15,14 @@ namespace WcfAuth
             return AuthWorker.CreateSession(userName);
         }
 
+        public DSessionValid IsSessionValid(string sessionToken)
+        {
+            DSessionValid sessionValid = new DSessionValid
+            {
+                SessionValid = AuthWorker.IsTokenValid(sessionToken)
+            };
+
+            return sessionValid;
+        }
     }
 }

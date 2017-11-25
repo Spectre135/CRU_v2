@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f6821228-6270-44db-b7de-f0832fa96581" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e9d84f29-7871-4d24-9804-197629e4bfa5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:4001/WcfAuth/Service/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:4001//WcfAuth/Service/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="fcfe2953-1041-48b9-87c7-97501a1ba527" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="76761722-872c-4f79-b49a-c2d814540253" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="5ab1b264-f750-4fc2-832e-4a432a2a29a3" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
-    <MetadataFile FileName="WcfAuth.xsd" MetadataType="Schema" ID="bfcda5b7-0781-47a1-b921-0e8083b9d2d5" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
-    <MetadataFile FileName="WCFAuthConsole.DTO.xsd" MetadataType="Schema" ID="90abeb63-301f-4a03-a890-94bcb8d65658" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/mex" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="7ed1c00f-5912-45ab-941e-b605835d3b52" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="da9d814f-0c1c-4ad1-bbf4-f168e0d8fd5e" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d53c47ef-0cfb-468e-a283-7f207e54ae97" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/?xsd=xsd0" />
+    <MetadataFile FileName="AuthService.wsdl" MetadataType="Wsdl" ID="19c7acf7-460f-4054-8b07-9d42a57bf09c" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="db348e3c-9105-49d4-9e94-83064f750d8a" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/?xsd=xsd3" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="ac0a0015-bc4d-489f-9504-71eceaf207fc" SourceId="1" SourceUrl="http://localhost:4001/WcfAuth/Service/?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

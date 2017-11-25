@@ -411,7 +411,9 @@ input, select {
 .ui-select-bootstrap > .ui-select-choices {
     font: 12px 'Roboto',Verdana, Arial, sans-serif;
 }
-
+.app-modal-window .modal-dialog {
+    width: 350px;
+}
 .logo {
     background: url("/Images/logo.png") no-repeat;
     height: 40px;

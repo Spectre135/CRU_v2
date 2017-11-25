@@ -81,5 +81,28 @@ namespace WcfAuth.DAO
 
             return response;
         }
+
+        public static void ExtendSession(AuthSession authSession)
+        {
+            using (Entities db = new Entities())
+            {
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        db.AuthSession.Attach(authSession);
+
+                        db.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw ex.InnerException;
+                    }
+                }
+
+            }
+        }
     }
 }

@@ -16,11 +16,18 @@ namespace si.hit.WebCRU.Controllers
         public HttpResponseMessage GetAplikacije(string uporabnikID)
         {
             CRUDService service = new CRUDService();
-            List<Aplikacija> dto = service.GetAplikacije(uporabnikID);
+            HttpResponseMessage response;
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            try
+            {
+                List<Aplikacija> dto = service.GetAplikacije(uporabnikID);
+                response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            }
+            catch (ApplicationException ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
 
-            
             return response;
         }
 
@@ -37,7 +44,7 @@ namespace si.hit.WebCRU.Controllers
                 service.Save(aplikacija, db.Aplikacijas, aplikacija.AplikacijaKLJ);
 
             }
-            catch(Exception ex)
+            catch(ApplicationException ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError,ex);
             }
@@ -59,7 +66,7 @@ namespace si.hit.WebCRU.Controllers
                 service.Delete(aplikacija, db.Aplikacijas);
 
             }
-            catch (Exception ex)
+            catch (ApplicationExceptionex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -73,9 +80,17 @@ namespace si.hit.WebCRU.Controllers
         public HttpResponseMessage GetPravice(int aplikacijaKLJ, int vlogaKLJ)
         {
             CRUDService service = new CRUDService();
-            List<DVlogePravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
+            HttpResponseMessage response;
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            try
+            {
+                List<DVlogePravice> dto = service.GetPravice(aplikacijaKLJ, vlogaKLJ);
+                response = Request.CreateResponse(HttpStatusCode.OK, dto);
+
+            }catch (ApplicationException ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
 
 
             return response;
@@ -93,7 +108,7 @@ namespace si.hit.WebCRU.Controllers
             {
                 service.Save(CRUDService.ParsePravice(dVlogePravice), db.Pravices, dVlogePravice.PravicaKLJ);
             }
-            catch (Exception ex)
+            catch (ApplicationException ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -114,7 +129,7 @@ namespace si.hit.WebCRU.Controllers
             {
                 service.Delete(CRUDService.ParsePravice(dVlogePravice), db.Pravices);
             }
-            catch (Exception ex)
+            catch (ApplicationException ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -127,9 +142,17 @@ namespace si.hit.WebCRU.Controllers
         public HttpResponseMessage Get()
         {
             CRUDService service = new CRUDService();
-            List<Uporabniki> dto = service.GetUporabniki();
+            HttpResponseMessage response;
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            try
+            {
+                List<Uporabniki> dto = service.GetUporabniki();
+                response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            }
+            catch (ApplicationException ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
 
 
             return response;
@@ -147,7 +170,7 @@ namespace si.hit.WebCRU.Controllers
             {
                 service.Save(uporabniki, db.Uporabnikis, uporabniki.UporabnikKLJ);
             }
-            catch (Exception ex)
+            catch (ApplicationException ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -168,7 +191,7 @@ namespace si.hit.WebCRU.Controllers
             {
                 service.Delete(uporabniki, db.Uporabnikis);
             }
-            catch (Exception ex)
+            catch (ApplicationException ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -183,9 +206,17 @@ namespace si.hit.WebCRU.Controllers
         {
             DResponse dto = new DResponse();
             CRUDService service = new CRUDService();
-            dto = service.GetDResponse(searchString, pageIndex, pageSizeSelected, sortKey, asc);
+            HttpResponseMessage response;
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            try
+            {
+                dto = service.GetDResponse(searchString, pageIndex, pageSizeSelected, sortKey, asc);
+                response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            }
+            catch (ApplicationException ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
 
             return response;
         }
@@ -193,10 +224,18 @@ namespace si.hit.WebCRU.Controllers
         [Route("api/sifranti/{id}")]
         public HttpResponseMessage GetSifranti(string id)
         {
-            CRUDService service = new CRUDService();
-            List<DSifranti> dto = service.GetDSifranti(id);
+            CRUDService service = new CRUDService(); 
+            HttpResponseMessage response;
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            try
+            {
+                List<DSifranti> dto = service.GetDSifranti(id);
+                response = Request.CreateResponse(HttpStatusCode.OK, dto);
+            }
+            catch (ApplicationException ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+            }
 
 
             return response;

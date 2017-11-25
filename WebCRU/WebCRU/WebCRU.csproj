@@ -100,7 +100,7 @@
     <Content Include="Pages\test\test.html" />
     <Content Include="Pages\uporabniki\editUporabniki.html" />
     <Content Include="Pages\uporabniki\uporabniki.html" />
-    <Content Include="Scripts\bootbox\bootbox.min.js" />
+    <Content Include="Scripts\ConfirmDirective.js" />
     <Content Include="Scripts\UporabnikiControler.js" />
     <Content Include="Scripts\AplikacijaControler.js" />
     <Content Include="Scripts\bootstrap\bootstrap-toggle\bootstrap-toggle-bootstrap-toggle.min.js" />
