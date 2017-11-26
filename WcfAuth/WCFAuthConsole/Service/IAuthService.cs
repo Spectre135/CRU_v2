@@ -12,10 +12,10 @@ namespace WcfAuth
     {
 
         [OperationContract]
-        DAuth GetSession(string userName);
+        DAuth GetSession(string userNameOrRIFID);
 
         [OperationContract]
-        DAplRoles GetApplicationRoles(string userName,string upl);
+        DAplRoles GetApplicationRoles(string userNameOrRIFID, string upl);
 
         [OperationContract]
         DSessionValid IsSessionValid(string sessionToken);

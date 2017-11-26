@@ -14,8 +14,12 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
     $scope.getDataAplikacijaKLJ = function (id) {
         $scope.aplikacijaKLJ = id;
         $scope.new = 'false';
-
-        apiService.getVlogePravice($scope.aplikacijaKLJ, $scope.vlogaKLJ)
+        var url = '/api/pravice/';
+        var params = {
+            "aplikacijaKLJ": $scope.aplikacijaKLJ,
+            "vlogaKLJ": $scope.vlogaKLJ
+        };
+        apiService.getData(url, params)
             .then(function (data) {
                 $scope.data = data;
             }, function (response) {
@@ -27,8 +31,12 @@ app.controller("praviceController", function ($scope, $modal, apiService) {
     $scope.getDataVlogaKLJ = function (id) {
         $scope.vlogaKLJ = id;
         $scope.new = 'false';
-
-        apiService.getVlogePravice($scope.aplikacijaKLJ, $scope.vlogaKLJ)
+        var url = '/api/pravice/';
+        var params = {
+            "aplikacijaKLJ": $scope.aplikacijaKLJ,
+            "vlogaKLJ": $scope.vlogaKLJ
+        };
+        apiService.getData(url,params)
             .then(function (data) {
                 $scope.data = data;
             }, function (response) {

@@ -24,81 +24,16 @@ app.factory('apiService', function ($q, $http) {
     var backEndUrl = 'http://localhost:31207';
     var service = {};
 
-    function nullToUndefined(input) {
-        if (input === null || input === '') {
-            return 'undefined';
-        }
-
-        return input;
-    };
-
-    //Get Data generic
-    service.getData = function (url) {
+    //GET Data 
+    service.getData = function (apiUrl,params) {
         var deferred = $q.defer();
         //posivim ekran
         window.onload = grayOut(true);
 
         $http({
             method: 'GET',
-            url: backEndUrl + url
-
-        }).success(function (data) {
-            deferred.resolve(data);
-
-        }).error(function (response) {
-            writeError(response);
-            deferred.reject(response);
-
-        }).finally(function () {
-            window.onload = grayOut(false);
-        });
-
-        return deferred.promise;
-    };
-
-    //Get aplikacije
-    service.getAplikacije = function (searchString, pageIndex, pageSizeSelected, sortKey, asc) {
-        var deferred = $q.defer();
-        //posivim ekran
-        window.onload = grayOut(true);
-
-        $http({
-            method: 'GET',
-            url: backEndUrl + '/api/aplikacije2/' + nullToUndefined(searchString),
-            params: {
-                pageIndex: pageIndex,
-                pageSizeSelected: pageSizeSelected.selected,
-                sortKey: sortKey,
-                asc: asc
-            }
-
-        }).success(function (data) {
-            deferred.resolve(data);
-
-        }).error(function (response) {
-            writeError(response);
-            deferred.reject(response);
-
-        }).finally(function () {
-            window.onload = grayOut(false);
-        });
-
-        return deferred.promise;
-    };
-
-    //Get VlogePravice
-    service.getVlogePravice = function (aplikacijaKLJ, vlogaKLJ) {
-        var deferred = $q.defer();
-        //posivim ekran
-        window.onload = grayOut(true);
-
-        $http({
-            method: 'GET',
-            url: backEndUrl + '/api/pravice/',
-            params: {
-                aplikacijaKLJ: aplikacijaKLJ,
-                vlogaKLJ: vlogaKLJ
-            }
+            url: backEndUrl + apiUrl,
+            params
 
         }).success(function (data) {
             deferred.resolve(data);
@@ -132,25 +67,6 @@ app.factory('apiService', function ($q, $http) {
             }).finally(function () {
                 window.onload = grayOut(false);
             });
-
-        return deferred.promise;
-    };
-
-    //Šifranti
-    service.getSifranti = function (id) {
-        var deferred = $q.defer();
-        window.onload = grayOut(true);
-        $http({
-            method: 'GET',
-            url: backEndUrl + '/api/sifranti/' + id
-        }).success(function (data) {
-            deferred.resolve(data);
-        }).error(function (response) {
-            writeError(response);
-            deferred.reject(response);
-        }).finally(function () {
-            window.onload = grayOut(false);
-        });
 
         return deferred.promise;
     };

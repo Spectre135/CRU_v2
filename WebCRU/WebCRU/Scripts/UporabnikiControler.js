@@ -10,7 +10,6 @@ app.controller("uporabnikiController", function ($scope, $modal, apiService) {
     window.onload = grayOut(false);
     var url = '/api/uporabniki/';
 
-
     //getUporabnikiData
     $scope.getData = function () {
         apiService.getData(url)

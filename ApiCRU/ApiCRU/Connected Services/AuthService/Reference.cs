@@ -230,16 +230,16 @@ namespace ApiCRU.AuthService {
     public interface IAuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetSession", ReplyAction="http://tempuri.org/IAuthService/GetSessionResponse")]
-        ApiCRU.AuthService.DAuth GetSession(string userName);
+        ApiCRU.AuthService.DAuth GetSession(string userNameOrRIFID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetSession", ReplyAction="http://tempuri.org/IAuthService/GetSessionResponse")]
-        System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string userName);
+        System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string userNameOrRIFID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetApplicationRoles", ReplyAction="http://tempuri.org/IAuthService/GetApplicationRolesResponse")]
-        ApiCRU.AuthService.DAplRoles GetApplicationRoles(string userName, string upl);
+        ApiCRU.AuthService.DAplRoles GetApplicationRoles(string userNameOrRIFID, string upl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetApplicationRoles", ReplyAction="http://tempuri.org/IAuthService/GetApplicationRolesResponse")]
-        System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userName, string upl);
+        System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userNameOrRIFID, string upl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/IsSessionValid", ReplyAction="http://tempuri.org/IAuthService/IsSessionValidResponse")]
         ApiCRU.AuthService.DSessionValid IsSessionValid(string sessionToken);
@@ -275,20 +275,20 @@ namespace ApiCRU.AuthService {
                 base(binding, remoteAddress) {
         }
         
-        public ApiCRU.AuthService.DAuth GetSession(string userName) {
-            return base.Channel.GetSession(userName);
+        public ApiCRU.AuthService.DAuth GetSession(string userNameOrRIFID) {
+            return base.Channel.GetSession(userNameOrRIFID);
         }
         
-        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string userName) {
-            return base.Channel.GetSessionAsync(userName);
+        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAuth> GetSessionAsync(string userNameOrRIFID) {
+            return base.Channel.GetSessionAsync(userNameOrRIFID);
         }
         
-        public ApiCRU.AuthService.DAplRoles GetApplicationRoles(string userName, string upl) {
-            return base.Channel.GetApplicationRoles(userName, upl);
+        public ApiCRU.AuthService.DAplRoles GetApplicationRoles(string userNameOrRIFID, string upl) {
+            return base.Channel.GetApplicationRoles(userNameOrRIFID, upl);
         }
         
-        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userName, string upl) {
-            return base.Channel.GetApplicationRolesAsync(userName, upl);
+        public System.Threading.Tasks.Task<ApiCRU.AuthService.DAplRoles> GetApplicationRolesAsync(string userNameOrRIFID, string upl) {
+            return base.Channel.GetApplicationRolesAsync(userNameOrRIFID, upl);
         }
         
         public ApiCRU.AuthService.DSessionValid IsSessionValid(string sessionToken) {

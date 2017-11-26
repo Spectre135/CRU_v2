@@ -44,30 +44,30 @@ namespace ApiCRU.Service
 
         public List<DVlogePravice> GetPravice(int aplikacijaKLJ, int vlogaKLJ)
         {
-            IQueryable<DVlogePravice> vloge;
-
+            List<DVlogePravice> listVloge = new List<DVlogePravice>();
             try
             {
 
                 using (Entities db = new Entities())
                 {
-                    vloge = (from p in db.Pravices
-                             join vp in db.VlogePravices on p.PravicaKLJ equals vp.PravicaKLJ
-                             join v in db.Vloges on vp.VlogaKLJ equals v.VlogaKLJ
-                             join a in db.Aplikacijas on p.AplikacijaKLJ equals a.AplikacijaKLJ
-                             where p.AplikacijaKLJ == (aplikacijaKLJ == 0 ? p.AplikacijaKLJ : aplikacijaKLJ) &&
-                                   v.VlogaKLJ == (vlogaKLJ == 0 ? v.VlogaKLJ : vlogaKLJ)
-                             select new DVlogePravice()
-                             {
-                                 AplikacijaKLJ = a.AplikacijaKLJ,
-                                 AplikacijaNaziv = a.Opis,
-                                 PravicaKLJ = p.PravicaKLJ,
-                                 PravicaNaziv = p.Naziv,
-                                 PravicaOpis = p.Opis,
-                                 VlogaKLJ = v.VlogaKLJ,
-                                 VlogaNaziv = v.Naziv
-                             });
+                    IQueryable<DVlogePravice> vloge = (from p in db.Pravices
+                                                       join vp in db.VlogePravices on p.PravicaKLJ equals vp.PravicaKLJ
+                                                       join v in db.Vloges on vp.VlogaKLJ equals v.VlogaKLJ
+                                                       join a in db.Aplikacijas on p.AplikacijaKLJ equals a.AplikacijaKLJ
+                                                       where p.AplikacijaKLJ == (aplikacijaKLJ == 0 ? p.AplikacijaKLJ : aplikacijaKLJ) &&
+                                                             v.VlogaKLJ == (vlogaKLJ == 0 ? v.VlogaKLJ : vlogaKLJ)
+                                                       select new DVlogePravice()
+                                                       {
+                                                           AplikacijaKLJ = a.AplikacijaKLJ,
+                                                           AplikacijaNaziv = a.Opis,
+                                                           PravicaKLJ = p.PravicaKLJ,
+                                                           PravicaNaziv = p.Naziv,
+                                                           PravicaOpis = p.Opis,
+                                                           VlogaKLJ = v.VlogaKLJ,
+                                                           VlogaNaziv = v.Naziv
+                                                       });
 
+                    listVloge = vloge.ToList();
 
                 }
             }
@@ -77,7 +77,7 @@ namespace ApiCRU.Service
                 throw new ApplicationException("Napaka pri branju Pravic /" + ex);
             }
 
-            return vloge.ToList();
+            return listVloge;
 
         }
 

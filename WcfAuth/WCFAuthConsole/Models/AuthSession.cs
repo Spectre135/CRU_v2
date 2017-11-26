@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WcfAuth.Models
+namespace WCFAuthConsole.Models
 {
     using System;
     using System.Collections.Generic;

@@ -66,7 +66,7 @@ namespace si.hit.WebCRU.Controllers
                 service.Delete(aplikacija, db.Aplikacijas);
 
             }
-            catch (ApplicationExceptionex)
+            catch (ApplicationException ex)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -202,7 +202,7 @@ namespace si.hit.WebCRU.Controllers
 
         /*Drugi način branja baze*/
         [Route("api/aplikacije2/{searchString}")]
-        public HttpResponseMessage Get(string searchString, int pageIndex, int pageSizeSelected, string sortKey, string asc)
+        public HttpResponseMessage Get(string searchString, string asc, int pageIndex, int pageSizeSelected, string sortKey)
         {
             DResponse dto = new DResponse();
             CRUDService service = new CRUDService();

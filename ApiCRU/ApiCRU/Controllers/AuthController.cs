@@ -21,7 +21,6 @@ namespace WebCRU.Controllers
             return response;
         }
 
-
         [HttpGet]
         [Route("api/auth/roles/")]
         public HttpResponseMessage Auth(string uporabnikID,string apl)

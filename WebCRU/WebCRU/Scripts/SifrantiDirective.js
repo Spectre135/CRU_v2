@@ -13,11 +13,14 @@ app.directive('sifranti', function ($compile, apiService) {
         $scope.aplikacijeListRead = 'false'; // use to read once from database
         $scope.aplikacijeList; //list
         $scope.aplikacija = [{ id: '*' }];  //model
+        var url = '/api/sifranti/';
+        var APL = url + 'APL'; //aplikacije
+        var VLOGE = url + 'VLOGE'; //aplikacije
 
         $scope.getAplikacijeList = function () {
             if ($scope.aplikacijeListRead === 'false') {
                 $scope.aplikacijeList = [{ Naziv: 'Loading...' }];
-                apiService.getSifranti("APL")
+                apiService.getData(APL)
                     .then(function (data) {
                         $scope.aplikacijeList = data;
                         $scope.aplikacijeListRead = 'true';
@@ -35,7 +38,7 @@ app.directive('sifranti', function ($compile, apiService) {
         $scope.getVlogeList = function () {
             if ($scope.vlogeListRead === 'false') {
                 $scope.vlogeList = [{ Naziv: 'Loading...' }];
-                apiService.getSifranti("VLOGE")
+                apiService.getData(VLOGE)
                     .then(function (data) {
                         $scope.vlogeList = data;
                         $scope.vlogeListRead = 'true';

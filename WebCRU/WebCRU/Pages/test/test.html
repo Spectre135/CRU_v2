@@ -1,9 +1,11 @@
 ﻿
 
 
-
+<input type="text" class="form-control" ng-model="user" size="20" />
+<br/>
 <button type="button" class="buttonNkbm" data-dismiss="modal" ng-click="getAuthToken()"> Get auth token</button>
 <br />
+
 <label for="name">Žeton: </label>
 <label for="token">{{token}}</label>
 <br />
@@ -15,4 +17,13 @@
 <br />
 <label for="name">Session: </label>
 <label for="token">{{sessionToken}}</label>
+<br />
+
+
+<br />
+<input type="text"  class="form-control" ng-model="token" size="20"/>
+<button type="button" class="buttonNkbm" ng-click="getSessionValid()"> Validate session</button>
+<br />
+<label for="name">Session valid: </label>
+<label for="valid">{{isSessionValid}}</label>
 <br />

@@ -9,10 +9,24 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
     $scope.data = [];
     window.onload = grayOut(false);
 
+    function nullToUndefined(input) {
+        if (input === null || input === '') {
+            return 'undefined';
+        }
+
+        return input;
+    };
 
     //getAplikacijeData
     $scope.getData = function () {
-        apiService.getAplikacije($scope.searchString, $scope.pageIndex, $scope.pageSizeSelected, $scope.sortKey, $scope.asc)
+        var url = '/api/aplikacije2/' + nullToUndefined($scope.searchString);
+        var params = {
+            "asc": $scope.asc,
+            "pageIndex": $scope.pageIndex,
+            "pageSizeSelected": $scope.pageSizeSelected.selected,
+            "sortKey": $scope.sortKey
+        };
+        apiService.getData(url,params)
             .then(function (data) {
                     $scope.data = data.DataList;
                     $scope.totalCount = data.RowsCount;

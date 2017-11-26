@@ -1,7 +1,7 @@
 ﻿using System;
 using System.DirectoryServices.AccountManagement;
-using WcfAuth.DAO;
-using WcfAuth.Models;
+using WCFAuthConsole.DAO;
+using WCFAuthConsole.Models;
 
 namespace WcfAuth.Auth
 {
@@ -9,24 +9,39 @@ namespace WcfAuth.Auth
     {
 
         //validate user in Active Directory(AD)
-        private static bool ValidateUser(string userName)
+        private static bool ValidateUserOrRIFID(string userNameOrRIFID)
         {
             bool valid = false;
             string domain = "novakbm.nkbm.si";
 
             try
             {
-                using (var domainContext = new PrincipalContext(ContextType.Domain, domain))
+                //we try to check userName in AD
+                try
                 {
-                    using (UserPrincipal.FindByIdentity(domainContext, IdentityType.SamAccountName, userName))
+                    using (var domainContext = new PrincipalContext(ContextType.Domain, domain))
                     {
-                        valid = true;
+                        using (UserPrincipal.FindByIdentity(domainContext, IdentityType.SamAccountName, userNameOrRIFID))
+                        {
+                            return true;
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    //TODO
+                }
+
+
+                //we try to check if RFID is valid
+                #pragma warning disable CS0162 // Unreachable code detected
+                if (DAOService.GetUporabnik(userNameOrRIFID).RFID == userNameOrRIFID) return true;
+                #pragma warning restore CS0162 // Unreachable code detected
+
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                //TODO
             }
 
 
@@ -61,7 +76,7 @@ namespace WcfAuth.Auth
 
             AuthSession authSession = DAOService.GetSession(sessionToken);
 
-            if (authSession.Expired < DateTime.Now)
+            if (authSession.Expired > DateTime.Now)
             {
                 IsValid = true;
 
@@ -75,7 +90,7 @@ namespace WcfAuth.Auth
         }
 
         //Create new session and return session token
-        public static DAuth CreateSession(string userName)
+        public static DAuth CreateSession(string userNameOrRIFID)
         {
 
             DAuth auth = new DAuth()
@@ -84,9 +99,9 @@ namespace WcfAuth.Auth
                 IsUserValidInAD = false
             };
 
-            if (ValidateUser(userName))
+            if (ValidateUserOrRIFID(userNameOrRIFID))
             {
-                auth.SessionAuthToken = GetNewSessionToken(userName);
+                auth.SessionAuthToken = GetNewSessionToken(userNameOrRIFID);
                 auth.IsUserValidInAD = true;
             };
 

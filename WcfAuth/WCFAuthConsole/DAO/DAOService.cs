@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WcfAuth.Models;
 using WCFAuthConsole.DTO;
+using WCFAuthConsole.Models;
 
-namespace WcfAuth.DAO
+namespace WCFAuthConsole.DAO
 {
     class DAOService
     {
@@ -44,13 +44,13 @@ namespace WcfAuth.DAO
             return response;
         }
 
-        public static Uporabniki GetUporabnik(string userName)
+        public static Uporabniki GetUporabnik(string userNameOrRfid)
         {
             Uporabniki response = new Uporabniki();
 
             using (Entities db = new Entities())
             {
-                response = db.Uporabnikis.Where(b => b.UporabnikID == userName).FirstOrDefault();
+                response = db.Uporabnikis.Where(b => (b.UporabnikID == userNameOrRfid || b.RFID == userNameOrRfid)).FirstOrDefault();
             }
 
             return response;

@@ -5,14 +5,14 @@ namespace WcfAuth
 
     public class AuthService : IAuthService
     {
-        public DAplRoles GetApplicationRoles(string userName, string apl)
+        public DAplRoles GetApplicationRoles(string userNameOrRIFID, string apl)
         {
-            return AuthWorker.GetApplicationRoles(userName, apl);
+            return AuthWorker.GetApplicationRoles(userNameOrRIFID, apl);
         }
 
-        public DAuth GetSession(string userName)
+        public DAuth GetSession(string userNameOrRIFID)
         {
-            return AuthWorker.CreateSession(userName);
+            return AuthWorker.CreateSession(userNameOrRIFID);
         }
 
         public DSessionValid IsSessionValid(string sessionToken)
