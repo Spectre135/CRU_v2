@@ -1,0 +1,60 @@
+﻿<Window x:Class="WpfAppCRU_V2.Windows.winUporabnik"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppCRU_V2.Windows"
+        mc:Ignorable="d"
+        Title="winUporabnik" Height="400" Width="900" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Canvas>
+            <Image Source="/WpfAppCRU_V2;component/Images/icon_user_add_64.png" Height="64" Width="64" Canvas.Left="238" Canvas.Top="55" Panel.ZIndex="30"/>
+            <Label Content="VNOS NOVEGA UP0RABNIKA" Height="30" Width="276" Canvas.Left="323" Canvas.Top="72" Panel.ZIndex="20" Foreground="White" FontWeight="Bold" VerticalContentAlignment="Center"/>
+            <Rectangle Height="30" Width="400" Canvas.Left="250" Canvas.Top="72" Panel.ZIndex="10">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="{DynamicResource CRUBlue}"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Ellipse Height="100" Width="100" Canvas.Left="218" Canvas.Top="37" Panel.ZIndex="20" StrokeThickness="5" >
+                <Ellipse.Stroke>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF134187" Offset="0"/>
+                        <GradientStop Color="White" Offset="0.749"/>
+                        <GradientStop Color="#FF134187" Offset="1"/>
+                        <GradientStop Color="White" Offset="0.306"/>
+                    </LinearGradientBrush>
+                </Ellipse.Stroke>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF134187" Offset="0.963"/>
+                        <GradientStop Color="White" Offset="0.983"/>
+                        <GradientStop Color="#FFF1F2F3" Offset="0.933"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Border Height="275" Width="400" Canvas.Left="250
+                    " Canvas.Top="72" Background="#FFE0E0E0" CornerRadius="0,0,40,40">
+                <Border.Effect>
+                    <DropShadowEffect Direction="275" Opacity="0.35"/>
+                </Border.Effect>
+            </Border>
+            <!--labels-->
+            <Label Content="Uporabniško ime:" Canvas.Left="276" Canvas.Top="144" Foreground="White"  Width="105" Style="{DynamicResource mainlabel}" />
+            <Label Content="Ime:" Canvas.Left="276" Canvas.Top="175" Foreground="White" Width="105" Style="{DynamicResource mainlabel}" />
+            <Label Content="Priimek:" Canvas.Left="276" Canvas.Top="206" Foreground="White" Width="105" Style="{DynamicResource mainlabel}" />
+            <Label Content="WIN Usename:" Canvas.Left="276" Canvas.Top="237" Foreground="White" Width="105" Style="{DynamicResource mainlabel}" />
+            <Label Content="RFID:" Canvas.Left="276" Canvas.Top="268" Foreground="White" Width="105" Style="{DynamicResource mainlabel}" />
+
+            <!--textboxes-->
+            <TextBox x:Name="txtUporabnikID" Canvas.Left="386" Canvas.Top="144" Width="242" Height="26" Style="{DynamicResource maintextbox}"/>
+            <TextBox x:Name="txtIme" Canvas.Left="386" Canvas.Top="175" Width="242" Height="26" Style="{DynamicResource maintextbox}"/>
+            <TextBox x:Name="txtPriimek" Canvas.Left="386" Canvas.Top="206" Width="242" Height="26" Style="{DynamicResource maintextbox}"/>
+            <TextBox x:Name="txtWinUsername" Canvas.Left="386" Canvas.Top="237" Width="242" Height="26" Style="{DynamicResource maintextbox}"/>
+            <TextBox x:Name="txtRFID" Canvas.Left="386" Canvas.Top="268" Width="242" Height="26" Style="{DynamicResource maintextbox}"/>
+
+            <!--buttons-->
+            <Button Content="Shrani" Height="26" Width="105" Canvas.Left="386" Canvas.Top="299" Style="{DynamicResource mainbutton}" x:Name="btnShrani" Margin="0" Click="btnShrani_Click"/>
+            <Button Content="Prekliči" Height="26" Width="105" Canvas.Left="523" Canvas.Top="299" Style="{DynamicResource mainbutton}" x:Name="btnPreklici" Click="btnPreklici_Click" Margin="0"/>
+        </Canvas>
+    </Grid>
+</Window>

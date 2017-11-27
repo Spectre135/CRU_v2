@@ -10,13 +10,21 @@ app.controller("uporabnikiController", function ($scope, $modal, apiService) {
     window.onload = grayOut(false);
     var url = '/api/uporabniki/';
 
+    //check if we have some data in storage to show
+    var data = LocalStorageManager.getValue("uporabniki", data);
+    if (data != null) {
+        $scope.data = data;
+    }
+
     //getUporabnikiData
     $scope.getData = function () {
         apiService.getData(url)
             .then(function (data) {
                 $scope.data = data;
+                //save data to local storage
+                LocalStorageManager.setValue("uporabniki", data);
             }, function (response) {
-               //error is handled in Service
+                //error is handled in Service
             });
     };
 
@@ -45,8 +53,8 @@ app.controller("uporabnikiController", function ($scope, $modal, apiService) {
         });
         //we refresh data after modal close 
         modalInstance.result.then(function () {
-           window.onload = grayOut(false);
-        }, function () {});
+            window.onload = grayOut(false);
+        }, function () { });
 
     };
 

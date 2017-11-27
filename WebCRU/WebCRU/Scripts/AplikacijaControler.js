@@ -6,16 +6,24 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
 
     $scope.searchString;
     $scope.rowNumber = -1;
-    $scope.data = [];
     window.onload = grayOut(false);
+    $scope.data = [];
+
+    //check if we have some data in storage to show
+    var data = LocalStorageManager.getValue("aplikacije", data);
+    if (data != null) {
+        $scope.data = data.DataList;
+        $scope.totalCount = data.RowsCount;
+    }
+
 
     function nullToUndefined(input) {
         if (input === null || input === '') {
             return 'undefined';
         }
-
         return input;
     };
+
 
     //getAplikacijeData
     $scope.getData = function () {
@@ -26,12 +34,14 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
             "pageSizeSelected": $scope.pageSizeSelected.selected,
             "sortKey": $scope.sortKey
         };
-        apiService.getData(url,params)
+        apiService.getData(url, params)
             .then(function (data) {
-                    $scope.data = data.DataList;
-                    $scope.totalCount = data.RowsCount;
+                $scope.data = data.DataList;
+                $scope.totalCount = data.RowsCount;
+                //save data to local storage
+                LocalStorageManager.setValue("aplikacije", data);
             }, function (response) {
-                    //error is handled in Service
+                //error is handled in Service
             });
     };
 
@@ -61,7 +71,7 @@ app.controller("aplikacijaController", function ($scope, $modal, apiService) {
         //we refresh data after modal close 
         modalInstance.result.then(function () {
             window.onload = grayOut(false);
-        }, function () {});
+        }, function () { });
 
     };
 
@@ -79,10 +89,11 @@ app.controller('aplEditCtrl', function ($scope, $modalInstance, dto, apiService)
     //save
     $scope.save = function () {
         url = '/api/aplikacije/save/';
-        apiService.postData(url, $scope.editDto).then(function (response) { 
+        apiService.postData(url, $scope.editDto).then(function (response) {
             $scope.getData();
             $modalInstance.close();
-;        });
+            ;
+        });
     };
 
     //delete

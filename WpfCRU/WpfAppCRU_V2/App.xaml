@@ -66,11 +66,47 @@
             </Setter>
         </Style>
 
+        <!--Menu ToggleButonlar-->
+        <Style x:Key="menubuttonV2" TargetType="ToggleButton">
+            <Setter Property="Foreground" Value="#FF787878"/>
+            <Setter Property="Margin" Value="0,0,0,1"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Name="border" 
+                            BorderThickness="5,0,0,0"
+                            BorderBrush="{x:Null}" 
+                            Background="{x:Null}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#2e61af" />
+                                <Setter TargetName="border" Property="Background" Value="#2e61af" />
+                                <Setter TargetName="border" Property="BorderThickness" Value="5,0,0,0" />
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="white" />
+                                <Setter TargetName="border" Property="Background" Value="#2e61af" />
+                                <Setter TargetName="border" Property="BorderThickness" Value="5,0,0,0" />
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!--Main Button-->
         <Style x:Key="mainbutton" TargetType="Button">
             <Setter Property="Foreground" Value="#FF3691D1"/>
-            <Setter Property="Margin" Value="0,0,0,1" />
-            <Setter Property="FontSize" Value="9" />
+            <Setter Property="Margin" Value="5,0,0,0" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="25" />
             <Setter Property="Template">
@@ -94,8 +130,156 @@
             </Setter>
         </Style>
 
+        <!--Message box style-->
+        <Style TargetType="Button" 
+
+x:Key="MessageBoxButtonStyle">
+            <Setter Property="Background" 
+
+        Value="Transparent" />
+            <Setter Property="TextBlock.TextAlignment" 
+
+        Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border  Name="Border" CornerRadius="0"  
+
+                    BorderBrush="#000" BorderThickness="1,1,1,1" 
+
+                    Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="contentPresenter" 
+
+                        ContentTemplate="{TemplateBinding ContentTemplate}" 
+
+                        Content="{TemplateBinding Content}" 
+
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 
+
+                        Margin="{TemplateBinding Padding}" 
+
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--label-->
+        <Style x:Key="mainlabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Background" Value="{DynamicResource CRUBlueSCB}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!--Textbox-->
+        <Style x:Key="maintextbox" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource CRUBlueSCB}"/>
+            <Setter Property="Foreground" Value="{DynamicResource CRUBlueSCB}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFEFF4FD"/>
+                    <Setter Property="BorderBrush" Value="#FF2F5DAC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <!--Data Grid-->
+        <!-- DataGrid style -->
+        <Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ColumnHeaderStyle1}"/>
+        </Style>
+        <!-- DataGridColumnHeader style -->
+        <Style x:Key="ColumnHeaderStyle1" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="37"/>
+            <Setter Property="Background" Value="#FF134187"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="5,5,5,5"/>
+            <Setter Property="BorderBrush" Value="#FF134187"/>
+            <Setter Property="BorderThickness" Value="4,0,0,0"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="ToolTip" Value="Tıkla Ve Grupla"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
+        <Style x:Key="ColumnrowStyle" TargetType="DataGridCell">
+
+            <Setter Property="Background" Value="{x:Null}" />
+
+            <Setter Property="BorderThickness" Value="4,0,0,0"/>
+            <Setter Property="BorderBrush" Value="#eeeeee"/>
+            <Setter Property="Padding" Value="5,5,5,5"/>
+            <Setter Property="Foreground" Value="#FF042263"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#3168bc"/>
+                    <Setter Property="BorderBrush" Value="#FF042263"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
 
 
+        <!--Data Grid Cell Element Style-->
+        <Style x:Key="cellelement"  TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+
+        <Style x:Key="textleft"  TargetType="TextBlock" BasedOn="{StaticResource cellelement}">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="textright"  TargetType="TextBlock" BasedOn="{StaticResource cellelement}">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+
+        <Style x:Key="firstcell" TargetType="DataGridCell">
+            <Setter Property="Background" Value="#2e61af" />
+            <Setter Property="BorderThickness" Value="5,0,0,0" />
+            <Setter Property="BorderBrush" Value="#FF134187" />
+            <Setter Property="Foreground" Value="White" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF134187" />
+                    <Setter Property="BorderThickness" Value="5,0,0,0" />
+                    <Setter Property="BorderBrush" Value="White" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="othercell" TargetType="DataGridCell">
+            <Setter Property="BorderThickness" Value="0,0,0,0" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="BorderThickness" Value="0,0,0,0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Barve-->
+        <!--Osnovna temno modra-->
+        <Color x:Key="CRUBlue">#FF134187</Color>
+        <SolidColorBrush x:Key="CRUBlueSCB" Color="{StaticResource CRUBlue}"/>
+        
     </Application.Resources>
 </Application>

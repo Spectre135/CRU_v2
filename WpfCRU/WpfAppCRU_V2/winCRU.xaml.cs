@@ -44,7 +44,8 @@ namespace WpfAppCRU_V2
             if (this.WindowState == WindowState.Normal)
             {
                 this.WindowState = WindowState.Maximized;
-            } else
+            }
+            else
             {
                 this.WindowState = WindowState.Normal;
             }
@@ -71,22 +72,34 @@ namespace WpfAppCRU_V2
         #region Side menu
         private void btnAplikacije_Click(object sender, RoutedEventArgs e)
         {
+            izberiMenu("btnAplikacije");
             ucClass.ucNavigate(mainContent, new ucAplikacije());
         }
 
         private void btnVloge_Click(object sender, RoutedEventArgs e)
         {
+            izberiMenu("btnVloge");
             ucClass.ucNavigate(mainContent, new ucVloge());
         }
 
         private void btnPravice_Click(object sender, RoutedEventArgs e)
         {
+            izberiMenu("btnPravice");
             ucClass.ucNavigate(mainContent, new ucPravice());
         }
 
         private void btnUporabniki_Click(object sender, RoutedEventArgs e)
         {
+            izberiMenu("btnUporabniki");
             ucClass.ucNavigate(mainContent, new ucUporabniki());
+        }
+
+        void izberiMenu(string menu)
+        {
+            if (menu != "btnAplikacije") { btnAplikacije.IsChecked = false; } else { btnAplikacije.IsChecked = true; };
+            if (menu != "btnVloge") { btnVloge.IsChecked = false; } else { btnVloge.IsChecked = true; };
+            if (menu != "btnPravice") { btnPravice.IsChecked = false; } else { btnPravice.IsChecked = true; };
+            if (menu != "btnUporabniki") { btnUporabniki.IsChecked = false; } else { btnUporabniki.IsChecked = true; };
         }
         #endregion
 

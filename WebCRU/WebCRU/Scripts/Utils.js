@@ -102,4 +102,17 @@ function getSortClass(asc) {
     }
 }
 
+//local storage
+var LocalStorageManager = {
+    setValue: function (key, value) {
+        window.localStorage.setItem(key, JSON.stringify(value));
+    },
+    getValue: function (key) {
+        try {
+            return JSON.parse(window.localStorage.getItem(key));
+        } catch (e) {
+
+        }
+    }
+};
 

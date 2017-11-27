@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace WpfAppCRU_V2.UserController
 {
     /// <summary>
-    /// Interaction logic for ucAplikacije.xaml
+    /// Interaction logic for ucVloge.xaml
     /// </summary>
-    public partial class ucAplikacije : UserControl
+    public partial class ucVloge : UserControl
     {
-        public ucAplikacije()
+        public ucVloge()
         {
             InitializeComponent();
-        }
-
-        private void btnIskanje_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

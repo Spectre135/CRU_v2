@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppCRU_V2"
         mc:Ignorable="d"
-          Title="CRU" MinHeight="600" MinWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Background="{x:Null}">
-    <Grid >
+          Title="CRU" MinHeight="600" Icon="Images/access_64x64.png" MinWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Background="{x:Null}">
+    <Grid Margin="10" >
         <Grid.Effect>
-            <DropShadowEffect BlurRadius="10"/>
+            <DropShadowEffect BlurRadius="10" Opacity="0.8"/>
         </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="110"/>
@@ -28,23 +28,22 @@
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0">
                     <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Image Source="Images/access_64x64.png" Width="20" Height="20"></Image>
+                        <Image Source="Images/logo.png" Width="30" Height="30"></Image>
                         <Label Content="Skupni register uporabnikov" Foreground="White" FontWeight="Bold" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
                     </DockPanel>
                 </Border>
                 <Border Grid.Row="1">
-                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Image>
                             <Image.Style>
                                 <Style TargetType="Image">
-                                    <Setter Property="Source" Value="Images/logo.png"/>
-                                    <Setter Property="Height" Value="50"/>
-                                    <Setter Property="Width" Value="120"/>
+                                    <Setter Property="Source" Value="Images/icon_group_3_64.png"/>
+                                    <Setter Property="Height" Value="Auto"/>
+                                    <Setter Property="Width" Value="64"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Source" Value="Images/logo.png"/>
-                                            <Setter Property="Height" Value="55"/>
-                                            <Setter Property="Width" Value="125"/>
+                                            <Setter Property="Source" Value="Images/icon_group_3_64.png"/>
+                                            <Setter Property="Width" Value="70"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -102,30 +101,30 @@
                 </LinearGradientBrush>
             </Border.Background>
             <StackPanel HorizontalAlignment="Left">
-                <Button x:Name="btnAplikacije" Height="50" Style="{DynamicResource menubutton}" Click="btnAplikacije_Click">
+                <ToggleButton x:Name="btnAplikacije" Height="50" Style="{DynamicResource menubuttonV2}" Click="btnAplikacije_Click">
                     <DockPanel Width="200" Margin="15,0,0,0">
                         <Image Source="Images/icon_app_32.png" Width="32"/>
                         <Label Content="Aplikacije" Foreground="White" FontSize="16" />
                     </DockPanel>
-                </Button>
-                <Button x:Name="btnUporabniki" Height="50" Style="{DynamicResource menubutton}" Click="btnUporabniki_Click">
+                </ToggleButton>
+                <ToggleButton x:Name="btnUporabniki" Height="50" Style="{DynamicResource menubuttonV2}" Click="btnUporabniki_Click">
                     <DockPanel Width="200" Margin="15,0,0,0">
                         <Image Source="Images/icon_user_32.png" Width="32"/>
                         <Label Content="Uporabniki" Foreground="White" FontSize="16" />
                     </DockPanel>
-                </Button>
-                <Button x:Name="btnVloge" Height="50" Style="{DynamicResource menubutton}" Click="btnVloge_Click">
+                </ToggleButton>
+                <ToggleButton x:Name="btnVloge" Height="50" Style="{DynamicResource menubuttonV2}" Click="btnVloge_Click">
                     <DockPanel Width="200" Margin="15,0,0,0">
                         <Image Source="Images/icon_group_2_32.png" Width="32"/>
                         <Label Content="Vloge" Foreground="White" FontSize="16"/>
                     </DockPanel>
-                </Button>
-                <Button x:Name="btnPravice" Height="50" Style="{DynamicResource menubutton}" Click="btnPravice_Click">
+                </ToggleButton>
+                <ToggleButton x:Name="btnPravice" Height="50" Style="{DynamicResource menubuttonV2}" Click="btnPravice_Click">
                     <DockPanel Width="200" Margin="15,0,0,0">
                         <Image Source="Images/icon_lock_32.png" Width="32"/>
                         <Label Content="Pravice" Foreground="White" FontSize="16" />
                     </DockPanel>
-                </Button>
+                </ToggleButton>
                 <Canvas>
                     <Border/>
                 </Canvas>
